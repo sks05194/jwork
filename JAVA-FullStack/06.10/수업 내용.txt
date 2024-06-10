@@ -1,7 +1,10 @@
+※ 시간 순서대로 기입한 정보입니다.
+
 다운로드
 반디집
 jdk (Java Development Kit) : Java 11 (경로 : 기본 경로 C:\Program Files\Java\jdk-11)
-eclipse (이클립스) : 2022.03 - Eclipse IDE for Enterprise Java and Web Developers => IDE(Intergreted Development Environment) => 코드 편집기, 컴파일, 인터프리터, 자동완성기능, 서버 연결 등 개발에 필요한 모든 환경을 가지고 있는 도구
+eclipse (이클립스) : 2022.03 - Eclipse IDE for Enterprise Java and Web Developers
+	 => IDE(Intergreted Development Environment) => 코드 편집기, 컴파일, 인터프리터, 자동완성기능, 서버 연결 등 개발에 필요한 모든 환경을 가지고 있는 도구
 
 Java 옛 명칭 : Oak, Green
 
@@ -17,9 +20,83 @@ cmd javac -version
 JRE(Java Runtime Environment)
 JVM(Java Virtual Machine)
 
-용어 설명
-빌드 : 
-배포 : 
+빌드 : 개발자 기준
+배포 : 사용자 기준
+(추후 gpt한테 질문)
+
+
+기본 자료형(primitive Type)
+숫자형	- 정수: byte(1B) - short(2B) - int(4B) - long(8B)
+	- 실수: float(4B) - doublt(8B)
+문자형 : char(2B)
+논리형 : boolean(1B) (참 true, 거짓 false)
+
+값(literal)
+키워드(keyword) = 예약어
+변수명은 키워드로 짓기 불가능
+
+변수의 명명규칙
+권장
+ 	영어 소문자로 기술
+	이름을 명시적(직관적)으로
+	여러개의 단어를 합쳐서 이름을 지을때 카멜(Camel), 스네이크(Snake)기법 사용
+필수
+	숫자(0~9), 문자(되도록 영어), 기호( _ $ )만 가능
+	첫글자는 숫자가 올 수 없음
+	이름 사이에 공백이 올 수 없음
+	키워드로 명명 불가능
+
+객체지향
+절차지향, 순차지향
+
+구조화 프로그래밍: 절차지향을 기반으로 순차, 선택(if), 반복(for, while)
+
+// ( ) : 메서도 선언 시 매개변수(Parameter Variable)를 기술하는 공간, 메소드 호출 시 매개인자(Argument Value)를 넣는 공간
+// { } : 클래스, 변수, 객체 등의 생명을 결정하는 공간(영역), 선언 시 사용하는 범위를 지정하는 기호
+// 자료형에서는 배열 값을 넣는 용도
+// [ ] : 배열을 선언하거나 공간을 설정할 때 사용하는 용도
+
+// 클래스 : 자바에서 프로그램을 실행할 수 있는 가장 최소단위
+
+실행 프로그램 확장자 : .exe
+HTML 확장자 : .html
+CSS 확장자 : .css
+자바 프로그램 확장자 : .java
+=> 자바프로그램을 번역하는 도구 : 자바 컴파일러 => .class
+=> 번역한 프로그램을 해석해서 시스템에 알려주는 도구 => 인터프리터
+
+폴더 = 디렉토리 = 프로젝트 = 패키지
+
+
+cmd 명령어 dir : 현재 폴더에 위치한 모든 폴더와 파일을 보여주는 명령어
+cmd 명령어 javac "자바 파일" : class 파일로 컴파일
+cmd 명령어 java "class 파일 이름" : class 파일 실행
+
+메서드 안에서 변수의 이름은 서로 중복된 이름을 가지지 않는다.
+
+
+참조자료형, 참조변수 = 객체 
+
+참조자료형 - 문자열
+	문자 = ' '
+	문자열 = " "
+
+	저장하고 있는 값은 문자열이 저장된 주소값
+
+연산
+	연산자우선순위.txt 참고
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
