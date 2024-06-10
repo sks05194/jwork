@@ -1,0 +1,27 @@
+다운로드
+반디집
+jdk (Java Development Kit) : Java 11 (경로 : 기본 경로 C:\Program Files\Java\jdk-11)
+eclipse (이클립스) : 2022.03 - Eclipse IDE for Enterprise Java and Web Developers => IDE(Intergreted Development Environment) => 코드 편집기, 컴파일, 인터프리터, 자동완성기능, 서버 연결 등 개발에 필요한 모든 환경을 가지고 있는 도구
+
+Java 옛 명칭 : Oak, Green
+
+공유폴더 암호 : 7575
+
+환경 변수 설정
+설정 - 시스템 - 정보 - 고급 시스템 설정 - 환경 변수 - 시스템 변수 - 새로 만들기 - JAVA_HOME, jdk 경로(~jdk-11) |  Path 더블클릭 - %JAVA_HOME%\bin 새로 만들기
+
+cmd java -version : 자바 설치 확인
+JAVA LTS version = 8, 11, 17
+cmd javac -version
+
+JRE(Java Runtime Environment)
+JVM(Java Virtual Machine)
+
+용어 설명
+빌드 : 
+배포 : 
+
+
+
+
+
