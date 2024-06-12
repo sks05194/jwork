@@ -1,0 +1,560 @@
+// first/Hello.java
+
+System.out.print("Hello JAVA!");
+System.out.println("New Line");
+System.out.print("End");
+
+======================
+
+// 자료형(Data Type)
+
+int n = 123;
+float f = 3.14F;
+double d = 3.14;
+char c = '글';
+boolean b = true;
+String name = "홍길동";
+
+System.out.println( n );
+System.out.println( f );
+System.out.println( d );
+System.out.println( c );
+System.out.println( b );
+System.out.println( name );
+
+--------------------------
+
+double pi = 3.141592;
+int r = 5;
+double area;
+
+area = r * r * pi;
+System.out.println( "반지름이 " + r + "인 원의 면적은 " + area);
+
+-------------------------
+연산자
+
+int a = 5;
+int b = 10;
+int c = 2;
+int r = a + b * c ;
+System.out.println("r의 값은 " + r);
+int r1 = (a + b) * c ;
+System.out.println("r1의 값은 " + r1);
+
+-------------------------------------
+//전위/후위 연산자
+
+int a = 3;
+
+++a;
+System.out.println("1: "+a);
+a--;
+System.out.println("2: "+a);
+System.out.println(++a);
+System.out.println(a++);
+
+int x = 5;
+int y = ++x;
+System.out.println("3: "+x + " " + y);
+
+int x2 = 5;
+int y2 = x2++;
+System.out.println("4: "+x2 + " " + y2);
+
+---------------------------------
+
+int a = 10, b = 10;
+int c = a;
+System.out.println( "a : " + a + ", c : " + c );
+c = ++a +b;
+System.out.println( "a : " + a + ", c : " + c );
+c = a++ +b;
+System.out.println( "a : " + a + ", c : " + c );
+-------------------------------------
+
+혼합대입 연산자
+
+int a = 10;
+int b = a;
+
+System.out.println( b );
+		
+b += a;
+System.out.println( b );
+
+b -= a;
+System.out.println( b );
+		
+b *= a;
+System.out.println( b );
+		
+b /= a;
+System.out.println( b );
+		
+b %= a;
+System.out.println( b );
+
+---------------------------------
+
+
+double a = 10;
+double b = 3;
+System.out.println("a/b의 값은 : "+ (a/b) );
+System.out.println("a%b의 값은 : "+ (a%b) );
+
+
+---------------------------------
+
+int a = 10;
+int b = 5;
+
+System.out.println( a == b );
+System.out.println( !(a == b) );
+System.out.println( a > b );
+System.out.println( a >= b );
+System.out.println( a < b );
+System.out.println( a <= b );
+System.out.println( a != b );
+System.out.println("=======================================\n");
+
+
+boolean tf = !true;
+System.out.println("!true : " + tf);
+System.out.println("!false : " + (!false) );
+System.out.println("=======================================\n");
+
+--------------------------------
+
+// 단축연산(논리연산인 경우 무시되는 부분이 발생)
+// 또한 연산자의 우선순위 중 전위연산자가 무시되는 경우가 발생된다.
+int value1 = 3;
+
+// 논리연산 논리곱(=AND = &&) : 두번째 항의 연산 무시
+System.out.println("논리연산 논리곱 &&");
+System.out.println(false && ++value1 > 6);
+System.out.println(value1);
+System.out.println(true && ++value1 > 6);
+System.out.println(value1);
+System.out.println("================\n");
+
+// 논리연산 논리합(=OR = ||) : 두번째 항의 연산 무시
+System.out.println("논리연산 논리합 ||");
+int value2 = 5;
+System.out.println(true || value2++ > 6);
+System.out.println(value2);
+System.out.println(false || value2++ > 6);
+System.out.println(value2);
+System.out.println("================\n");
+--------------------------------
+상수(Constant)와 리터럴(Literal)
+
+final int MAX = 100, MIN = 0;
+int score = 50;
+		
+//MAX = 20;
+//MIN = 10;
+
+boolean tf = (score >=0) && (score <= 100) ;
+System.out.println("질문: 점수는 " + MIN +"점 보다 같거나 커야하고 또한 "+ MAX +"점 보다 작거나 같습니까?");
+System.out.print("답변: "+tf);
+-------------------------------------------------------------------------------
+
+유니코드와 이스케이프 문자
+System.out.printf( " 문자 %c 의 유니코드/아스키코드 값은 %d \n" , 'A', (int) 'A' );
+System.out.printf( " 문자 %c 의 유니코드/아스키코드 값은 %d \n" , 'a', (int) 'a' );
+System.out.printf( " 문자 %c 의 유니코드/아스키코드 값은 %d \n" , '0', (int) '0' );
+System.out.printf( " 문자 %c 의 유니코드 값은 %d \n" , '가', (int) '가' );
+System.out.printf( "-------------------------------- \n");
+System.out.printf( " 문자 %c 의 유니코드/아스키코드 값은 %d \n" , 'A' + 1, (int) ('A' + 1) );
+
+--유니코드 한글표
+https://namu.wiki/w/%ED%98%84%EB%8C%80%20%ED%95%9C%EA%B8%80%EC%9D%98%20%EB%AA%A8%EB%93%A0%20%EA%B8%80%EC%9E%90/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C
+
+--아스키코드 표
+https://nanbuja.com/entry/JAVA-%EC%95%84%EC%8A%A4%ED%82%A4%EC%BD%94%EB%93%9C%ED%91%9C-ASCII
+
+-------------------------------------
+
+System.out.println( " \\n  => \n 엔터키 " );
+System.out.println( " \\t  => \t 탭키 " );
+System.out.println( " \\\\ => \\ " );
+System.out.println( " \\\' => \' " );
+System.out.println( " \\\" => \" " );
+
+----------------------------------------
+char c = 65;
+System.out.println("c: "+c);
+		
+int i = 65;
+c = (char) i;
+System.out.println("c: "+c);
+
+c = 'A';
+i = '가';
+System.out.println("c: "+c);
+System.out.println("i: "+i);
+
+----------------------------------
+// println()
+System.out.println("안녕하세요");
+System.out.println("안녕" + "하세요");
+System.out.println();
+
+System.out.println(2 + 4);
+System.out.println("문자" + 1);
+System.out.println("문자" + 1 + 2);
+System.out.println(1 + 2 + "문자");
+System.out.println();
+
+int a = 5;
+String b = "하세요";
+System.out.println(a);
+System.out.println(b);
+System.out.println("안녕" + b);
+System.out.println(a + "안녕" + b);
+System.out.println();
+
+// print()
+System.out.print("반갑");
+System.out.print("습니다");
+System.out.print("7");
+System.out.print("\n");
+System.out.print("\n");
+// System.out.print();
+
+// printf()
+System.out.printf("%d\n", 10);
+System.out.printf("%o\n", 10);
+System.out.printf("%x\n", 10);
+System.out.printf("%X\n", 10);
+System.out.printf("%s\n", "문자열 출력");
+System.out.printf("%f\n", 3.2582);
+System.out.printf("%10.2f\n", 3.2582);
+System.out.printf("%-10d과 %.4f\n", 10, 3.2582);
+// System.out.printf();
+
+
+----------------------------------
+기본자료형(Primitive Data Type)의 형변환
+
+char자료형
+
+char value1 = 'A';
+char value2 = '가';
+char value3 = '3';
+System.out.println(value1);
+System.out.println(value2);
+System.out.println(value3);
+System.out.println();
+
+// 정수로 대입
+char value4 = 65;
+char value5 = 0xac00;
+char value6 = 51;
+System.out.println(value4); // A
+System.out.println(value5); // 가
+System.out.println(value6); // 3
+System.out.println();
+
+-------------------------
+
+// 자동 타입 변환 = 묵시적 타입 변환 (업캐스팅)
+// byte < short <  int < long < float < double
+byte b = 20;
+short s = b;
+System.out.println("변수 b의 값: "+b);
+System.out.println("변수 s의 값: "+s);
+System.out.println("==================\n");
+
+int i = b;
+System.out.println("변수 i_b의 값: "+i);
+i = s;
+System.out.println("변수 i_s의 값: "+i);
+System.out.println("==================\n");	
+
+long l = b;
+System.out.println("변수 l_b의 값: "+l);
+l = s;
+System.out.println("변수 l_s의 값: "+l);
+l = i;
+System.out.println("변수 l_i의 값: "+l);
+System.out.println("==================\n");
+
+float f = b;
+System.out.println("변수 f_b의 값: "+f);
+f = s;
+System.out.println("변수 f_s의 값: "+f);
+f = i;
+System.out.println("변수 f_i의 값: "+f);
+f = l;
+System.out.println("변수 f_l의 값: "+f);		
+System.out.println("==================\n");
+
+double d = b;
+System.out.println("변수 d_b의 값: "+d);
+d = s;
+System.out.println("변수 d_s의 값: "+d);
+d = i;
+System.out.println("변수 d_i의 값: "+d);
+d = l;
+System.out.println("변수 d_l의 값: "+d);
+d = f;
+System.out.println("변수 d_f의 값: "+d);		
+System.out.println("==================\n");
+
+----------------------------------------------------
+//강제 타입 변환 (=명시적 형변환) : 다운캐스팅
+short s = 20;
+byte b;
+// b = s; //에러
+b = (byte) s;
+System.out.println("b의 값: "+b + ", s의 값: "+s);
+
+s = 200;
+b = (byte) s; //오버플로우(overflow) 발생
+System.out.println("b의 값: "+b + ", s의 값: "+s);
+
+s = -200;
+b = (byte) s; //언더플로우(underflow) 발생
+System.out.println("b의 값: "+b + ", s의 값: "+s);
+
+
+float f = 50.254f;
+int i = (int) f; //값 손실 발생
+System.out.println("i의 값: "+ i +", f의 값: "+ f);
+
+----------------------------------
+제어문 : 프로그램의 명령이 실행되는 순서를 제어하는 명령문
+-조건문과 반복문이 있다.
+
+조건문 : 조건이 참이거나 거짓인지의 여부에 따라 실행문을 처리하는 것
+종류 : if~else문 , switch~case문
+
+조건문 (if, if~else , if~else if~else, if중첩문)
+
+int i = 3;
+if(i<=5){ System.out.println("1번"); }
+if(i<=4){ System.out.println("2번"); }
+if(i<=3){ System.out.println("3번"); }
+if(i<=2){ System.out.println("4번"); }
+if(i<=1){ System.out.println("5번"); }
+
+-----------------------------------
+int n = 9;
+
+if ( n % 2 == 1 )  {
+	System.out.println( "홀수" );
+} else {
+	System.out.println( "짝수" );
+}
+
+---------------------------------
+
+int a = 12;
+int b = 4;
+int c = 19;
+		
+int max = ( a > b ) ? a : b;
+max = ( max > c ) ? max : c;
+System.out.println( "최대값은 " + max );
+
+
+-----------------------------------------------
+
+int score = 88;
+char grade;
+		
+if ( score >= 90 ) {
+	grade = 'A';
+} else if ( score >= 80 ) {
+	grade = 'B';
+} else if ( score >= 70 ) {
+	grade = 'C';
+} else if ( score >= 60 ) {
+	grade = 'D';
+} else {
+	grade = 'F';
+}
+System.out.println( "학점은 " + grade );
+
+------------------------------------
+
+int score = 88;
+char grade;
+// 조건식(또는 조건값)에는 char, int, String 만 가능		
+switch ( score / 10) {
+case 10: grade = 'A';	break;
+case 9: grade = 'A';		break;
+case 8: grade = 'B';		break;
+case 7: grade = 'C';		break;
+case 6: grade = 'D';	break;
+default: grade = 'F';
+}
+System.out.println( "학점은 "+ grade );
+
+
+---------------------------------
+//반복문 : 조건이 참인 경우에 반복적으로 명령을 실행하도록 하는 명령문
+//종류 : for, while, do~while문
+
+//반복문(for문)
+System.out.println("for문 1");
+for (int n = 1; n <= 10; n++) {
+	System.out.println(" Hello Java" + n);
+}
+System.out.println("for문을 빠져 나옴.");
+System.out.println("\n========================\n");
+
+System.out.println("for문 2");
+int total = 0;
+
+for (int n = 1; n <= 10; n++) {
+	if (n == 7)
+		break;
+	total += n;
+}
+System.out.println("합계는 " + total);
+System.out.println("\n========================\n");
+
+System.out.println("for문 3");
+for (int i = 1; i <= 10; i++) {
+	if (i % 2 == 0)
+		continue;
+	System.out.print(i + "  ");
+}
+System.out.println("\n========================\n");
+
+System.out.println("while문 1");
+total = 0;
+int i = 1;
+
+while (i <= 10) {
+	total += i;
+	i++;
+}
+System.out.println(total);
+System.out.println("\n========================\n");
+
+System.out.println("do while문 1");
+total = 0;
+i = 1;
+
+do {
+	total += i;
+	i++;
+} while (i <= 10);
+System.out.println(total);
+System.out.println();
+
+
+i=5;
+do{
+	System.out.print(i+" ");
+	i--;
+}while(i>=1);
+System.out.println("\ndo~while문 종료 후 : "+i+"\n");
+System.out.println("\n========================\n");
+
+System.out.println("중첩 for문");
+for (int j = 1; j <= 5; j++) {
+	for (int k = 1; k <= j; k++) {
+		System.out.print("*");
+	}
+	System.out.println();
+}
+System.out.println("\n========================\n");
+
+
+
+//분기문: 실행이나 종료위치를 제어하는 명령문 - break, continue
+break; continue; 사용 조건
+반복을 제어하는데, 흐름을 제어하는데 사용.
+예외: 조건문 중 switch~case문에 break; 사용가능
+
+System.out.println("분기문 for문");
+int i;
+for( i=5; ; i>=1 ;i--) {
+	if(i==3) break;
+	System.out.print(i+" ");
+}
+System.out.println("\nfor문 종료 후 : "+i);
+System.out.println("\n=================\n");
+
+
+System.out.println("분기문 while문");
+i=5;
+while(i>=1) {
+	if(i==3) break;
+	System.out.print(i+" ");
+	i--;
+}
+System.out.println("\nwhile문 종료 후 : "+i);
+System.out.println("\n=================\n");
+
+
+System.out.println("분기문 do ~ while문");
+i=5;
+do{
+	if(i==3) break;
+	System.out.print(i+" ");
+	i--;
+}while(i>=1);
+System.out.println("\ndo~while문 종료 후 : "+i);
+
+
+----------------continue
+System.out.println("짝수만 출력하기");
+for (int i = 1; i <= 10; i++) {
+	if(i%2 != 0) continue;
+	System.out.print(i + " ");
+}
+System.out.println("\n=================\n");
+
+int i = 0;
+while ( i <= 10) {
+	i++;
+	if(i%2 != 0) continue;	
+	System.out.print(i + " ");
+}
+System.out.println("\n=================\n");
+
+i = 0;
+do{
+	i++;
+	if(i%2 != 0) continue;	
+	System.out.print(i + " ");
+}while ( i <= 10);
+
+-----------------------------------------
+
+
+
+//무한루프문 - 반드시 break문이나 탈출할 수 있는 명령문이 있어야 한다.
+System.out.println("무한루프 for문");
+int i = 1;
+
+for (;;) {
+	System.out.print( (i!=1 ?"  ": "") + i);
+	if (++i > 10) break;
+}
+System.out.println("\n종료 후 i의 값: "+i);
+System.out.println("\n========================\n");
+
+System.out.println("무한루프 while문");
+i = 1;
+
+while (true) {
+	System.out.print( (i!=1 ?"  ": "") + i);
+	if (++i > 10) break;
+}
+System.out.println("\n종료 후 i의 값: "+i);
+System.out.println("\n========================\n");
+
+System.out.println("무한루프 do ~ while문");
+i = 1;
+do {
+	System.out.print( (i!=1 ?"  ": "") + i);
+	if (++i > 10) break;
+}while(true);
+System.out.println("\n종료 후 i의 값: "+i);

@@ -1,5 +1,7 @@
 package first;
 
+import java.util.Scanner;
+
 public class Test {
 	// 출력 코드 길게 쓰기 귀찮아서 만든 메서드1
 	public static void println(Object obj) {
@@ -107,6 +109,204 @@ public class Test {
 		println();
 		for (int n = 5; n >= 3; n--)
 			System.out.printf("%d ", n);
+
+
+		println("for문 2");
+		int total = 0;
+
+		for (int n = 1; n <= 10; n++) {
+			if (n == 7)
+				break;
+			total += n;
+		}
+		println("합계는 " + total);
+		println("\n======================\n");
+
+
+		println("for문 3");
+		for (int i = 1; i <= 10; i++) {
+			if (i % 2 == 0)
+				continue;
+			print(i + " ");
+		}
+		println("\n===========================\n");
+
+
+		println("while문 1");
+		int total = 0;
+		int i = 1;
+		while (i <= 10) {
+			total += i;
+			i++;
+		}
+		println(total);
+		println("\n=========\n");
+
+
+
+		int i = 1;
+		println("while문 시작 시 : " + i);
+		while (i <= 5) {
+			print(i + " ");
+			i++;
+		}
+		println("\nwhile문 종료 후 : " + i + "\n\n");
+
+		i = 1;
+		println("while문 시작 시 : " + i);
+		while (i <= 5) {
+			if (i == 4)
+				break;
+			print(i + " ");
+			i++;
+		}
+		println("\nwhile문 종료 후 : " + i);
+
+
+		/*
+		 * 출력값 : 
+		 * while문 시작 시 : 1 
+		 * 1 2 4 5 
+		 * while문 종료 후 : 6
+		 */
+
+		int i = 1;
+		println("while문 시작 시 : " + i);
+		while (i <= 5) {
+			if (i != 3)
+				print(i + " ");
+			i++;
+		}
+		println("\nwhile문 종료 후 : " + i + "\n\n");
+		
+		// continue 사용 시
+		i = 0;
+		while (i < 5) {
+			i++;
+			if (i == 1)	println("while문 시작 시 : " + i);
+			if (i == 3)	continue;
+			print(i + " ");
+		}
+		println("\nwhile문 종료 후 : " + ++i + "\n\n");
+
+
+		println("do while문 1");
+		int total = 0;
+		int i = 1;
+
+		do {
+			total += i;
+			i++;
+		} while (i <= 10);
+
+		println(total + "\n");
+
+
+
+		/*
+		 * int s = 2;
+		 * System.out.printf("%d * %d = %d", s, i, s * i);
+		 * 
+		 * for(int i = 1; i < 10; i++){
+		 * 	System.out.printf("%d * %d = %d\n", s, i, s * i);
+		 * }
+		 2 * 1 = 2
+		 2 * 2 = 4
+		 2 * 3 = 6
+		 2 * 4 = 8
+		 2 * 5 = 10
+		 2 * 6 = 12
+		 2 * 7 = 14
+		 2 * 8 = 16
+		 2 * 9 = 18
+		 * 이와 같은 방법으로 5단까지 출력하시오.
+		 * */
+
+		// for문 중첩
+		for (int s = 2; s <= 5; s++) {
+			for (int i = 1; i < 10; i++)
+				System.out.printf("%d * %d = %d\n", s, i, s * i);
+			println();
+		}
+
+		// do~while문 -> for문 중첩
+		int s = 2;
+
+		do {
+			for (int i = 1; i < 10; i++)
+				System.out.printf("%d * %d = %d\n", s, i, s * i);
+			println();
+			s++;
+		} while (s <= 5);
+
+		// for문 미중첩
+		s = 2;
+
+		for (int i = 1; i < 10; i++) {
+			System.out.printf("%d * %d = %d\n", s, i, s * i);
+			if (i == 9 && s < 5) {
+				i = 0;
+				s++;
+			}
+		}
+
+
+		
+		Scanner sc = new Scanner(System.in);
+		
+		// for문
+		println("for문 무한루프");
+		for(;;) {
+			print("정수값을 입력해주세요 : ");
+			int a = sc.nextInt();
+
+			print("정수값을 입력해주세요 : ");
+			int b = sc.nextInt();
+			
+			int result = a + b;
+			if(result >= 12) {
+				println("값은 : " + result + "입니다.");
+				break;
+			} else {
+				println("숫자가 12이상이 되는 값으로 넣어야 합니다.");
+			}
+		}
+
+		// while문
+		println("while문 무한루프");
+		while (true) {
+			print("정수값을 입력해주세요 : ");
+			int a = sc.nextInt();
+
+			print("정수값을 입력해주세요 : ");
+			int b = sc.nextInt();
+
+			int result = a + b;
+			if (result >= 12) {
+				println("값은 : " + result + "입니다.");
+				break;
+			} else {
+				println("숫자가 12이상이 되는 값으로 넣어야 합니다.");
+			}
+		}
+
+		// do~while문
+		println("do~while문 무한루프");
+		do {
+			print("정수값을 입력해주세요 : ");
+			int a = sc.nextInt();
+
+			print("정수값을 입력해주세요 : ");
+			int b = sc.nextInt();
+
+			int result = a + b;
+			if (result >= 12) {
+				println("값은 : " + result + "입니다.");
+				break;
+			} else {
+				println("숫자가 12이상이 되는 값으로 넣어야 합니다.");
+			}
+		} while (true);
 	}
 }
 
