@@ -1,0 +1,116 @@
+package first;
+
+public class Test {
+	// 출력 코드 길게 쓰기 귀찮아서 만든 메서드1
+	public static void println(Object obj) {
+		System.out.println(obj);
+	}
+
+	// 출력 코드 길게 쓰기 귀찮아서 만든 메서드2
+	public static void print(Object obj) {
+		System.out.print(obj);
+	}
+
+	// 출력 코드 길게 쓰기 귀찮아서 만든 메서드3
+	public static void println() {
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+
+		// 입력한 n값이 홀수라면 "홀수입니다."를 출력, 짝수라면 "짝수입니다."를 출력하는 조건문을 만드세요.
+		int n = 9;
+
+		if (n % 2 == 1)
+			println("홀수입니다.");
+		else
+			println("짝수입니다.");
+
+		// 삼항연산자
+		int a = 12, b = 4, c = 19;
+
+		int max = (a > b) ? a : b;
+		max = (max > c) ? max : c;
+		println("최대값은 " + max);
+
+		// 점수에 따라 학점 계산하기
+		int score = 88;
+		char grade;
+
+		// if문
+		if (score >= 90)
+			grade = 'A';
+		else if (score >= 80)
+			grade = 'B';
+		else if (score >= 70)
+			grade = 'C';
+		else if (score >= 60)
+			grade = 'D';
+		else
+			grade = 'F';
+
+		// switch문
+		switch (score / 10) {
+		case 10:
+		case 9:
+			grade = 'A';
+			break;
+		case 8:
+			grade = 'B';
+			break;
+		case 7:
+			grade = 'C';
+			break;
+		case 6:
+			grade = 'D';
+			break;
+		default:
+			grade = 'F';
+		}
+
+		println("학점은 " + grade);
+
+
+		// 3점 이하인 학생들 명단 모두 출력되도록 수정
+		// ▼ 출력값
+		// --------------------------------
+		// 박희동 또치 마이콜
+		//
+		// --------------------------------
+		int i = 3;
+		String str = "";
+
+		switch (i) {
+		case 6:
+			str += "고길동 ";
+		case 5:
+			str += "도우넛";
+		case 4:
+			str += "둘리 ";
+		case 3:
+			str += "박희동 ";
+		case 2:
+			str += "또치 ";
+		default:
+			str += "마이콜";
+		}
+		println("--------------------------------");
+		println(str);
+		println("\n--------------------------------");
+
+
+		/*
+		 * 출력결과 : 3 4 5
+		 */
+		for (int n = 3; n < 6; n++)
+			print(n + " ");
+		println();
+		for (int n = 5; n >= 3; n--)
+			System.out.printf("%d ", n);
+	}
+}
+
+
+
+
+
