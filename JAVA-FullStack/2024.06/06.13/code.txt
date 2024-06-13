@@ -1,0 +1,115 @@
+package first;
+
+public class Test {
+	// 출력 대체코드
+	public static void println(Object obj) {
+		System.out.println(obj);
+	}
+
+	public static void print(Object obj) {
+		System.out.print(obj);
+	}
+
+	public static void println() {
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+
+		println("라벨 분기문 for문");
+		
+		gugudan: for (int i = 2; i <= 9; i++) {
+			println("구구단 " + i + "단");
+			for (int j = 1; j <= 9; j++) {
+				if (i == 4)
+					break gugudan;
+				println(i + "*" + j + "=" + (i * j));
+			}
+			println();
+		}
+		println("\n==============\n");
+
+
+		println("라벨 분기문 for문");
+		
+		gugudan: for (int i = 2; i <= 9; i++) {
+			println("구구단 " + i + "단");
+			for (int j = 1; j <= 9; j++) {
+				if (i == 4)
+					break gugudan;
+				println(i + "*" + j + "=" + (i * j));
+			}
+			println();
+		}
+		println("\n==============\n");
+
+
+		int[] b = new int[5];
+		b[2] = 1;
+		println(b);
+		for (int i = 0; i < b.length; i++)
+			print(b[i] + " ");
+		println();
+
+		for (int i : b)
+			print(i + " ");
+		println();
+
+
+		String[] sub = { "국어", "영어", "수학" };
+		int[] score = { 80, 90, 95 };
+		int sum = 0;
+
+		for (int i = 0; i < sub.length; i++) {
+			System.out.printf("%s 점수 : %d \n", sub[i], score[i]);
+			sum += score[i];
+		}
+
+		println("총점은 : " + sum);
+		System.out.printf("평균은 : %.2f", (float) sum / score.length);
+
+		
+		// 최대값, 최소값 구하기
+		int[] score = { 79, 88, 91, 33, 100, 55, 95 };
+
+		int max = score[0];
+		int min = score[0];
+
+		for (int i = 1; i < score.length; i++) {
+			if (score[i] > max)
+				max = score[i];
+
+			if (score[i] < min)
+				min = score[i];
+		}
+
+//		for (int s : score) {
+//			if (s > max)
+//				max = s;
+//			if (s < min)
+//				min = s;
+//		}
+
+		println("최대값 : " + max);
+		println("최소값 : " + min);
+
+
+		int[] array = new int[] { 3, 4, 5, 6, 7 };
+		println(array);
+
+		// for 콜론문
+		for (int k : array)
+			print(k + " ");
+		println();
+
+		// Arrays 이용
+		println(Arrays.toString(array));
+
+	}
+}
+
+
+
+
+
+

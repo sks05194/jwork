@@ -88,5 +88,6 @@
 
 
 17:50	변수에 값 입력하기(Scanner)
+	Ctrl + Shift + o : import되지 않은 패키지 추가
 
 18:20	oneide : java를 온라인에서 사용할 수 있는 사이트
