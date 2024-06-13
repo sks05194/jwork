@@ -105,6 +105,67 @@ public class Test {
 		// Arrays 이용
 		println(Arrays.toString(array));
 
+		
+		int[][] a = { { 0, 1, 2 }, { 3, 4, 5 } };
+
+		for (int i = 0; i < a.length; i++)
+			for (int j = 0; j < a[i].length; j++)
+				// print(a[i][j] + (j == a[i].length - 1 ? "\n" : " "));
+				if (j == a[i].length - 1)
+					println(a[i][j]);
+				else
+					print(a[i][j] + " ");
+
+
+		int[][] a = { new int[2], new int[3] };
+
+		for (int i = 0; i < a.length; i++)
+			for (int j = 0; j < a[i].length; j++) {
+				a[i][j] = i + j;
+				print(a[i][j] + ((j == a[i].length - 1) ? "\n" : " "));
+			}
+
+
+
+		int[][] a = { { 0, 1 }, { 2, 3, 4 } };
+
+		for (int i = 0; i < a.length; i++)
+			for (int j = 0; j < a[i].length; j++)
+				print(a[i][j] + ((j == a[i].length - 1) ? "\n" : " "));
+
+
+		// 배열의 요소값이 객체인 경우
+		String str = "다람쥐";
+		println("문자열 길이: " + str.length());
+
+		String[] sarr = { "하늘", "땅", "바다" };
+
+		for (int i = 0; i < sarr.length; i++)
+			println(i + "번 방의 값은: " + sarr[i] + "입니다.");
+
+
+		int year = 2024;
+
+		println(year + "년도의 월별 일자 수 출력\n");
+		
+		for (int m = 1; m <= 12; m++) {
+			int days;
+			
+			switch (m) {
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				days = 30;
+				break;
+			case 2:
+				days = year % 4 == 0 ? 29 : 28;
+				break;
+			default:
+				days = 31;
+			}
+			println(m + "월: " + days + "일");
+		}
 	}
 }
 
