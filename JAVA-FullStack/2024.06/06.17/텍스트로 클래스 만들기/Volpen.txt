@@ -1,0 +1,25 @@
+// 일반 클래스 : Volpen
+
+// 이름을 담을 수 있는 변수(참조변수)를 멤버필드에 선언해보세요.
+// 이름을 초기화 할 수 있는 매개변수를 한 개 가진 기타 생성자를 선언해보세요
+// 이름을 초기화 할 수 있는 매개변수를 한 개 가진 setName메소드를 선언해보세요.
+//   반환값은 없습니다.
+
+public class Volpen {
+	// 멤버필드선언문 => [접근제어자] [기타제어자] 자료형 변수명;
+	String color; // null
+
+	// 기본생성자 선언문 => [접근제어자] 클래스명( ) { }
+	public Volpen() {
+		color = "검은색";
+	}
+
+	public Volpen(String color) {
+		this.color = color;
+	}
+
+	// 메소드 선언문 => [접근제어자] [기타제어자] 리턴타입 메소드명( ) { }
+	public void colorChange(String color) {
+		this.color = color;
+	}
+}

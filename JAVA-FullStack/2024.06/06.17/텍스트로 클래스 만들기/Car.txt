@@ -1,0 +1,65 @@
+// 일반 클래스 : Car
+
+// 전조등, 시동, 전후진...
+
+/*
+public class Car {
+	// 멤버필드선언문 => [접근제어자] [기타제어자] 자료형 변수명;
+	// 기본생성자 선언문 => [접근제어자] 클래스명( ) { }
+	// 메소드 선언문 => [접근제어자] [기타제어자] 리턴타입 메소드명( ) { }
+
+	double speed;
+	boolean isFrontLight;
+	boolean isBackLight;
+	boolean isEngine;
+
+	public Car( ) {
+		speed = 0.0;
+		isFrontLight = false;
+		isBackLight = false;
+		isEngine = false;
+	}
+
+	public void StartEngine(boolean isEngine) {
+		this.isEngine = isEngine;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public void setFrontLight(boolean isFrontLight) {
+		this.isFrontLight = isFrontLight;
+	}
+
+	public void setBackLight(boolean isBackLight) {
+		this.isBackLight = isBackLight;
+	}
+
+	public void brake() {
+		speed = 0.0;
+	}
+}
+*/
+
+public class Car {
+	// 멤버필드선언문 => [접근제어자] [기타제어자] 자료형 변수명;
+	String light; // null
+	int speed; // 0
+
+	// 기본생성자 선언문 => [접근제어자] 클래스명( ) { }
+	public Car( ) { System.out.pringln("시동을 걸었습니다."); }
+
+	// 메소드 선언문 => [접근제어자] [기타제어자] 리턴타입 메소드명( ) { }
+	public void setLight(String lg) {
+		light = lg;
+	}
+
+	public void speedUp( ) {
+		speed++;
+	}
+
+	public void speedUp( ) {
+		speed--;
+	}
+}

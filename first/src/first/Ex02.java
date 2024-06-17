@@ -14,5 +14,7 @@ public class Ex02 {
 		
 		int x = 30, y = 40;
 		sum(x, y);
+		
+		second.Ex02 e = new second.Ex02();
 	}
 }

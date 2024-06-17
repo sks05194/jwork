@@ -10,8 +10,6 @@ public class Ex01 {
 	}
 	
 	public static void main(String[] args) {
-		
-		
 		// 바로 출력
 		System.out.println(hello_func2());
 		
