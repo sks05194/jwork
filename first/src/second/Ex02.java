@@ -10,4 +10,8 @@ public class Ex02 {
 		System.out.println(s == s1 ? "빨간불입니다." : "빨간불이 아닙니다.");
 		System.out.println(s.equals(s1) ? "빨간불입니다." : "빨간불이 아닙니다.");
 	}
+	
+	public void printClass() {
+		System.out.println("second 패키지 내의 Ex02 클래스입니다.");
+	}
 }

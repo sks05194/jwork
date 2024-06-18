@@ -16,5 +16,6 @@ public class Ex02 {
 		sum(x, y);
 		
 		second.Ex02 e = new second.Ex02();
+		e.printClass();
 	}
 }
