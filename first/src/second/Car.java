@@ -22,4 +22,10 @@ public class Car {
 	public String getModel() {
 		return this.modelYear + "년식 " + this.modelName + " " + this.color;
 	}
+
+	// 주의 나오지 않게 하기 위한 메소드
+	void curSpeedSetting() {
+		if (currentSpeed > maxSpeed)
+			currentSpeed = maxSpeed;
+	}
 }
