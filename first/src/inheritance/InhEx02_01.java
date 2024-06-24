@@ -27,14 +27,3 @@ public class InhEx02_01 {
 		System.out.println("합계 : " + subOb.total);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

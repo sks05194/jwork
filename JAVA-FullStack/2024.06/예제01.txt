@@ -6,14 +6,14 @@ System.out.print("End");
 
 ======================
 
-// ÀÚ·áÇü(Data Type)
+// ìë£Œí˜•(Data Type)
 
 int n = 123;
 float f = 3.14F;
 double d = 3.14;
-char c = '±Û';
+char c = 'ê¸€';
 boolean b = true;
-String name = "È«±æµ¿";
+String name = "í™ê¸¸ë™";
 
 System.out.println( n );
 System.out.println( f );
@@ -29,21 +29,21 @@ int r = 5;
 double area;
 
 area = r * r * pi;
-System.out.println( "¹İÁö¸§ÀÌ " + r + "ÀÎ ¿øÀÇ ¸éÀûÀº " + area);
+System.out.println( "ë°˜ì§€ë¦„ì´ " + r + "ì¸ ì›ì˜ ë©´ì ì€ " + area);
 
 -------------------------
-¿¬»êÀÚ
+ì—°ì‚°ì
 
 int a = 5;
 int b = 10;
 int c = 2;
 int r = a + b * c ;
-System.out.println("rÀÇ °ªÀº " + r);
+System.out.println("rì˜ ê°’ì€ " + r);
 int r1 = (a + b) * c ;
-System.out.println("r1ÀÇ °ªÀº " + r1);
+System.out.println("r1ì˜ ê°’ì€ " + r1);
 
 -------------------------------------
-//ÀüÀ§/ÈÄÀ§ ¿¬»êÀÚ
+//ì „ìœ„/í›„ìœ„ ì—°ì‚°ì
 
 int a = 3;
 
@@ -73,7 +73,7 @@ c = a++ +b;
 System.out.println( "a : " + a + ", c : " + c );
 -------------------------------------
 
-È¥ÇÕ´ëÀÔ ¿¬»êÀÚ
+í˜¼í•©ëŒ€ì… ì—°ì‚°ì
 
 int a = 10;
 int b = a;
@@ -100,8 +100,8 @@ System.out.println( b );
 
 double a = 10;
 double b = 3;
-System.out.println("a/bÀÇ °ªÀº : "+ (a/b) );
-System.out.println("a%bÀÇ °ªÀº : "+ (a%b) );
+System.out.println("a/bì˜ ê°’ì€ : "+ (a/b) );
+System.out.println("a%bì˜ ê°’ì€ : "+ (a%b) );
 
 
 ---------------------------------
@@ -126,20 +126,20 @@ System.out.println("=======================================\n");
 
 --------------------------------
 
-// ´ÜÃà¿¬»ê(³í¸®¿¬»êÀÎ °æ¿ì ¹«½ÃµÇ´Â ºÎºĞÀÌ ¹ß»ı)
-// ¶ÇÇÑ ¿¬»êÀÚÀÇ ¿ì¼±¼øÀ§ Áß ÀüÀ§¿¬»êÀÚ°¡ ¹«½ÃµÇ´Â °æ¿ì°¡ ¹ß»ıµÈ´Ù.
+// ë‹¨ì¶•ì—°ì‚°(ë…¼ë¦¬ì—°ì‚°ì¸ ê²½ìš° ë¬´ì‹œë˜ëŠ” ë¶€ë¶„ì´ ë°œìƒ)
+// ë˜í•œ ì—°ì‚°ìì˜ ìš°ì„ ìˆœìœ„ ì¤‘ ì „ìœ„ì—°ì‚°ìê°€ ë¬´ì‹œë˜ëŠ” ê²½ìš°ê°€ ë°œìƒëœë‹¤.
 int value1 = 3;
 
-// ³í¸®¿¬»ê ³í¸®°ö(=AND = &&) : µÎ¹øÂ° Ç×ÀÇ ¿¬»ê ¹«½Ã
-System.out.println("³í¸®¿¬»ê ³í¸®°ö &&");
+// ë…¼ë¦¬ì—°ì‚° ë…¼ë¦¬ê³±(=AND = &&) : ë‘ë²ˆì§¸ í•­ì˜ ì—°ì‚° ë¬´ì‹œ
+System.out.println("ë…¼ë¦¬ì—°ì‚° ë…¼ë¦¬ê³± &&");
 System.out.println(false && ++value1 > 6);
 System.out.println(value1);
 System.out.println(true && ++value1 > 6);
 System.out.println(value1);
 System.out.println("================\n");
 
-// ³í¸®¿¬»ê ³í¸®ÇÕ(=OR = ||) : µÎ¹øÂ° Ç×ÀÇ ¿¬»ê ¹«½Ã
-System.out.println("³í¸®¿¬»ê ³í¸®ÇÕ ||");
+// ë…¼ë¦¬ì—°ì‚° ë…¼ë¦¬í•©(=OR = ||) : ë‘ë²ˆì§¸ í•­ì˜ ì—°ì‚° ë¬´ì‹œ
+System.out.println("ë…¼ë¦¬ì—°ì‚° ë…¼ë¦¬í•© ||");
 int value2 = 5;
 System.out.println(true || value2++ > 6);
 System.out.println(value2);
@@ -147,7 +147,7 @@ System.out.println(false || value2++ > 6);
 System.out.println(value2);
 System.out.println("================\n");
 --------------------------------
-»ó¼ö(Constant)¿Í ¸®ÅÍ·²(Literal)
+ìƒìˆ˜(Constant)ì™€ ë¦¬í„°ëŸ´(Literal)
 
 final int MAX = 100, MIN = 0;
 int score = 50;
@@ -156,28 +156,28 @@ int score = 50;
 //MIN = 10;
 
 boolean tf = (score >=0) && (score <= 100) ;
-System.out.println("Áú¹®: Á¡¼ö´Â " + MIN +"Á¡ º¸´Ù °°°Å³ª Ä¿¾ßÇÏ°í ¶ÇÇÑ "+ MAX +"Á¡ º¸´Ù ÀÛ°Å³ª °°½À´Ï±î?");
-System.out.print("´äº¯: "+tf);
+System.out.println("ì§ˆë¬¸: ì ìˆ˜ëŠ” " + MIN +"ì  ë³´ë‹¤ ê°™ê±°ë‚˜ ì»¤ì•¼í•˜ê³  ë˜í•œ "+ MAX +"ì  ë³´ë‹¤ ì‘ê±°ë‚˜ ê°™ìŠµë‹ˆê¹Œ?");
+System.out.print("ë‹µë³€: "+tf);
 -------------------------------------------------------------------------------
 
-À¯´ÏÄÚµå¿Í ÀÌ½ºÄÉÀÌÇÁ ¹®ÀÚ
-System.out.printf( " ¹®ÀÚ %c ÀÇ À¯´ÏÄÚµå/¾Æ½ºÅ°ÄÚµå °ªÀº %d \n" , 'A', (int) 'A' );
-System.out.printf( " ¹®ÀÚ %c ÀÇ À¯´ÏÄÚµå/¾Æ½ºÅ°ÄÚµå °ªÀº %d \n" , 'a', (int) 'a' );
-System.out.printf( " ¹®ÀÚ %c ÀÇ À¯´ÏÄÚµå/¾Æ½ºÅ°ÄÚµå °ªÀº %d \n" , '0', (int) '0' );
-System.out.printf( " ¹®ÀÚ %c ÀÇ À¯´ÏÄÚµå °ªÀº %d \n" , '°¡', (int) '°¡' );
+ìœ ë‹ˆì½”ë“œì™€ ì´ìŠ¤ì¼€ì´í”„ ë¬¸ì
+System.out.printf( " ë¬¸ì %c ì˜ ìœ ë‹ˆì½”ë“œ/ì•„ìŠ¤í‚¤ì½”ë“œ ê°’ì€ %d \n" , 'A', (int) 'A' );
+System.out.printf( " ë¬¸ì %c ì˜ ìœ ë‹ˆì½”ë“œ/ì•„ìŠ¤í‚¤ì½”ë“œ ê°’ì€ %d \n" , 'a', (int) 'a' );
+System.out.printf( " ë¬¸ì %c ì˜ ìœ ë‹ˆì½”ë“œ/ì•„ìŠ¤í‚¤ì½”ë“œ ê°’ì€ %d \n" , '0', (int) '0' );
+System.out.printf( " ë¬¸ì %c ì˜ ìœ ë‹ˆì½”ë“œ ê°’ì€ %d \n" , 'ê°€', (int) 'ê°€' );
 System.out.printf( "-------------------------------- \n");
-System.out.printf( " ¹®ÀÚ %c ÀÇ À¯´ÏÄÚµå/¾Æ½ºÅ°ÄÚµå °ªÀº %d \n" , 'A' + 1, (int) ('A' + 1) );
+System.out.printf( " ë¬¸ì %c ì˜ ìœ ë‹ˆì½”ë“œ/ì•„ìŠ¤í‚¤ì½”ë“œ ê°’ì€ %d \n" , 'A' + 1, (int) ('A' + 1) );
 
---À¯´ÏÄÚµå ÇÑ±ÛÇ¥
+--ìœ ë‹ˆì½”ë“œ í•œê¸€í‘œ
 https://namu.wiki/w/%ED%98%84%EB%8C%80%20%ED%95%9C%EA%B8%80%EC%9D%98%20%EB%AA%A8%EB%93%A0%20%EA%B8%80%EC%9E%90/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C
 
---¾Æ½ºÅ°ÄÚµå Ç¥
+--ì•„ìŠ¤í‚¤ì½”ë“œ í‘œ
 https://nanbuja.com/entry/JAVA-%EC%95%84%EC%8A%A4%ED%82%A4%EC%BD%94%EB%93%9C%ED%91%9C-ASCII
 
 -------------------------------------
 
-System.out.println( " \\n  => \n ¿£ÅÍÅ° " );
-System.out.println( " \\t  => \t ÅÇÅ° " );
+System.out.println( " \\n  => \n ì—”í„°í‚¤ " );
+System.out.println( " \\t  => \t íƒ­í‚¤ " );
 System.out.println( " \\\\ => \\ " );
 System.out.println( " \\\' => \' " );
 System.out.println( " \\\" => \" " );
@@ -191,33 +191,33 @@ c = (char) i;
 System.out.println("c: "+c);
 
 c = 'A';
-i = '°¡';
+i = 'ê°€';
 System.out.println("c: "+c);
 System.out.println("i: "+i);
 
 ----------------------------------
 // println()
-System.out.println("¾È³çÇÏ¼¼¿ä");
-System.out.println("¾È³ç" + "ÇÏ¼¼¿ä");
+System.out.println("ì•ˆë…•í•˜ì„¸ìš”");
+System.out.println("ì•ˆë…•" + "í•˜ì„¸ìš”");
 System.out.println();
 
 System.out.println(2 + 4);
-System.out.println("¹®ÀÚ" + 1);
-System.out.println("¹®ÀÚ" + 1 + 2);
-System.out.println(1 + 2 + "¹®ÀÚ");
+System.out.println("ë¬¸ì" + 1);
+System.out.println("ë¬¸ì" + 1 + 2);
+System.out.println(1 + 2 + "ë¬¸ì");
 System.out.println();
 
 int a = 5;
-String b = "ÇÏ¼¼¿ä";
+String b = "í•˜ì„¸ìš”";
 System.out.println(a);
 System.out.println(b);
-System.out.println("¾È³ç" + b);
-System.out.println(a + "¾È³ç" + b);
+System.out.println("ì•ˆë…•" + b);
+System.out.println(a + "ì•ˆë…•" + b);
 System.out.println();
 
 // print()
-System.out.print("¹İ°©");
-System.out.print("½À´Ï´Ù");
+System.out.print("ë°˜ê°‘");
+System.out.print("ìŠµë‹ˆë‹¤");
 System.out.print("7");
 System.out.print("\n");
 System.out.print("\n");
@@ -228,125 +228,125 @@ System.out.printf("%d\n", 10);
 System.out.printf("%o\n", 10);
 System.out.printf("%x\n", 10);
 System.out.printf("%X\n", 10);
-System.out.printf("%s\n", "¹®ÀÚ¿­ Ãâ·Â");
+System.out.printf("%s\n", "ë¬¸ìì—´ ì¶œë ¥");
 System.out.printf("%f\n", 3.2582);
 System.out.printf("%10.2f\n", 3.2582);
-System.out.printf("%-10d°ú %.4f\n", 10, 3.2582);
+System.out.printf("%-10dê³¼ %.4f\n", 10, 3.2582);
 // System.out.printf();
 
 
 ----------------------------------
-±âº»ÀÚ·áÇü(Primitive Data Type)ÀÇ Çüº¯È¯
+ê¸°ë³¸ìë£Œí˜•(Primitive Data Type)ì˜ í˜•ë³€í™˜
 
-charÀÚ·áÇü
+charìë£Œí˜•
 
 char value1 = 'A';
-char value2 = '°¡';
+char value2 = 'ê°€';
 char value3 = '3';
 System.out.println(value1);
 System.out.println(value2);
 System.out.println(value3);
 System.out.println();
 
-// Á¤¼ö·Î ´ëÀÔ
+// ì •ìˆ˜ë¡œ ëŒ€ì…
 char value4 = 65;
 char value5 = 0xac00;
 char value6 = 51;
 System.out.println(value4); // A
-System.out.println(value5); // °¡
+System.out.println(value5); // ê°€
 System.out.println(value6); // 3
 System.out.println();
 
 -------------------------
 
-// ÀÚµ¿ Å¸ÀÔ º¯È¯ = ¹¬½ÃÀû Å¸ÀÔ º¯È¯ (¾÷Ä³½ºÆÃ)
+// ìë™ íƒ€ì… ë³€í™˜ = ë¬µì‹œì  íƒ€ì… ë³€í™˜ (ì—…ìºìŠ¤íŒ…)
 // byte < short <  int < long < float < double
 byte b = 20;
 short s = b;
-System.out.println("º¯¼ö bÀÇ °ª: "+b);
-System.out.println("º¯¼ö sÀÇ °ª: "+s);
+System.out.println("ë³€ìˆ˜ bì˜ ê°’: "+b);
+System.out.println("ë³€ìˆ˜ sì˜ ê°’: "+s);
 System.out.println("==================\n");
 
 int i = b;
-System.out.println("º¯¼ö i_bÀÇ °ª: "+i);
+System.out.println("ë³€ìˆ˜ i_bì˜ ê°’: "+i);
 i = s;
-System.out.println("º¯¼ö i_sÀÇ °ª: "+i);
+System.out.println("ë³€ìˆ˜ i_sì˜ ê°’: "+i);
 System.out.println("==================\n");	
 
 long l = b;
-System.out.println("º¯¼ö l_bÀÇ °ª: "+l);
+System.out.println("ë³€ìˆ˜ l_bì˜ ê°’: "+l);
 l = s;
-System.out.println("º¯¼ö l_sÀÇ °ª: "+l);
+System.out.println("ë³€ìˆ˜ l_sì˜ ê°’: "+l);
 l = i;
-System.out.println("º¯¼ö l_iÀÇ °ª: "+l);
+System.out.println("ë³€ìˆ˜ l_iì˜ ê°’: "+l);
 System.out.println("==================\n");
 
 float f = b;
-System.out.println("º¯¼ö f_bÀÇ °ª: "+f);
+System.out.println("ë³€ìˆ˜ f_bì˜ ê°’: "+f);
 f = s;
-System.out.println("º¯¼ö f_sÀÇ °ª: "+f);
+System.out.println("ë³€ìˆ˜ f_sì˜ ê°’: "+f);
 f = i;
-System.out.println("º¯¼ö f_iÀÇ °ª: "+f);
+System.out.println("ë³€ìˆ˜ f_iì˜ ê°’: "+f);
 f = l;
-System.out.println("º¯¼ö f_lÀÇ °ª: "+f);		
+System.out.println("ë³€ìˆ˜ f_lì˜ ê°’: "+f);		
 System.out.println("==================\n");
 
 double d = b;
-System.out.println("º¯¼ö d_bÀÇ °ª: "+d);
+System.out.println("ë³€ìˆ˜ d_bì˜ ê°’: "+d);
 d = s;
-System.out.println("º¯¼ö d_sÀÇ °ª: "+d);
+System.out.println("ë³€ìˆ˜ d_sì˜ ê°’: "+d);
 d = i;
-System.out.println("º¯¼ö d_iÀÇ °ª: "+d);
+System.out.println("ë³€ìˆ˜ d_iì˜ ê°’: "+d);
 d = l;
-System.out.println("º¯¼ö d_lÀÇ °ª: "+d);
+System.out.println("ë³€ìˆ˜ d_lì˜ ê°’: "+d);
 d = f;
-System.out.println("º¯¼ö d_fÀÇ °ª: "+d);		
+System.out.println("ë³€ìˆ˜ d_fì˜ ê°’: "+d);		
 System.out.println("==================\n");
 
 ----------------------------------------------------
-//°­Á¦ Å¸ÀÔ º¯È¯ (=¸í½ÃÀû Çüº¯È¯) : ´Ù¿îÄ³½ºÆÃ
+//ê°•ì œ íƒ€ì… ë³€í™˜ (=ëª…ì‹œì  í˜•ë³€í™˜) : ë‹¤ìš´ìºìŠ¤íŒ…
 short s = 20;
 byte b;
-// b = s; //¿¡·¯
+// b = s; //ì—ëŸ¬
 b = (byte) s;
-System.out.println("bÀÇ °ª: "+b + ", sÀÇ °ª: "+s);
+System.out.println("bì˜ ê°’: "+b + ", sì˜ ê°’: "+s);
 
 s = 200;
-b = (byte) s; //¿À¹öÇÃ·Î¿ì(overflow) ¹ß»ı
-System.out.println("bÀÇ °ª: "+b + ", sÀÇ °ª: "+s);
+b = (byte) s; //ì˜¤ë²„í”Œë¡œìš°(overflow) ë°œìƒ
+System.out.println("bì˜ ê°’: "+b + ", sì˜ ê°’: "+s);
 
 s = -200;
-b = (byte) s; //¾ğ´õÇÃ·Î¿ì(underflow) ¹ß»ı
-System.out.println("bÀÇ °ª: "+b + ", sÀÇ °ª: "+s);
+b = (byte) s; //ì–¸ë”í”Œë¡œìš°(underflow) ë°œìƒ
+System.out.println("bì˜ ê°’: "+b + ", sì˜ ê°’: "+s);
 
 
 float f = 50.254f;
-int i = (int) f; //°ª ¼Õ½Ç ¹ß»ı
-System.out.println("iÀÇ °ª: "+ i +", fÀÇ °ª: "+ f);
+int i = (int) f; //ê°’ ì†ì‹¤ ë°œìƒ
+System.out.println("iì˜ ê°’: "+ i +", fì˜ ê°’: "+ f);
 
 ----------------------------------
-Á¦¾î¹® : ÇÁ·Î±×·¥ÀÇ ¸í·ÉÀÌ ½ÇÇàµÇ´Â ¼ø¼­¸¦ Á¦¾îÇÏ´Â ¸í·É¹®
--Á¶°Ç¹®°ú ¹İº¹¹®ÀÌ ÀÖ´Ù.
+ì œì–´ë¬¸ : í”„ë¡œê·¸ë¨ì˜ ëª…ë ¹ì´ ì‹¤í–‰ë˜ëŠ” ìˆœì„œë¥¼ ì œì–´í•˜ëŠ” ëª…ë ¹ë¬¸
+-ì¡°ê±´ë¬¸ê³¼ ë°˜ë³µë¬¸ì´ ìˆë‹¤.
 
-Á¶°Ç¹® : Á¶°ÇÀÌ ÂüÀÌ°Å³ª °ÅÁşÀÎÁöÀÇ ¿©ºÎ¿¡ µû¶ó ½ÇÇà¹®À» Ã³¸®ÇÏ´Â °Í
-Á¾·ù : if~else¹® , switch~case¹®
+ì¡°ê±´ë¬¸ : ì¡°ê±´ì´ ì°¸ì´ê±°ë‚˜ ê±°ì§“ì¸ì§€ì˜ ì—¬ë¶€ì— ë”°ë¼ ì‹¤í–‰ë¬¸ì„ ì²˜ë¦¬í•˜ëŠ” ê²ƒ
+ì¢…ë¥˜ : if~elseë¬¸ , switch~caseë¬¸
 
-Á¶°Ç¹® (if, if~else , if~else if~else, ifÁßÃ¸¹®)
+ì¡°ê±´ë¬¸ (if, if~else , if~else if~else, ifì¤‘ì²©ë¬¸)
 
 int i = 3;
-if(i<=5){ System.out.println("1¹ø"); }
-if(i<=4){ System.out.println("2¹ø"); }
-if(i<=3){ System.out.println("3¹ø"); }
-if(i<=2){ System.out.println("4¹ø"); }
-if(i<=1){ System.out.println("5¹ø"); }
+if(i<=5){ System.out.println("1ë²ˆ"); }
+if(i<=4){ System.out.println("2ë²ˆ"); }
+if(i<=3){ System.out.println("3ë²ˆ"); }
+if(i<=2){ System.out.println("4ë²ˆ"); }
+if(i<=1){ System.out.println("5ë²ˆ"); }
 
 -----------------------------------
 int n = 9;
 
 if ( n % 2 == 1 )  {
-	System.out.println( "È¦¼ö" );
+	System.out.println( "í™€ìˆ˜" );
 } else {
-	System.out.println( "Â¦¼ö" );
+	System.out.println( "ì§ìˆ˜" );
 }
 
 ---------------------------------
@@ -357,7 +357,7 @@ int c = 19;
 		
 int max = ( a > b ) ? a : b;
 max = ( max > c ) ? max : c;
-System.out.println( "ÃÖ´ë°ªÀº " + max );
+System.out.println( "ìµœëŒ€ê°’ì€ " + max );
 
 
 -----------------------------------------------
@@ -376,13 +376,13 @@ if ( score >= 90 ) {
 } else {
 	grade = 'F';
 }
-System.out.println( "ÇĞÁ¡Àº " + grade );
+System.out.println( "í•™ì ì€ " + grade );
 
 ------------------------------------
 
 int score = 88;
 char grade;
-// Á¶°Ç½Ä(¶Ç´Â Á¶°Ç°ª)¿¡´Â char, int, String ¸¸ °¡´É		
+// ì¡°ê±´ì‹(ë˜ëŠ” ì¡°ê±´ê°’)ì—ëŠ” char, int, String ë§Œ ê°€ëŠ¥		
 switch ( score / 10) {
 case 10: grade = 'A';	break;
 case 9: grade = 'A';		break;
@@ -391,22 +391,22 @@ case 7: grade = 'C';		break;
 case 6: grade = 'D';	break;
 default: grade = 'F';
 }
-System.out.println( "ÇĞÁ¡Àº "+ grade );
+System.out.println( "í•™ì ì€ "+ grade );
 
 
 ---------------------------------
-//¹İº¹¹® : Á¶°ÇÀÌ ÂüÀÎ °æ¿ì¿¡ ¹İº¹ÀûÀ¸·Î ¸í·ÉÀ» ½ÇÇàÇÏµµ·Ï ÇÏ´Â ¸í·É¹®
-//Á¾·ù : for, while, do~while¹®
+//ë°˜ë³µë¬¸ : ì¡°ê±´ì´ ì°¸ì¸ ê²½ìš°ì— ë°˜ë³µì ìœ¼ë¡œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ë„ë¡ í•˜ëŠ” ëª…ë ¹ë¬¸
+//ì¢…ë¥˜ : for, while, do~whileë¬¸
 
-//¹İº¹¹®(for¹®)
-System.out.println("for¹® 1");
+//ë°˜ë³µë¬¸(forë¬¸)
+System.out.println("forë¬¸ 1");
 for (int n = 1; n <= 10; n++) {
 	System.out.println(" Hello Java" + n);
 }
-System.out.println("for¹®À» ºüÁ® ³ª¿È.");
+System.out.println("forë¬¸ì„ ë¹ ì ¸ ë‚˜ì˜´.");
 System.out.println("\n========================\n");
 
-System.out.println("for¹® 2");
+System.out.println("forë¬¸ 2");
 int total = 0;
 
 for (int n = 1; n <= 10; n++) {
@@ -414,10 +414,10 @@ for (int n = 1; n <= 10; n++) {
 		break;
 	total += n;
 }
-System.out.println("ÇÕ°è´Â " + total);
+System.out.println("í•©ê³„ëŠ” " + total);
 System.out.println("\n========================\n");
 
-System.out.println("for¹® 3");
+System.out.println("forë¬¸ 3");
 for (int i = 1; i <= 10; i++) {
 	if (i % 2 == 0)
 		continue;
@@ -425,7 +425,7 @@ for (int i = 1; i <= 10; i++) {
 }
 System.out.println("\n========================\n");
 
-System.out.println("while¹® 1");
+System.out.println("whileë¬¸ 1");
 total = 0;
 int i = 1;
 
@@ -436,7 +436,7 @@ while (i <= 10) {
 System.out.println(total);
 System.out.println("\n========================\n");
 
-System.out.println("do while¹® 1");
+System.out.println("do whileë¬¸ 1");
 total = 0;
 i = 1;
 
@@ -453,10 +453,10 @@ do{
 	System.out.print(i+" ");
 	i--;
 }while(i>=1);
-System.out.println("\ndo~while¹® Á¾·á ÈÄ : "+i+"\n");
+System.out.println("\ndo~whileë¬¸ ì¢…ë£Œ í›„ : "+i+"\n");
 System.out.println("\n========================\n");
 
-System.out.println("ÁßÃ¸ for¹®");
+System.out.println("ì¤‘ì²© forë¬¸");
 for (int j = 1; j <= 5; j++) {
 	for (int k = 1; k <= j; k++) {
 		System.out.print("*");
@@ -467,44 +467,44 @@ System.out.println("\n========================\n");
 
 
 
-//ºĞ±â¹®: ½ÇÇàÀÌ³ª Á¾·áÀ§Ä¡¸¦ Á¦¾îÇÏ´Â ¸í·É¹® - break, continue
-break; continue; »ç¿ë Á¶°Ç
-¹İº¹À» Á¦¾îÇÏ´Âµ¥, Èå¸§À» Á¦¾îÇÏ´Âµ¥ »ç¿ë.
-¿¹¿Ü: Á¶°Ç¹® Áß switch~case¹®¿¡ break; »ç¿ë°¡´É
+//ë¶„ê¸°ë¬¸: ì‹¤í–‰ì´ë‚˜ ì¢…ë£Œìœ„ì¹˜ë¥¼ ì œì–´í•˜ëŠ” ëª…ë ¹ë¬¸ - break, continue
+break; continue; ì‚¬ìš© ì¡°ê±´
+ë°˜ë³µì„ ì œì–´í•˜ëŠ”ë°, íë¦„ì„ ì œì–´í•˜ëŠ”ë° ì‚¬ìš©.
+ì˜ˆì™¸: ì¡°ê±´ë¬¸ ì¤‘ switch~caseë¬¸ì— break; ì‚¬ìš©ê°€ëŠ¥
 
-System.out.println("ºĞ±â¹® for¹®");
+System.out.println("ë¶„ê¸°ë¬¸ forë¬¸");
 int i;
 for( i=5; ; i>=1 ;i--) {
 	if(i==3) break;
 	System.out.print(i+" ");
 }
-System.out.println("\nfor¹® Á¾·á ÈÄ : "+i);
+System.out.println("\nforë¬¸ ì¢…ë£Œ í›„ : "+i);
 System.out.println("\n=================\n");
 
 
-System.out.println("ºĞ±â¹® while¹®");
+System.out.println("ë¶„ê¸°ë¬¸ whileë¬¸");
 i=5;
 while(i>=1) {
 	if(i==3) break;
 	System.out.print(i+" ");
 	i--;
 }
-System.out.println("\nwhile¹® Á¾·á ÈÄ : "+i);
+System.out.println("\nwhileë¬¸ ì¢…ë£Œ í›„ : "+i);
 System.out.println("\n=================\n");
 
 
-System.out.println("ºĞ±â¹® do ~ while¹®");
+System.out.println("ë¶„ê¸°ë¬¸ do ~ whileë¬¸");
 i=5;
 do{
 	if(i==3) break;
 	System.out.print(i+" ");
 	i--;
 }while(i>=1);
-System.out.println("\ndo~while¹® Á¾·á ÈÄ : "+i);
+System.out.println("\ndo~whileë¬¸ ì¢…ë£Œ í›„ : "+i);
 
 
 ----------------continue
-System.out.println("Â¦¼ö¸¸ Ãâ·ÂÇÏ±â");
+System.out.println("ì§ìˆ˜ë§Œ ì¶œë ¥í•˜ê¸°");
 for (int i = 1; i <= 10; i++) {
 	if(i%2 != 0) continue;
 	System.out.print(i + " ");
@@ -530,31 +530,31 @@ do{
 
 
 
-//¹«ÇÑ·çÇÁ¹® - ¹İµå½Ã break¹®ÀÌ³ª Å»ÃâÇÒ ¼ö ÀÖ´Â ¸í·É¹®ÀÌ ÀÖ¾î¾ß ÇÑ´Ù.
-System.out.println("¹«ÇÑ·çÇÁ for¹®");
+//ë¬´í•œë£¨í”„ë¬¸ - ë°˜ë“œì‹œ breakë¬¸ì´ë‚˜ íƒˆì¶œí•  ìˆ˜ ìˆëŠ” ëª…ë ¹ë¬¸ì´ ìˆì–´ì•¼ í•œë‹¤.
+System.out.println("ë¬´í•œë£¨í”„ forë¬¸");
 int i = 1;
 
 for (;;) {
 	System.out.print( (i!=1 ?"  ": "") + i);
 	if (++i > 10) break;
 }
-System.out.println("\nÁ¾·á ÈÄ iÀÇ °ª: "+i);
+System.out.println("\nì¢…ë£Œ í›„ iì˜ ê°’: "+i);
 System.out.println("\n========================\n");
 
-System.out.println("¹«ÇÑ·çÇÁ while¹®");
+System.out.println("ë¬´í•œë£¨í”„ whileë¬¸");
 i = 1;
 
 while (true) {
 	System.out.print( (i!=1 ?"  ": "") + i);
 	if (++i > 10) break;
 }
-System.out.println("\nÁ¾·á ÈÄ iÀÇ °ª: "+i);
+System.out.println("\nì¢…ë£Œ í›„ iì˜ ê°’: "+i);
 System.out.println("\n========================\n");
 
-System.out.println("¹«ÇÑ·çÇÁ do ~ while¹®");
+System.out.println("ë¬´í•œë£¨í”„ do ~ whileë¬¸");
 i = 1;
 do {
 	System.out.print( (i!=1 ?"  ": "") + i);
 	if (++i > 10) break;
 }while(true);
-System.out.println("\nÁ¾·á ÈÄ iÀÇ °ª: "+i);
+System.out.println("\nì¢…ë£Œ í›„ iì˜ ê°’: "+i);
