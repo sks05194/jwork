@@ -1,15 +1,15 @@
-package nodePackage;
+package practice.nodePackage;
 
 public class NodeList<T> {
 	Node<T> headNode = null;
 	Node<T> tailNode = null;
 
-	// 생성자
-	public NodeList() {
-	}
+	public int size = 0;
 
 	// 객체 추가하기
 	public void add(T t) {
+		size++;
+
 		if (headNode == null) {
 			headNode = new Node<T>(t);
 			tailNode = headNode;
@@ -21,7 +21,7 @@ public class NodeList<T> {
 		tailNode = tailNode.nextNode;
 	}
 
-	// 찾기
+	// 값으로 찾기
 	public Node<T> findNode(T t) {
 		Node<T> curNode = headNode;
 
@@ -34,13 +34,21 @@ public class NodeList<T> {
 		return null;
 	}
 
-	// 객체 제거하기
-	public void DeleteNode(T t) {
-		Node<T> delNode = findNode(t);
+	// 인덱스로 찾기
+	public Node<T> indexOf(int index) {
+		Node<T> curNode = headNode;
+		
+		for (int i = 1; i <= index; i++)
+			curNode = curNode.nextNode;
+		
+		return curNode;
+	}
+	
+	// 객체 제거하기(객체)
+	private void delNode(Node<T> delNode) {
+		size--;
 
-		if (delNode == null)
-			return;
-		else if (delNode == headNode) {
+		if (delNode == headNode) {
 			headNode = delNode.nextNode;
 			headNode.preNode = null;
 			delNode.nextNode = null;
@@ -57,9 +65,17 @@ public class NodeList<T> {
 		delNode.preNode = null;
 		delNode.nextNode = null;
 	}
-	
-	// 인덱스로 찾기
-	
+
+	// 객체 제거하기(값)
+	public void deleteNode(T t) {
+		Node<T> delNode = findNode(t);
+
+		if (delNode == null)
+			return;
+
+		delNode(delNode);
+	}
+
 	// 중복 검사
 
 	// 출력하기
