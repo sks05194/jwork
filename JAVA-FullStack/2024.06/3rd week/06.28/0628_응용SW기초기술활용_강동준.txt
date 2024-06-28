@@ -1,0 +1,39 @@
+응용SW기초기술활용
+**보내실 때 반드시 0628_응용SW기초기술활용_자신의이름.txt 파일로 보내주세요.
+예) 0628_응용SW기초기술활용_조영미.txt
+
+메일주소 : ikaros_ala@naver.com
+==========================================
+이름 : 강동준
+==========================================
+1번) 윈도우즈 운영체제를 확인하는 방법과 자신의 운영체제의 에디션사양과  장치시스템 사양을 기술하세요.
+답:
+- 윈도우즈 운영체제를 확인하는 방법 : (Win + R → control system) 또는 ("내 컴퓨터" 마우스 오른쪽 버튼 클릭 → 속성(R))
+- 에디션사양 : Windows 10 Pro
+- 장치시스템 사양  : 64비트 운영 체제, x64 기반 프로세서
+
+
+2번) 명령프롬프트 창에서 현재 디렉토리에서 C:\jwork 디렉토리로 작업디렉토리를 변경하는 명령어를 기술하세요.
+답:
+	cd C:\jwork
+
+
+3번) 명령프롬프트 창에서 java버전과  java컴파일러 버전을 확인하는 명령어를 기술하세요.
+답:
+	java버전 확인 명령어 : java -version
+	java컴파일러 버전 확인 명령어 : javac -version
+
+
+4번) 이클립스 설치 후 사용전 설정해야 하는 것을 모두 기술하세요.
+java 버전 설정 : 
+	Window → Preferences → Java → Installed JREs → Add... → Standard VM 선택 후 Next > → (JRE home: 의 Directory... 클릭 → (C 드라이브 → Program Files → Java → jdk-11 폴더 선택)) 또는 (JRE home: 에 C:\Program Files\Java\jdk-11 기입) → Finish → Apply
+encoding 설정 : 
+	1. Window → Preferences → General → Workspace → Text file encoding → Other: 에서 UTF-8로 설정 → Apply
+	2. Window → Preferences → Web 또는 "Files" 검색 → CSS Files, HTML Files, JSP Files의 Encoding:을 ISO 10646/Unicode(UTF-8)로 변경 → 각각 설정 후 Apply
+
+
+5번) jdk설치 후 환경변수를 설정하는 방법을 모두 기술하세요.
+(Win + R → control system) 또는 ("내 컴퓨터" 마우스 오른쪽 버튼 클릭 → 속성(R))) → 고급 시스템 설정 → 고급 탭 → 환경변수(N)... → 
+	1. 시스템 변수(S) : 새로 만들기(W)... → 변수 이름(N): "JAVA_HOME", 변수 값(V): (C 드라이브 → Program Files → Java → jdk-11 폴더 선택)) 또는 (JRE home: 에 C:\Program Files\Java\jdk-11 기입) → 확인
+	2. 사용자 변수(U) : Path → 편집(E)... → 새로 만들기(N) → %JAVA_HOME%\bin 기입 → 확인
+→ 확인
