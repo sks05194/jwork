@@ -1,4 +1,4 @@
-package practice.nodePackage;
+package practice;
 
 import java.util.Collection;
 import java.util.Iterator;
