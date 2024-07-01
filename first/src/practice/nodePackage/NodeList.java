@@ -62,7 +62,11 @@ public class NodeList<T> {
 
 	public int size = 0;
 
-	// 값으로 추가하기
+	/**
+	 * 값으로 추가하기
+	 * 
+	 * @param t 추가하고자 하는 값
+	 */
 	public void add(T t) {
 		size++;
 
@@ -179,7 +183,14 @@ public class NodeList<T> {
 	// 자리 변경하기
 	@SuppressWarnings("unused")
 	private void change(Node<T> back, Node<T> front) {
+		
+	}
 
+	// 노드 연결하기
+	@SuppressWarnings("unused")
+	private void linkNodes(Node<T> first, Node<T> second) {
+		first.nextNode = second;
+		second.preNode = first;
 	}
 
 	// 출력하기
