@@ -1,7 +1,7 @@
 package inheritance;
 
 public class OverridingHiding {
-
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		Car.printCompany(1);
 		Truck.printCompany(2);
@@ -13,9 +13,8 @@ public class OverridingHiding {
 		truck.printInfo(6);
 		System.out.println();
 
-		// 경고로 인해 주석처리 하였습니다.
-//		car.printCompany(7); // Car.printCompany(7);
-//		truck.printCompany(8); // Truck.printCompany(8);
+		car.printCompany(7); // Car.printCompany(7);
+		truck.printCompany(8); // Truck.printCompany(8);
 
 		Car c = (Car) truck;
 		c.printInfo(9);

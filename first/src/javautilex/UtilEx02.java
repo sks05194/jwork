@@ -58,12 +58,3 @@ public class UtilEx02 {
 		System.out.println(". " + calendar.get(Calendar.DAY_OF_WEEK));
 	}
 }
-//
-//
-//
-//
-//
-//
-//
-//
-//

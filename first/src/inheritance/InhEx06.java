@@ -1,7 +1,7 @@
 package inheritance;
 
 public class InhEx06 {
-
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		C2.x = "static제어자의 상속";
 
@@ -11,16 +11,15 @@ public class InhEx06 {
 		System.out.println("C2.y : " + C2.y);
 		System.out.println("C1.x : " + C1.x);
 
-		// 경고로 인해 주석처리함
-//		C1 c1 = new C1();
-//		C2 c2 = new C2();
-//		c1.setY(100);
-//		System.out.println("c1.y : " + c1.y);
-//		System.out.println("c2.y : " + c2.y);
-//
-//		c2.setC(90);
-//		System.out.println("c2.c : " + c2.c);
-//		System.out.println("c1.c : " + c1.c);
+		C1 c1 = new C1();
+		C2 c2 = new C2();
+		c1.setY(100);
+		System.out.println("c1.y : " + c1.y);
+		System.out.println("c2.y : " + c2.y);
+
+		c2.setC(90);
+		System.out.println("c2.c : " + c2.c);
+		System.out.println("c1.c : " + c1.c);
 	}
 }
 

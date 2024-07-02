@@ -1,5 +1,3 @@
-// README 경고 나오는게 신경쓰여서 일부 주석처리한 코드입니다.
-
 package third;
 
 class Field {
@@ -13,6 +11,7 @@ class Field {
 }
 
 public class FieldEx {
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		int var = 30; // 지역 변수 선언 및 초기화
 		System.out.println(var + "\n"); // 지역 변수 참조
@@ -21,15 +20,14 @@ public class FieldEx {
 		Field myField2 = new Field(); // 인스턴스 생성
 
 		System.out.println(Field.classVar); // 클래스 변수 참조
-		System.out.println(/*myField1.classVar);
-		System.out.println(myField2.classVar + */"\n");
+		System.out.println(myField1.classVar);
+		System.out.println(myField2.classVar + "\n");
 		
-//		myField1.classVar = 100; // 클래스 변수의 값을 변경
-		Field.classVar = 100; // 윗줄 대체코드
+		myField1.classVar = 100; // 클래스 변수의 값을 변경
 		
 		System.out.println(Field.classVar); // 클래스 변수 참조
-		System.out.println(/*myField1.classVar);
-		System.out.println(myField2.classVar + */"\n");
+		System.out.println(myField1.classVar);
+		System.out.println(myField2.classVar + "\n");
 		
 		System.out.println(myField1.instanceVar); // 인스턴스 변수 참조
 		System.out.println(myField2.instanceVar + "\n");
