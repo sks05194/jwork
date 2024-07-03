@@ -12,7 +12,7 @@ public class BeepPrintExample2 {
 			@Override
 			public void run() {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("동");
+					System.out.println("동 : thread0");
 					try {
 						Thread.sleep(500);
 					} catch (Exception e) {
@@ -25,7 +25,7 @@ public class BeepPrintExample2 {
 		// Runnable 객체를 람다식으로 생성하여 스레드 생성자의 매개인자로 보내어 스레드 객체 생성
 		Thread thread1 = new Thread(() -> {
 			for (int i = 0; i < 5; i++) {
-				System.out.println("동");
+				System.out.println("동 : thread1");
 				try {
 					Thread.sleep(500);
 				} catch (Exception e) {

@@ -1,0 +1,42 @@
+
+
+v 서버: 서비스를 제공하는 프로그램을 의미함.
+v 클라이언트: 서비스를 요청하고, 받는 프로그램을 의미함.
+v 소캣(Socket): 프로그램이 네트워크에서 데이터를 통신할 수 있도록 연결해주는 연결부
+
+
+v ServerSocket 클래스(서버측): 
+- java.net패키지에서 제공
+- 서버 프로그램을 개발할 때 쓰이는 클래스
+- 서버를 구동 시킬때, 요청을 받기위한 준비를 할때 사용
+- 서버를 구동시키는 것이므로 ip주소는 필요없으며, 
+  자신의 서버에 제대로 접근할 수 있는 포트번호만 있으면 된다.
+예시: ServerSocket echoServer = new ServerSocket(4000); //4000이 포트번호임.
+
+v Socket 클래스(클라이언트측/서버측):
+- java.net패키지에서 제공
+- client에서 서버로 접속하거나 Server에서 요청을 accept(수락) 하는데 필요한 클래스
+- 서버에 접근을 해야하므로 해당 서버의 ip주소와 해당 서버내의 프로그램이 부여받은 포트번호까지 필요하다.
+예시: Socket socket = new Socket("127.0.0.1", 4000);
+//서버의 ip주소: "127.0.0.1"  , 서버의 포트번호: 4000
+- 클라이언트의 요청을 수락해야하므로 Socket으로 요청한 자료형과 일치되는 Socket자료형으로 
+  accept(수락)해주어야 함.
+예시: Socket socket = echoServer.accept();
+
+
+v TCP/IP 송수신 과정
+ 
+1. 서버: 클라이언트의 요청을 받기 위한 준비를 한다.(ServerSocket)
+   ServerSocket echoServer = new ServerSocket(4000);
+
+2. 클라이언트: 서버에 접속 요청을 한다. (Socket)
+   Socket socket = new Socket("127.0.0.1", 4000);
+
+2. 서버: 클라이언트의 요청을 받아 들인다. (accept)
+   Socket socket = echoServer.accept();
+
+3. 클라이언트: 서버에 메시지를 보낸다. ( BufferedWriter )
+3. 서버: 클라이언트가 보낸 데이터를 출력 한다. (BufferedReader)
+4. 서버: 클라이언트에 메시지를 보낸다. ( BufferedWriter )
+4. 클라이언트: 서버가 보낸 메시지를 출력한다. ( BufferedReader )
+5. 서버, 클라이언트 모두 종료 : 종료 한다. ( socket.close() )
