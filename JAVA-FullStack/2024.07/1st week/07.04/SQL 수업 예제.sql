@@ -45,3 +45,18 @@ FROM
     emp
 WHERE
     mgr = 7698;
+
+-- 위 예제에 대한 예습
+SELECT DISTINCT
+    job
+FROM
+    emp
+WHERE
+    mgr = (
+        SELECT
+            empno
+        FROM
+            emp
+        WHERE
+            ename = 'BLAKE'
+    );
