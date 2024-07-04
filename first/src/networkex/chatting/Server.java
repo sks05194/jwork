@@ -32,8 +32,9 @@ public class Server {
 				count++;
 			} while (count > 0);
 
-//			socket.close();
-//			server_socket.close();
+			socket.close();
+			server_socket.close();
+			Thread.getAllStackTraces();
 		} catch (Exception e) {
 
 		}

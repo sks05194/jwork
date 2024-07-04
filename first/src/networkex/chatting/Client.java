@@ -51,10 +51,11 @@ public class Client {
 				if (str2.equals("종료"))
 					break;
 			}
-//			in2.close();
-//			in.close();
-//			out.close();
-//			socket.close();
+			in2.close();
+			in.close();
+			out.close();
+			socket.close();
+			Thread.getAllStackTraces();
 		} catch (IOException e) {
 
 		}

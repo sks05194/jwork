@@ -1,0 +1,132 @@
+※ 시간의 순서에 따라 저장되었습니다.
+
+1교시
+9:40    데이터베이스란 : 데이터를 저장, 조작(변경), 삭제하기 쉬운 저장소를 의미함.
+    데이터베이스 관리 시스템(DBMS = DataBase Management System) : 데이터의 전반적인 부분을 관리하는 시스템을 말함.
+    RDBMS (Relational DataBase Management System) : 구조화된, 정형화된( = 관계형의) 데이터베이스 관리 시스템 : 표 구조로 되어있는 데이터베이스 시스템을 의미하며 데이터는 각각의 표( = 테이블) 구조로 저장되며 서로간의 관계를 통해 데이터를 관리할 수 있다.
+    => Oracle(오라클), MySQL, MariaDB, MS SQL, PostgreSQL
+    => 정형화된 구조(=SQL : Structure Query Language) : 명령어 형식이 존재하는 언어
+    - 장점
+    => 데이터를 관리하기가 쉽다
+    => 정형화된 SQL문을 사용하기 때문에 다른 DB간의 명령어 호환이 용이하다.
+    => 데이터의 중복을 막을 수(=처리할 수) 있다.
+    - 단점
+    => 데이터를 다루는 것이 무겁다.
+    => 대량의 데이터를 저장하거나 가져오는게 시간 소요가 많다.
+
+    NoSQL( = Not Only SQL) : 명령어가 정형화된 것이 없다. 대량의 데이터를 다루기가 쉽다. JSON( = JavaScript Object Notation) 형태로 데이터가 저장이 된다. 거의 모든 프로그래밍 언어나 프레임워크에 호환성이 높다. 데이터의 유기적인 관계를 처리하기가 어렵다. 데이터의 중복을 처리하기가 어렵다.
+    => MongoDB, Cassandra, Amazon DynamoDB, Redis
+
+10:10   SQL : 구조화된 명령문을 가진 언어
+    DML(Data Manupulation Language): 데이터를 조작( = 삽입, 변경, 삭제)할 수 있는 언어( = 데이터를 직접 다룸): insert문, update문, delete문
+    => DQL(Data Query Language): 데이터를 변경하지 않으면서 조회만 해오는 언어: select
+    DDL(Data Defination Language): 데이터를 정의(생성, 제거, 수정)하는 언어( = 데이터 이상 급을 다룸): create, drop, alter
+    DCL(Data Control Language): 데이터를 제어( = 권한부여, 권한회수)하는 언어( = 데이터 이상 급을 다룸): GRANT, REVOKE
+    => TCL(Transaction Control Language): DML에 대한 작업을 전부 완료시키는 작업(확정 = COMMIT), DML에 대한 작업을 전부 되돌리는 작업(ROLLBACK), DML에 대한 작업을 원하는 지점까지만 되돌리는 작업( = SAVEPOINT, CHECKPOINT)
+
+2교시
+10:50   CLI(Command Line Interface): 한 줄 명령문으로 제어할 수 있는 매개체가 되는 시스템( = 명령어 기반의 인터페이스)
+    GUI(Graphic User Interface): 아이콘을 클릭하여 제어할 수 있는 매개체가 되는 시스템( = 아이콘 기반의 인터페이스)
+
+    SQL 버전 확인 방법 및 연결(2가지)
+        sqlplus "/as sysdba"
+        sqlplus / as sysdba
+    연결 해제 명령어
+        exit
+
+11:20   접속하기: CONNECT CONN
+    명령어 형식: 
+
+
+3교시
+11:30   오라클 SQL명령문 : 반드시 세미콜론이 필요함.
+    사전준비하기: 
+        1) C:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin 폴더 안의 scott.sql 파일을 복사해서 다운로드 폴더에 붙여넣기
+        2) 명령프롬프트 창 실행하여 다운로드 폴더로 작업디렉토리 변환하기
+            >> cd c:\Users\여러분의사용자계정폴더명\Downloads
+        3) c:\Users\여러분의사용자계정폴더명\Downloads 위치에서 sqlplus 접속하기
+            sqlplus / as sysdba
+        4) @scott.sql 실행하기 => SCOTT 계정과 SCOTT 계정 안에 테이블이 생성됨.
+
+    1. sqlplus에 접속하기:(세미콜론 없음)
+    - sqlplus "/as sysdba"
+    - sqlplus 사용자계정명/비밀번호@SID명 (예: Test/1111@XE)
+    - sqlplus 사용자계정명/비밀번호 (*SID가 한 개인 데이터베이스인 경우)
+
+    2. 사용자 계정 생성하기: (반드시 세미콜론 있어야 함)
+    - CREATE USER 사용자계정명 IDENTIFIED BY 비밀번호;
+
+    3. 사용자 계정에 권한 부여하기: (반드시 세미콜론 있어야 함)
+    - GRANT 부여할권한명1, 부여할권한명2, ... TO 사용자계정명;
+    예) GRANT CONNECT, RESOURCE, DBA TO TEST;
+
+    4. 원하는 계정으로 접속하기 또는 접속계정 전환하기 : (세미콜론 없음)
+    - CONNECT 사용자계정명/비밀번호
+    - CONN 사용자계정명/비밀번호 (예: CONN TEST/1111)
+    (단 sysdba로 전환할 경우에는 예외 : CONN / AS SYSDBA)
+
+    5. 해당 계정에 생성된 테이블 목록 모두 확인하기
+    SELECT * FROM TAB;
+
+    6. scott 계정에 있는 EMP, DEPT 테이블을 TEST 계정에 가져와서 생성하는 방법
+        CREATE TABLE EMP AS SELECT * FROM SCOTT.EMP;
+        CREATE TABLE DEPT AS SELECT * FROM SCOTT.DEPT;
+
+12:10   SELECT문 형식:
+    SELECT절 => * (전체컬럼) | 컬럼명1, 컬럼명2, ...
+    FROM절 => [계정명.]테이블이름
+    WHERE절 => 조건을 기술하는 자리.
+    GROUP BY절 => 가져올 데이터를 그룹화하는 조건에 해당되는 컬럼을 기술하는 자리
+    HAVING절 => GROUP BY절에 해당되는 조건을 기술하는 자리 또는 그룹함수 조건을 기술하는 자리
+    ORDER BY절 => 출력하는 데이터의 오름차순, 내림차순을 정의하는 자리
+
+    기술순서
+    SELECT (컬럼 수를 조정하는 자리)
+    FROM (테이블을 지정하는 자리)
+    [WHERE (행 수를 조절하는 자리)
+    GROUP BY
+    HAVING
+    ORDER BY]
+
+    해석순서 : FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
+
+
+5교시
+14:45   ORDER BY 컬럼명 [ASC] : 올림차순
+    ORDER BY 컬럼명 DESC : 내림차순
+
+14:55   * WHERE절(조건절)
+    - 우선순위 연산자 : ()
+    - 비교 연산자
+    <, >, <=, >=
+    같다 : =
+    다르다 : <>, !=, ^=
+
+    - 논리 연산자
+    NOT, AND, OR
+
+    - SQL 연산자
+        컬럼명 BETWEEN 값조건 AND 값조건
+        컬럼명 IN(값, 값, 값, ...)
+        컬럼명 LIKE '문자열값조건지정'
+        컬럼명 IS NULL
+        컬럼명 IS NOT NULL
+
+
+7교시
+16:30   문자열값조건지정
+    '%S' : 앞의 0글자 이상의 어떠한 글씨가 와도 되지만, 반드시 대문자 'S'로 끝나는 값을 가진 데이터라는 의미
+    'S%' : 반드시 앞의 첫글자가 S로 시작하는 값을 가진 데이터
+    '%S%' : S라는 글자가 포함된 값을 가진 데이터
+    '_S%' : 두번째 글자가 S로 시작되는 값을 가진 데이터
+    '___S%' : 네번째 글자가 S로 시작되는 값을 가진 데이터
+    '%S_' : 끝에서 두번째 글자가 S로 끝나는 값을 가진 데이터
+
+
+8교시
+17:35   한 줄 주석 --
+    여러줄 주석 /* ... */
+
+    컬럼 별칭 : SELECT 컬럼명 [AS] 별칭명
+    컬럼 별칭 : SELECT 컬럼명 [AS] "별칭명"
+    ""(큰따옴표)를 붙여야 하는 이유 : 별칭에 공백이 들어가 었거나, 특수문자가 포함되거나, 대소문자를 구분해서 출력하고자 할때
