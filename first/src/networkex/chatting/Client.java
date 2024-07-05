@@ -55,7 +55,6 @@ public class Client {
 			in.close();
 			out.close();
 			socket.close();
-			Thread.getAllStackTraces();
 		} catch (IOException e) {
 
 		}
