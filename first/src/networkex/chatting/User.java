@@ -13,9 +13,20 @@ public class User {
 	HashMap<String, DataOutputStream> clientmap = new HashMap<String, DataOutputStream>();
 	// clientmap은 String형의 key와 DataOutputStream 형의 Value(값)을 받음
 
+	private ServerSocket server_socket = null;
+
 	/**
-	 * 주석(시진핑 아님): 전달받은 닉네임을 key로, 전달받은 socket을 value로 하여 clientmap(유저 정보를 모아놓은 곳)
-	 * 객체에 저장한다.
+	 * 메인 쓰레드의 소켓을 넘겨받고 추후 함수를 통해 서버를 끝낼 수 있게 해주는 메소드
+	 * 
+	 * @param 메인 쓰레드의 서버소켓을 넘겨주세요.
+	 */
+	public void setMainData(ServerSocket server_socket) {
+		if (this.server_socket == null)
+			this.server_socket = server_socket;
+	}
+
+	/**
+	 * 주석: 전달받은 닉네임을 key로, 전달받은 socket을 value로 하여 clientmap(유저 정보를 모아놓은 곳) 객체에 저장한다.
 	 */
 	public synchronized void AddClient(String name, Socket socket) {
 		try {
@@ -39,6 +50,9 @@ public class User {
 			clientmap.remove(name); // name value를 가지는 client 제거
 			sendMsg(name + " 님이 퇴장하였습니다.", "Server");
 			System.out.println("채팅 참여 인원 : " + clientmap.size());
+
+			if (clientmap.size() == 0)
+				server_socket.close();
 		} catch (Exception e) {
 
 		}

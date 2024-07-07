@@ -21,8 +21,9 @@ public class Receiver implements Runnable {
 	String name;
 	User user = new User();
 
-	/**
-	 * 전역변수들을 전부 초기화합니다. 또한 user 클래스에 AddClient를 호출하여 사용자를 등록합니다.
+	/*
+	 * 전역변수들을 전부 초기화합니다. 
+	 * 또한 user 클래스에 AddClient를 호출하여 사용자를 등록합니다.
 	 */
 	public Receiver(User user, Socket socket) throws Exception {
 		this.user = user;
@@ -38,10 +39,8 @@ public class Receiver implements Runnable {
 			while (true) {
 				String msg = in.readUTF(); // in에 들어온 메세지를 UTF-8 로 인코딩 후 읽어옴
 				user.sendMsg(msg, name); // name 이름을 가진 user가 msg라는 메세지를 보냄
-				if (msg.equals("종료")) {
+				if (msg.equals("종료")) 
 					user.RemoveClient(this.name);
-					break;
-					}
 			}
 		} catch (Exception e) {
 			user.RemoveClient(this.name); // 에러 발생시 name 유저를 client에서 삭제

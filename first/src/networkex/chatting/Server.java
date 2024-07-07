@@ -18,8 +18,9 @@ public class Server {
 
 		try {
 			server_socket = new ServerSocket(7777); // 서버 포트로 소켓을 연다
+			user.setMainData(server_socket);
 
-			while(true) {
+			while (true) {
 				socket = server_socket.accept(); // 통신이 종료되기 전까지 연결
 
 				/*
@@ -30,9 +31,7 @@ public class Server {
 				thread[count] = new Thread(new Receiver(user, socket));
 				thread[count].start(); // 쓰레드 시작
 				count++;
-			} 
-//			socket.close();
-//			server_socket.close();
+			}
 		} catch (Exception e) {
 
 		}

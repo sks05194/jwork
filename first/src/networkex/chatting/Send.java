@@ -35,8 +35,10 @@ public class Send implements Runnable {
 				out.writeUTF(msg); // msg 출력
 				// 클라이언트가 입력한 데이터를 서버로 전송하는 부분
 				// (실재로는 Receiver 클래스의 run 메소드 안의 String msg = in.readUTF();에 데이터를 전송함)
-			} catch (Exception e) {
-
+				if(msg.equals("종료"))
+					break;
+			}catch(Exception e) {
+				
 			}
 		}
 	}

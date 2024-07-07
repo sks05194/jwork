@@ -9,6 +9,8 @@ public class Client {
 	 * BufferedReader 참조 : https://jhnyang.tistory.com/92
 	 */
 	public static void main(String[] args) {
+		String nickname = null;
+
 		Socket socket = null;
 		DataInputStream in = null; // 이 변수는 사용자가 입력하는 채팅 부분에 해당됩니다.
 		BufferedReader in2 = null; // 이 변수는 사용자의 닉네임에 해당됩니다
@@ -30,9 +32,9 @@ public class Client {
 			out = new DataOutputStream(socket.getOutputStream()); // 서버로 전송할 데이터를 담아두는 객체, 전송객체
 
 			System.out.print("닉네임을 입력해주세요 : ");
-			String data = in2.readLine(); // 채팅에 사용할 닉네임을 받아옵니다.
+			nickname = in2.readLine(); // 채팅에 사용할 닉네임을 받아옵니다.
 
-			out.writeUTF(data); // 닉네임을 UTF-8로 변경 후 출력스트림에 넣습니다.
+			out.writeUTF(nickname); // 닉네임을 UTF-8로 변경 후 출력스트림에 넣습니다.
 			Thread th = new Thread(new Send(out)); // 새로운 쓰레드에 out을 집어넣도록 합니다.
 			th.start(); // 쓰레드 시작
 		} catch (IOException e) {
@@ -48,13 +50,16 @@ public class Client {
 				String str2 = in.readUTF();
 				// 클라이언트의 Send 클래스의 run 메소드 안에 있는 out.writeUTF(msg); 코드로 인해 전송된 데이터를 받아오는 곳
 				System.out.println(str2);
-				if (str2.equals("종료"))
+
+				if (str2.equals(nickname + " : 종료")) {
+					System.out.println("채팅을 종료합니다.");
+					in2.close();
+					in.close();
+					out.close();
+					socket.close();
 					break;
+				}
 			}
-			in2.close();
-			in.close();
-			out.close();
-			socket.close();
 		} catch (IOException e) {
 
 		}
