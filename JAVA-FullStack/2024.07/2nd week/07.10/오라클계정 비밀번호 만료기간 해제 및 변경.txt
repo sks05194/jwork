@@ -1,0 +1,31 @@
+오라클계정 비밀번호 만료기간 해제 및 변경
+오라클 계정은 비밀번호 만료일(180일)이 지나면 자동만료되어, oracle: the password has expired. 라는 메세지와함께 접속 할 수 없다.
+
+
+1. 관리자계정으로 접속
+sqlplus "/as sysdba"  또는 sqlplus / as sysdba
+
+
+2. 비밀번호 유효기간 확인
+select * from dba_profiles where profile = 'DEFAULT' ;
+
+2-1. 비밀번호 만료기간만 확인해보면, 180로 설정되어있는것을 볼 수있다.
+select * from dba_profiles where resource_name = 'PASSWORD_LIFE_TIME' ;
+
+
+3. default 비밀번호 만료기간 unlimited로 변경하기
+alter profile default limit password_life_time unlimited ;
+
+
+4. 다시한번 비밀번호 만료기간 확인해보기
+select * from dba_profiles where resource_name = 'PASSWORD_LIFE_TIME' ;
+
+비밀번호 만료기간 해제 완료!
+​만약, 비밀번호가 만료되어 접속이 안될 때, 해결방법은 
+비밀번호 유효기간을 바꾸기전에 계정 락 해제 후에 비밀번호를 변경해줘야한다. 
+
+5. 계정락풀어주기
+alter user 계정명 account unlock ;
+
+6. 비밀번호 변경
+alter user 계정명 identified by 새비밀번호 ;
