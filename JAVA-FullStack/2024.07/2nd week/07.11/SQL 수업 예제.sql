@@ -375,4 +375,3 @@ CREATE TABLE ct AS SELECT * FROM customers;
 -- 선수작업3:
 ALTER TABLE customers
 ADD CONSTRAINT customers_cust_id_pk PRIMARY KEY(cust_id);
-
