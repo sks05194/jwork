@@ -1,0 +1,529 @@
+DCL  데이터 제어어 
+ - 데이터의 보안, 무결성, 회복, 병행, 수행 제어등을 정의하는 데 사용하는 언어 
+**tcl 포함 
+grant : 데이터 베이스 사용자에게 사용권한을 부여 
+- revoke : 사용자 계정의 권한을 회수 dba resource 
+
+*권한관리 
+- 사용자에 의해 사용되는 권한 
+ create session : 데이터 베이스에 연결할 수 있는 권한 , user 연결할 수 있는 권한 // 접근 
+create table : 테이블을 생성할 수 있는 권한 // 테이블
+create view : 뷰를 생성할 수 있는 권한  // view 
+create sequence : 시퀀스를 생성할 수 있는 권한 // sequence  
+create procedure : 함수를 생성할 수 있는 권한 // procedure 
+* 객체 생성을 위해서 필수적임. 
+
+-- connect 롤 
+- 유저를 생성하면 일반적으로 connect , resource롤을 부여한다.
+ -사용자가 객체를 생성 할 수 있도록 시스템 권한을 묶어놓았다. 
+create table, create sequence, create cluster, create trigger, create procedure 
+
+- resource 롤 
+-유저를 생성하면 일반적으로  connect resource롤을 부여한다. 
+ 사용자가 객체를 생성할 수 있도록 시스템권한을 묶어 놓았다. 
+create table, create sequence, creae cluster , create trigger, create procedure 
+
+권한 딕셔너리를 볼 수 있는 것을 말을 하비니다. 
+SELECT * FROM SESSION_PRIVS; 
+
+GRANT  권한1, 권한2,.. TO 사용자 계정명;
+
+
+
+REVOKE 권한1, 권한2, ... FROM 사용자명; 
+
+REVOKE RESOURCE FROM ORAUSER01;
+
+선택적으로 권한을 부여받을 수 있는것. 
+1. 
+ DBA 권한을 가진 USER가 자신의 계정에 접근하는 USER의 권한을 선택하여 부여할 수 있다. 
+GRANT SELECT ON [계정명 = 스키마명].TABLE NAME TO [USER];
+GRANT INSERT ON [계정명 = 스키마명.]TABLE NAMES TO [USER];
+GRANT DELETE ON [계정명 = 스키마명.] TABLE NAMES TO [USER];
+GRANT UPDATE ON [계정명 = 스키마명.] TABLE NAMES TO [USER];
+
+==또는 
+GRANT SELECT, INSERT, DELETE, UPDATE ON [TABLE NAMES] TO [USERS];
+
+
+-- 선택전 권한 취소 
+
+REVOKE SELECT ON [스키마명]TABLE NAMES FROM [USER];	
+REVOKE INSERT ON [스키마명]TABLE NAMES FROM [USER];	
+REVOKE DELETE ON [TABLE NAMES] FROM [USER];	
+REVOKE UPDATE ON [TABLE NAMES] FROM [USER];	
+
+-- 또는 
+REVOKE SELECT , INSERT, DELETE, UPDATE ON [스키마명] TABLE NAME FROM [USER]; 
+
+다른 계정에 SELECT , IINSERT , UPDATE, DELETE 모든 권한 부여ㅣ 
+GRANT ALL ON [스키명.]테이블명 TO USER명; 
+
+다른 계정에 모든 테이블에 대한 SELECT 권한 부여; 
+GRANT SELECT  ANY TABLE TO USER명; 
+
+GRANT ALL ON ANY TABLE TO ORAUSER; 
+-- ALL과 ANY는 같이 사용할 수 없다. 
+
+SAMP 계정을 만듭니다. 
+DROP USER SAMP
+----------------------------------------------------------------------------------------------------------
+- 의사 컬럼 
+rownum 키워드 
+-인덱스에서 저장하는 rowid 행주소 값이기도 함. 고정값 주소라고 생각함 됩니다. 
+- 저장된 행 순서대로 자동으로 순번을 부여함. 
+- 단순쿼리인 경우에는 where 절에도 표현 할 수 있다.  한개의 명령문을 즉 where절에 만 할 수 있음. 
+단, 서브쿼리 사용시  select절에도 표현 할 수 있다. 
+- 페이징 처리를 하려면 서브쿼리를 이용할 수 있다. 
+*페이징이란 : 한번에 보여지는 수를 조정하는것. 
+-order by절 이용시 꼭 서브쿼리에서 사용할것 
+
+-형식 : rowo, < 값 또는 rownum <= 값 작다 or 작거나 같다에만 쓸 수 이씀!.
+* 값은 양의 정수로 표현함. 
+
+예시)
+select * from customers where rownum <=1000 and cust_gender = 'M';
+--1000행 이하로 출력해주세요
+
+예시)
+--단순 쿼리시 
+select * 
+from customers
+where rownum <= 1000 and cust_gender = 'M';
+
+
+-- 서브쿼리시 
+select rownum rn, c.* 
+from 
+(select * from customers where cust_gender = 'M')C 
+where rownum <= 500;
+
+-- 페이징 쿼리 
+-- 페이징 처리시에는 꼭 별칭을 지정해주어야만 제대로 인식 될 수 있다. 
+select * from (select rownum rn, c2. * from customers c2 where cust_gender - 'M') where rn between 10 and 13; 
+
+selecr * from (select rownum rn, c2.* from customer c2 where cust_gender = 'M' ) where rn >= 50 and rn <= 100;
+
+
+페이징 쿼리 예시1
+select * from 
+(select rownum rn, c1.* from (select c2.* from customers c2 where cust_gender = 'M'
+order by cust_id desc) c1)
+where rn between 11 and 20;
+
+
+select * from customers where rownum > 1000 and cust_gender = 'M';
+--1000행 이하로 출력해주세요
+-- rownum 행수가 나와야합니다. 
+--단순 쿼리시 
+select * 
+from customers
+where rownum <= 1000 and cust_gender = 'M';
+
+
+-- 서브쿼리시 
+
+
+select count(*) from customers where cust_gender = 'M';
+
+select rownum rn, c.* 
+from 
+(select * from customers where cust_gender = 'M')C 
+where rownum <= 500;
+-- 테이블에 대한것을 가져오는 것 입니다. 
+
+select * 
+from 
+(select rownum rn , sc.* from customers sc where cust_gender = 'M') C
+where rn > = 50;
+
+--50번에서 100번 줄까지의 데이터를 출력하세요 
+select * 
+from (select rownum rn, c2.* from customers c2 where cust_gender = 'M' ) 
+where rn >= 50 and rn <= 100;
+
+
+--10번에세 13번까지 데이터를 가져오세요 
+select * 
+from (select rownum rn, c2.* from customers c2 where cust_gender = 'M' ) 
+where rn between 10 and 13;
+
+select * 
+from (select rownum rn, c2.* from customers c2 where cust_gender = 'M' order by cust_id desc)
+where rn >= 50 and rn <= 100;
+
+select * 
+from (select rownum rn, c2.* from customers c2 where cust_gender ='M' order by cust_id desc) c1;
+
+select * from 
+(select rownum rn, c1.* from (select c2.* from customers c2 where cust_gender = 'M'
+order by cust_id desc) c1)
+where rn between 11 and 20;
+
+revoke select on dept from public;
+
+
+
+
+=================================================================
+1. 사용자에게 부여된 시스템 권한 확인 
+select * from dba_sys_privs 
+where grantee = ' 사용자 명'; 
+
+2. 사용자에게 부여된 롤 확인 ( 시스템 권한이 롤에 포함됨) 
+select * from dba_role_privs
+where grantee = '사용자 명';
+
+3. select from dba_sys_privs
+where grantee = '롤명'; 
+
+4. 타사용자에게 부여한 객체(테이블) 권한 확인 
+select * from dba_tab_privs 
+where owner == '테이블 소유자명';
+
+select * from dba_tab_privs 
+where owner == '권한 보유자명';
+
+===========================================================================================
+** merge절 : 
+조건에 의해 한꺼번에 추가insert 갱신update  삭제delete 할 수 있는 명령문 
+on절에 있는 조건에 update할 컬럼이 들어가면 안됨. 오류발생
+
+
+형식 :
+merge into  변경을 원하는 테이블명1 [별칭]
+using 데이터 가져올 테이블 명 2 [별칭] -- 뷰, 테이블, 서브쿼리등 가능 
+on (테이블 1, 테이블2 를 엮을 조건)
+[where matched then --  이절에는 반드시 update문이 와야한다.]
+update set 테이블1의 컬럼1 = 테이블 2 컬럼 1, 테이블1의 컬럼2 = 테이블 2 컬럼 2, 
+
+[delete whrere 조건 ** 반드시 update 절과 같이 써야한다.]
+
+[when not matched then -- 이절에는 insert문이 올 수 있다.]
+insert (테이블1의 컬럼, 테이블2의 컬럼 ) values  (테이블1의 컬럼, 테이블2의 컬럼 );]
+===========================================================================================
+예시)
+alter table emp  add(dname varchar2(20));
+
+-- merge문 
+merge into emp 
+using dept (데이터를 가져오는곳)
+on (emp.deptno = dept.deptno)
+when matched then (조건문1)
+update set emp.dname = dept.dname 
+delete where emp.mgr is null 
+when not matched then (조건문2)
+insert(empno, ename) values(9999, 'TEST');
+
+-- dml  명령문은 롤백 가능 
+
+rollback;
+merge into emp01 a -- 데이터를 덮어쓰기 위한 용도 
+using (select empno, sal, job from emp where deptno = 10) b 
+on (a.empno = b.empno)
+when matched then 
+update set a.sal = b.sal + b.sal * 0.01
+when not matched then 
+insert (a.empno, sal, job ) values (b.empno, b.sal, b.job);
+
+create table emp01 as select * from emp;
+
+===========================================
+merge into (select * from emp01 where deptno = 10) a 
+using (select empno, sal, job from emp)b 
+-- empno, sal ,
+on (a.empno = b.empno)
+when matched then 
+update set a.sal = 8000
+when not matched then 
+insert (a.empno, a.sal, a.job) values (b.empno, b.sal, b.job);
+--
+ROLLBACK;
+
+
+===============================오후 수업 =============================
+14:30
+
+- 집합연산자 
+집합연산자:  union, union all  _ 합집합, inrersect - 교집합, minus - 차집합 
+
+집합연산자의 제한조건 
+- 두 테이블의 컬럼갯수와 자료형, 나열 순서가 같아야한다. 
+
+- oreder by절은 모든 쿼리문을 다 기술한 뒤 맨 마지막에 한 번만 기술 가능하다. 
+
+(order by 절은 모든 쿼리문을 다 기술한 뒤 맨 마지막에 한번 만 기술한다.)
+-lob(blob, clob, bfile) 자료형, long자료형에는 사용할 수 없다. 
+정렬을 하지 않는 경우는 알아서 오름차순으로 정렬한다. 
+
+-- 해당 컬럼에 정렬을 해야함. 
+
+
+
+1-1 union : 합집합
+- 두개 테이블의 데이터를 모두 포함한 결과를 반환함. 
+-중복값 제거. 중복값은 1개만 표현함. 
+---------------------------------------------------------------------------------------
+形式 1)
+
+select a_col1, a_col2, ... from --A 테이블 정수, 문자열, 정수, 정수  
+minus 
+select b_col, b_col from b -- b테이블 정수, 문자열, 정수, 정수 함. 
+
+order by a_col1, a_col2[desc], ...; 
+
+形式2)
+-- 중복값이 있으면 2개중 한개 지움 
+select goods from goods_kor
+union 
+select goods from goods_jap;
+--똑같음
+select goods from goods_jap
+union 
+select goods from goods_kor;
+
+--(x) 룰이 있는데, 컬럼의 갯수가 같아야합니다.
+
+select country, goods from goods_kor
+union 
+select goods from goods_jap;
+
+
+-----------------------------------------------------------------------------------
+1-2 union all : 합집합 
+- union과 거의 동일하지만 중복을 허용하여 모두 출력한다. 
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+2. intersect 교집합 
+- 두개 테이블의 데이터중 공통된 항목만 반환함. 
+- 중복을 허용하지 않는다. 
+
+3. minus : 차집합 
+- 두개 테이블의 데이터 중 공통된 항목을 제외한 데이터만 반환하는데, 
+단 , 먼저 처리된 테이블의 항목만 반환한다. 나중에 처리된 테이블의 결과는 제외 
+-중복을 허용하지 않는다. 
+
+
+
+
+create table goods_kor(
+ seq number primary key, 
+ country varchar2(10),
+ goods varchar(80) not null
+
+
+);
+
+create sequence kor_seq nocache; 
+
+insert into goods_kor(seq, country, goods) values(1, '한국', '연유제외 석유류');
+insert into goods_kor(seq, country, goods) values(2, '한국', '자동차');
+insert into goods_kor(seq, country, goods) values(3, '한국', '전자집적회로');
+insert into goods_kor(seq, country, goods) values(4, '한국', '선박');
+insert into goods_kor(seq, country, goods) values(5, '한국', 'lcd');
+insert into goods_kor(seq, country, goods) values(6, '한국', '자동차');
+insert into goods_kor(seq, country, goods) values(7, '한국', '휴대전화');
+commit;
+
+
+create table goods_jap(
+ seq number primary key, 
+ country varchar2(10),
+ goods varchar(80) not null
+
+
+);
+
+create sequence jap_seq nocache; 
+
+insert into goods_jap(seq, country, goods) values(1, '일본', '자동차');
+insert into goods_jap(seq, country, goods) values(2, '일본', '자동차부품');
+insert into goods_jap(seq, country, goods) values(3, '일본', '화물차');
+insert into goods_jap(seq, country, goods) values(4, '일본', '건설기계');
+insert into goods_jap(seq, country, goods) values(5, '일본', '다이오드');
+insert into goods_jap(seq, country, goods) values(6, '일본', '트렌지스터');
+insert into goods_jap(seq, country, goods) values(7, '일본', '반도체웨이퍼');
+commit;
+
+-- 중복값이 있으면 2개중 한개 지움 
+select goods from goods_kor
+union 
+select goods from goods_jap;
+
+select goods from goods_jap
+union 
+select goods from goods_kor;
+
+
+--------------------예문--------------------------
+--(x) 룰이 있는데, 컬럼의 갯수가 같아야합니다.
+
+select country, goods from goods_kor
+union 
+select goods from goods_jap;
+
+-- 줄 단위로 컴퓨터가 일을 합니다.
+select country, goods from goods_kor
+union 
+select country ,goods from goods_jap;
+
+-- 컬럼은 2개가 나올 수 없습니다. 첫번째 컬럼에 대해서만 odered by를 쓸 수 있음. 
+select goods from goods_kor
+union 
+select dname from dept ;
+
+
+-- union all은 중복값 제거가 안됨 중복값 포함해서 출력
+select goods from goods_kor
+union all
+select goods from goods_jap;
+
+--- 교차점 
+select goods from goods_kor
+intersect 
+select goods from goods_jap;
+
+update goods_kor set goods = '자동차' where seq = 3;
+update goods_kor set goods = '자동차 부품' where seq = 4;
+
+
+-- 차집합 
+select goods from goods_kor   
+minus
+select goods from goods_jap;
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+jdbc와 자바와 데이터 베이스를 연결하는 기술 
+JAR -자바 아카이브: 클래스, 추상 클래스, 인터페이스 실행가능 RUNTIME 파일등을 같이 묶어서 압축해 놓은 파일을 말합니다. 
+자바에서 실행하기 좋은 파일임. 
+JDBC : 자바와 데이터베이스를 연결하는 기술 
+
+
+1. 데이터 베이스와 자바를 연결하기 위한 드라이버를 준비한다. 
+해당 데이터 베이스에서 내장되어 있는 경우 또는 MAVEN REPOGITO 
+orale => ojdbc6.jar
+mysql - > mysql- connector - j.jar 
+mariadb = > mariadb -java - client.jar 
+
+2. 프로젝트명에서 마우스 우버튼 메뉴클릭 -> BUILD PATH -> CONFIAURE BUILD PATH -> LIBRARIES TAB클릭 -> 클래스 PATH  선택 후 우측의 [ADD EXTERNAL JRES.. ] 버튼 클릭 -> 위의 1번에서 설정한 OJDBC6.JAR 파일 경로 까지 찾아서 선택후 [APPLY AND CLOSE..] 선택 
+
+2. 드라이버 설치 ( 자바 소스코드로 작성) 
+CLASS.FORNAME(패키지 경로 포함.클래스명 까지 기술); 
+오라클: 
+CLASS.FORNAME("ORACLE.JDBC.DRIVER.ORACLEDRIVER");
+
+MY SQL(MY SQL) : 
+class.forName("com.mysql.jdbc.Driver");
+
+MariaDB : 
+Class.forName("org.mariadb.jdbc.Driver");
+
+3. 데이터 베이스와 자바를 연결해주는 연결 객체생성(연결 통로를  open하는 단계)
+url정보(오라클) : jdbc.데이터 베이스 시스템 종류 : 오라클 드라이버 버전 : @" 
+Connection (java.sql 패키지에서 제공하는 인터페이스) 
+
+Connection conn = Driver manager.getConnection(url, username, password); 
+
+
+**url경로, 
+
+오라클 String url = "jdbc:oracle:thin@127.0.0.1:1521:XE"
+
+String username =  "TEST"; String pw = "1111";
+
+
+my sql: "jdbc:mysql://127.0.0.1:1521/db명";
+
+String username = "Root", String pw = "1111";	
+
+mariaDB : "jdbc:mariadb://127.0.0.1:3306/db명";
+
+String username = "Root", String pw = "1111";	
+
+
+
+
+3. 데이터베이스와 자바를 연결해주는 연결객체 생성(연결 통로를  open하는 단계) 
+
+
+	
+		// 4. sql 명령문을 담고 실행할 객체를 생성 
+		// 명령문 객체 자료형 : Statement, PreparedStatment 
+		// Statement 형식 : 3번에서 만든 Connection 연결 객체에 접근해서   createStatment 메소드를 호출하여 
+		// 명령문을 담을 객체를 생성한다. 쿼리문 
+		// con.createStatement();
+		// Statement st  = con.createStatement();
+		
+		
+		
+		// CRUD(C - insert,R - select,U - update,D - delete) 
+		
+		// 5.명령문 객체에 sql명령문(문자열로 기입)을 담고 실행할 객체 
+		// exqute select -> exquteQuery("sql명령문 기술 (반드시 ; 제거할것)") 
+		// 형식1(select문) : 명령문 객체명. executeQuery("SQL명령문"); result로 데이터를 반환함. 
+		// 형식2(Dml문) : 명령문 객체명. executeUPDATe("SQL명령문"); 처리한 행수를 반환함. (정수값) 
+		//insert, delete, update => excuteUpdate("sql명령문 기술 (반드시 ; 제거할것)") ;
+		// st.executeQuery("select * from dept");
+		// st.executeQuery("select * from dept");
+		
+		
+		// 6. 다 사용한 ResultSet, Statement, Connection 객체들은 모두 close 해주는 것이 좋다.
+		// 닫는 순서는 생성한 순서의 역순으로 닫아야 한다. 
+		// connection 생성 - > statement 생성 - > ResultSet객체 생성
+		// ResultSet 닫기 - > statement 닫기 - > connection 닫기 
+		
+		// 7. rs.next()메소드를 이용: 떼어올 다음줄이 있는 경우 true반환 및 해당 1줄을 rs객체에 담아준다. 
+		// 한줄 데이터를 담고 있는 rs객체를 이용하여 컬럼 1개씩 값을 떼어 오는것 .
+		// 정수 값인 경우 : rs.getint(컬럼순서값) 또는 rs.getint("컬럼명");
+		// 실수값인 경우 : rs.getdouble 컬럼순서값 또는 rs.getdouble 
+		// 문자열 값인 경우 : rs.getString 컬럼순서값 또는 rs.getString 
+		// date 자료형 값인 경우 : String으로 받아오거나 java.sql.date 또는 java.util.date 자료형
+		// 으로 받아올수 있음 
+		// rs.getdate(컬럼순서 값) 또는 rs.getDate(컬럼명)
+		// rs.getString(컬럼 순서 값) 또는 rs.getString(컬럼명)
+		
+		// emp 테이블에서 deptno 값이 10번인 사람의 정보만 출력하세요 
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
