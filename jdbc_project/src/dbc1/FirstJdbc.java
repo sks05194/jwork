@@ -1,0 +1,103 @@
+package dbc1;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+//import java.sql.Statement;
+
+public class FirstJdbc {
+
+	public static void main(String[] args) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("DB conn Suceess!");
+
+			// 오라클 드라이버 설치
+			// 커넥션 객체를 생성을 한다.
+			String url = "jdbc:oracle:thin:@localhost:1521:XE";
+			String username = "TEST";
+			String pw = "1111";
+
+			Connection con = DriverManager.getConnection(url, username, pw);
+
+			// statement 객체 생성( 명령문 담고 실행 할 수 있는 객체 생성)
+//			Statement st = con.createStatement();
+//			ResultSet rs = st.executeQuery("select * from dept where deptno=20 AND DNAME='RESEARCH'");
+
+			// PreparedStatement => prepareStatement()
+			PreparedStatement ps = con.prepareStatement("select * from dept where deptno=:a and DNAME = :a"); // :매개인자명 또는 ?로 기술
+			ps.setInt(1, 20);
+			ps.setString(2, "RESEARCH");
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				//
+				int dep = rs.getInt(1);
+				String dna = rs.getString(2);
+				String loc = rs.getString(3);
+				System.out.println(dep + ", " + dna + " , " + loc);
+			}
+			
+			ps.setInt(1, 30);
+			ps.setString(2, "SALES");
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				//
+				int dep = rs.getInt(1);
+				String dna = rs.getString(2);
+				String loc = rs.getString(3);
+				System.out.println(dep + ", " + dna + " , " + loc);
+			}
+			
+			rs.close();
+//			st.close();
+			ps.close();
+			con.close();
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("드라이버 오류입니다.");
+		} catch (SQLException e) {
+			System.out.println("sql명령 오류 및 connection 객체 오류입니다.");
+		}
+
+		// 4. sql 명령문을 담고 실행할 객체를 생성
+		// 명령문 객체 자료형 : Statement, PreparedStatment
+		// Statement 형식 : 3번에서 만든 Connection 연결 객체에 접근해서 createStatment 메소드를 호출하여
+		// 명령문을 담을 객체를 생성한다. 쿼리문
+		// con.createStatement();
+		// Statement st = con.createStatement();
+
+		// CRUD(C - insert,R - select,U - update,D - delete)
+
+		// 5.명령문 객체에 sql명령문(문자열로 기입)을 담고 실행할 객체
+		// exqute select -> exquteQuery("sql명령문 기술 (반드시 ; 제거할것)")
+		// 형식1(select문) : 명령문 객체명. executeQuery("SQL명령문"); result로 데이터를 반환함.
+		// 형식2(Dml문) : 명령문 객체명. executeUPDATe("SQL명령문"); 처리한 행수를 반환함. (정수값)
+		// insert, delete, update => excuteUpdate("sql명령문 기술 (반드시 ; 제거할것)") ;
+		// st.executeQuery("select * from dept");
+		// st.executeQuery("select * from dept");
+
+		// 6. 다 사용한 ResultSet, Statement, Connection 객체들은 모두 close 해주는 것이 좋다.
+		// 닫는 순서는 생성한 순서의 역순으로 닫아야 한다.
+		// connection 생성 - > statement 생성 - > ResultSet객체 생성
+		// ResultSet 닫기 - > statement 닫기 - > connection 닫기
+
+		// 7. rs.next()메소드를 이용: 떼어올 다음줄이 있는 경우 true반환 및 해당 1줄을 rs객체에 담아준다.
+		// 한줄 데이터를 담고 있는 rs객체를 이용하여 컬럼 1개씩 값을 떼어 오는것 .
+		// 정수 값인 경우 : rs.getint(컬럼순서값) 또는 rs.getint("컬럼명");
+		// 실수값인 경우 : rs.getdouble 컬럼순서값 또는 rs.getdouble
+		// 문자열 값인 경우 : rs.getString 컬럼순서값 또는 rs.getString
+		// date 자료형 값인 경우 : String으로 받아오거나 java.sql.date 또는 java.util.date 자료형
+		// 으로 받아올수 있음
+		// rs.getdate(컬럼순서 값) 또는 rs.getDate(컬럼명)
+		// rs.getString(컬럼 순서 값) 또는 rs.getString(컬럼명)
+
+		// emp 테이블에서 deptno 값이 10번인 사람의 정보만 출력하
+
+	}
+}

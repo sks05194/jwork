@@ -1,0 +1,29 @@
+package dbc1;
+
+public class User {
+   private String url = "jdbc:oracle:thin:@localhost:1521:xe"; // 커넥션 객체 생성을 위한 것을 만드는것. 
+   // user name 기타 등등이 있습니다. 
+   private String user = "test";
+   private String pwd = "1111";
+   private String driver = "oracle.jdbc.driver.OracleDriver";
+
+   public String getUrl()
+   {
+      return url;
+   }
+   
+   public String getUser()
+   {
+      return user;
+   }
+   
+   public String getPwd()
+   {
+      return pwd;
+   }
+   
+   public String getDriver()
+   {
+      return driver; 
+   }
+}
