@@ -1,0 +1,74 @@
+※ 시간의 순서에 따라 기술되었습니다.
+
+1교시
+9:35
+    테이블명VO 또는 테이블명DTO 또는 테이블명
+    Model => 데이터베이스와 관련있는 객체들
+    VO ( = Value Object) : 데이터를 저장하는( = 담아두는) 객체
+    DTO ( = Data Transfer Object) : 데이터를 전송하는 객체
+    데이터베이스의 테이블과 유사한( = 동일한) 멤버필드와 기능을 가진 객체
+
+    DAO ( = Data Access Object) : 데이터에 접근할 수 있는 객체
+    SQL 쿼리문을 가지고 있는 객체
+
+3교시
+11:30
+    객체가 생성될 때 클래스의 멤버필드를 초기화하는 방법과 순서
+    - 초기화 하는 방법 : 명시적 초기화, 초기화블록, 생성자초기화, setter 메소드 초기화
+    - 초기화 순서 : 명시적 > static초기화블록 > 초기화블록 > 생성자 > setter메소드
+    a = 2 -> 5 -> 7
+    b = 1 -> 3 -> 4 -> 6
+    class Reset {
+        private int a = 2; // 명시적초기화 방식
+        private static int b = 1; // 명시적초기화 방식
+
+        // static 초기화 블록 : static 멤버필드의 초기값을 설정할 때만 사용
+        // this키워드 사용 불가, static이 아닌 필드는 기술 불가
+        static {
+            b = 3;
+        }
+
+        // 일반 초기화 블록 : static 멤버필드, 일반 멤버필드 초기값 설정시 사용
+        {
+            this.a = 4;
+            this.b = 5;
+        }
+
+        // 생성자
+        public Reset() {
+            this.a = 6;
+            this.b = 7;
+        }
+    }
+
+12:10
+    싱글톤(SingleTon) 패턴이란 : 객체를 하나만 생성할 수 있도록 강제하는 패턴
+
+    형식 : 
+    public class Ex {
+        public static void main(String[] args) {
+            // SingleTon st = new SingleTon(); (X)
+            SingleTon st = SingleTon.getIns();
+            SingleTon st1 = SingleTon.getIns(); // st와 st1은 동일한 객체를 가리킴
+        }
+    }
+
+    public class SingleTon {
+        // 나의 클래스자료형으로 static 객체를 내부에서 생성해야 한다.
+        private static SingleTon sin;
+
+        // 생성자의 접근제어자를 private 처리
+        // 외부에서 생성자를 호출하여 객체 생성하는 것을 막기위해
+        private SingleTon() { }
+
+        // 내 객체를 반환해줄 static getter 메소드 선언을 해야한다.
+        // 외부에서 접근 가능한 접근제어자로 지정을 해야한다.
+        public static SingleTon getIns() {
+            if(sin == null) sin = new SingleTon();
+            return sin;
+        }
+    }
+
+5교시
+14:40
+    vo( = dto) 클래스는 데이터베이스의 테이블과 동일한 멤버필드(자료형도 동을)를 가지고, 해당 멤버필드 한 개당 각각 getter, setter 메소드를 가지고 있는 클래스임. ( = 데이터를 담거나 전송하는 기능을 담당하는 클래스)
