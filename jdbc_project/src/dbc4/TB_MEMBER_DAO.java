@@ -170,7 +170,7 @@ public class TB_MEMBER_DAO {
 			sql += "m_pwd = '" + m_pwd + "' ";
 		else
 			sql += "m_pwd = m_pwd, ";
-		if (!(m_email == null || m_hp.equals("")))
+		if (!(m_email == null || m_email.equals("")))
 			sql += "m_email = '" + m_email + "' ";
 		else
 			sql += "m_email = m_email, ";
