@@ -8,7 +8,7 @@ public class StudentDAO {
 	public void loginStudent(String sid, String spw) throws SQLException {
 		String sql = "SELECT * FROM student WHERE sid = '?', spw = '?'";
 		
-		PreparedStatement ps = TempSingleton.getConnection().prepareStatement(sql);
+		PreparedStatement ps = ConnManager.getConnection().prepareStatement(sql);
 	}
 	
 	

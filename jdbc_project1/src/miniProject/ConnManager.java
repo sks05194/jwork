@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class TempSingleton {
+public class ConnManager {
 	private static Connection con = null;
 	private static Scanner sc = null;
 
 	// 접근 불가능한 기본생성자
-	private TempSingleton() {
+	private ConnManager() {
 		// 접근 불가능한 코드
 	};
 
