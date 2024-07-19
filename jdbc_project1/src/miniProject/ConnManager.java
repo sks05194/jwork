@@ -50,13 +50,14 @@ public class ConnManager {
 	/** Connection 객체를 닫아줍니다. */
 	public static void CloseConnection() {
 		try {
+			sc.close();
 			if (con != null) {
 				if (!con.isClosed()) {
 					con.close();
 				}
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 }
