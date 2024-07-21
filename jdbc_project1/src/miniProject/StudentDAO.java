@@ -21,7 +21,7 @@ public class StudentDAO {
 		System.out.print("아이디 입력");
 		String sid = ConnManager.getScanner().next();
 
-		// 아이디 제약조건. 추후 보충하거나 메소드로 뺄 것.
+		// TODO 아이디 제약조건. 추후 보충하거나 메소드로 뺄 것.
 		if (sid == null || sid.length() == 0) {
 			System.out.println("아이디 입력 오류");
 			return null;
@@ -30,7 +30,7 @@ public class StudentDAO {
 		System.out.print("비번 입력>>");
 		String spw = ConnManager.getScanner().next();
 
-		// 비밀번호 제약조건. 추후 보충하거나 메소드로 뺄 것.
+		// TODO 비밀번호 제약조건. 추후 보충하거나 메소드로 뺄 것.
 		if (spw == null || spw.length() == 0) {
 			System.out.println("비밀번호 입력 오류");
 			return null;
@@ -60,7 +60,7 @@ public class StudentDAO {
 			String snm = rs.getString("snm");
 			String sdate = rs.getString("sdate");
 			// TODO sdate에서 오류난다면 Date형 컬럼을 받아오는 과정에서 생긴 오류일 확률이 높습니다.
-			// 쿼리문에서 컬럼을 받아오는 줄을 변경하거나 자료형을 변경해주세요.
+			// 오류가 발생한다면 쿼리문에서 컬럼을 받아오는 줄을 변경하거나 자료형을 변경해주세요.
 			boolean slms = rs.getString("slms") == "Y";
 
 			rs.close();
@@ -91,6 +91,7 @@ public class StudentDAO {
 		int[] correctArr = new int[testList.size()]; // 문제에 따른 답을 담는 배열
 
 		// 문제 풀기
+		// TODO 이 부분 메소드로 만들지 고민해볼것.
 		for (int testNo = 0; testNo < testList.size(); testNo++) {
 			// 문제 출력
 			int no = testList.get(testNo).getTn();
@@ -103,7 +104,7 @@ public class StudentDAO {
 			correctArr[testNo] = ConnManager.getScanner().nextInt();
 		}
 
-		// TODO 문제 번호 변경하고 싶은 경우
+		// TODO 문제 번호 변경하고 싶은 경우 (미구현)
 		
 
 		// 시험 점수 테이블에 반영하는 메소드 호출 예정
@@ -166,24 +167,19 @@ public class StudentDAO {
 	 * @param ans  정답여부
 	 */
 	private void reflecting(int sno, TestVO test, int ans) throws SQLException {
-		boolean b = true;
-		if (b)
-			return;
-
-		// TODO 쿼리문 꼭 작성해주세요. 일단 대충 적을게요.
-		// 위 코드는 쿼리문 작성 이후 제거해주세요.
-		// 2024년 1학기 문제 고정
-		// 학번, 정답 여부 ?로 작성
-		String sql = "INSERT";
+		String sql = "INSERT INTO answer VALUES ( ?, ?, ?, ?, ? )";
 
 		PreparedStatement ps = ConnManager.getConnection().prepareStatement(sql);
 		ps.setInt(1, sno);
-		ps.setString(2, test.getTa() == ans ? "O" : "X");
+		ps.setInt(2, test.getTy());
+		ps.setInt(3, test.getTs());
+		ps.setInt(4, test.getTn());
+		ps.setString(5, test.getTa() == ans ? "O" : "X");
 		
 		int rowCount = ps.executeUpdate();
 		
 		ps.close();
-		// 여기 아래는 지워줘요.
+		// 여기 아래는 확인 후 지워줘요.
 		if(rowCount > 0) System.out.println("반영완료");
 	}
 }
