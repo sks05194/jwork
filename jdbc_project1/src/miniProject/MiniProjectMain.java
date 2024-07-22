@@ -62,6 +62,7 @@ public class MiniProjectMain {
 				switch (menuNum) {
 				case 1: // 로그인
 					StudentVO student = studentDAO.loginStudent();
+					
 					if (student == null) {
 						System.out.println("등록된 정보가 없거나 일치하지 않습니다.");
 						break;
@@ -94,7 +95,7 @@ public class MiniProjectMain {
 					break;
 
 				case 2: // 회원가입
-					// TODO 회원가입 기능
+					studentDAO.joinStudent();
 					break;
 
 //				case 3: // 홈으로

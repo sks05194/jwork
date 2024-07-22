@@ -69,7 +69,7 @@ public class StudentDAO {
 	 */
 	public void test(StudentVO student) throws SQLException {
 		System.out.println("시험응시 시작");
-		System.out.println("2024년 1학기 JAVA 초급 시험시작"); // 이후 변경 예정
+		System.out.println("2024년 1학기 JAVA 초급 시험시작"); // TODO 이후 변경 예정
 
 		// 이미 응시한 시험은 다시 보실 수 없습니다. 나가세요.
 		if (!checkTestPoint(student)) {
@@ -145,9 +145,12 @@ public class StudentDAO {
 
 		ResultSet rs = ps.executeQuery();
 
-		if (rs.next())
+		// TODO close 위로 올리기
+		if (rs.next()) {
+			rs.close();
 			return true;
-
+		}
+		
 		rs.close();
 		return false;
 	}
@@ -275,5 +278,70 @@ public class StudentDAO {
 				sum++;
 
 		return sum * 100 / list.size();
+	}
+
+	
+
+	// 회원가입 기능
+	public void joinStudent() {
+		int sno = 0;
+		while (true) {
+			try {
+//				System.out.println("DB 연결 성공");
+				System.out.println("회원 가입 메뉴");
+				System.out.println("학번 입력 >>");
+				if (ConnManager.getScanner().hasNextInt()) {
+					sno = ConnManager.getScanner().nextInt();
+				} else {
+					System.out.println("숫자만 입력할 수 있습니다.");
+					ConnManager.getScanner().next();
+				}
+//				System.out.println(sno);
+
+				System.out.println("아이디 입력 >>");
+				String sid = ConnManager.getScanner().next();
+				System.out.println(sid);
+
+				System.out.println("비밀번호 입력 >>");
+				String spw = ConnManager.getScanner().next();
+
+				System.out.println("이름 입력 >>");
+				String snm = ConnManager.getScanner().next();
+
+				joinStudent(sid, spw, sno, snm);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void joinStudent(String sid, String spw, int sno, String snm) {
+		String sql = "update student set sid = ?, spw = ?, slms = 'Y' where sno = ? and sno = ? and slms = 'N'";
+		PreparedStatement ps = null;
+		try {
+			ps = ConnManager.getConnection().prepareStatement(sql);
+			ps.setString(1, sid);
+			ps.setString(2, spw);
+			ps.setInt(3, sno);
+			ps.setString(4, snm);
+
+			int rowCount = ps.executeUpdate();
+			if (rowCount > 0) {
+				System.out.println("회원가입 완료");
+			} else
+				System.out.println("회원 가입이 실패하였습니다.\n" + "사유: 없는 학번이거나 중복 아이디");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				ConnManager.CloseConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
 	}
 }
