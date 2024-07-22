@@ -8,6 +8,7 @@ public class AdminVO {
 	private boolean aps = false; // 사용 가능 상태 = 'Y'(true), 'N'(false)
 	// TODO 사용 가능 상태는 where에서 y에 해당하는 정보만 받아올 확률이 높으므로 생략 가능한지 고민해볼것.
 
+	// 로그인
 	public AdminVO(String aid, String apwd, String anm, String arole, boolean aps) {
 		this.aid = aid;
 		this.apwd = apwd;
@@ -16,13 +17,14 @@ public class AdminVO {
 		this.aps = aps;
 	}
 
+	// 회원가입
 	/** 역할은 sub, 사용 가능 상태는 Y로 저장됩니다. */
 	public AdminVO(String aid, String apwd, String anm) {
 		this.aid = aid;
 		this.apwd = apwd;
 		this.anm = anm;
 		this.arole = "sub";
-		this.aps = true;
+		this.aps = false;
 	}
 
 	public String getAid() {

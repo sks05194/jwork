@@ -2,6 +2,13 @@ package miniProject;
 
 import java.sql.SQLException;
 
+/*
+ * 변경사항 2024-07-22 10:55
+ * AdminVO			기타생성자 aps = false
+ * MiniProjectMain	주석 일부와 바뀐 함수명
+ * StudentDAO		시험, 점수 확인 기능 추가 및 개선
+ */
+
 public class MiniProjectMain {
 	public static void main(String[] args) {
 		int menuNum = 0;
@@ -20,7 +27,7 @@ public class MiniProjectMain {
 				switch (menuNum) {
 				case 1: // 관리자 로그인
 
-					// TODO 기능이 완료된다면 변경해주세요.
+					// FIXME 기능이 완료된다면 변경해주세요.
 					AdminVO vo = null;
 
 					while (true) {
@@ -54,8 +61,6 @@ public class MiniProjectMain {
 
 				switch (menuNum) {
 				case 1: // 로그인
-					// TODO 로그인 기능
-					// 이후 학생 VO로 조작하는 기능
 					StudentVO student = studentDAO.loginStudent();
 					if (student == null) {
 						System.out.println("등록된 정보가 없거나 일치하지 않습니다.");
@@ -71,14 +76,14 @@ public class MiniProjectMain {
 						switch (menuNum) {
 						case 1: // 시험응시
 							try {
-								studentDAO.Test(student);
+								studentDAO.test(student);
 							} catch (SQLException e) {
 //								e.printStackTrace(); // 오류시 확인용
 								System.out.println("오류가 발생하여 시험을 중단합니다.");
 							}
 							break;
 						case 2: // 점수확인
-							// TODO 점수확인 기능을 넣어주세요.
+							studentDAO.checkPoint(student);
 							break;
 						case 3:
 						default:
@@ -104,7 +109,7 @@ public class MiniProjectMain {
 				return;
 
 			default:
-				// TODO 추후 프로그램을 보고 출력문을 변경해주시길 바랍니다.
+				// FIXME 추후 프로그램을 보고 출력문을 변경해주시길 바랍니다.
 				System.out.println("허용되지 않은 접근입니다.");
 				break;
 			}

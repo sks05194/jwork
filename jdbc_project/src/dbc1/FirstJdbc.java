@@ -59,7 +59,6 @@ public class FirstJdbc {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("드라이버 오류입니다.");
 		} catch (SQLException e) {
 			System.out.println("sql명령 오류 및 connection 객체 오류입니다.");

@@ -5,14 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * 구현 완료 및 예정인 기능 목록
- * 
- * ○ 로그인 기능
- * △ 시험 기능
- * x 점수 확인 기능
- * 
- * */
 public class StudentDAO {
 	/** 로그인 관련 메세지 출력 및 관련 메소드 호출 */
 	public StudentVO loginStudent() {
@@ -59,7 +51,7 @@ public class StudentDAO {
 			int sno = rs.getInt("sid");
 			String snm = rs.getString("snm");
 			String sdate = rs.getString("sdate");
-			// TODO sdate에서 오류난다면 Date형 컬럼을 받아오는 과정에서 생긴 오류일 확률이 높습니다.
+			// XXX sdate에서 오류난다면 Date형 컬럼을 받아오는 과정에서 생긴 오류일 확률이 높습니다.
 			// 오류가 발생한다면 쿼리문에서 컬럼을 받아오는 줄을 변경하거나 자료형을 변경해주세요.
 			boolean slms = rs.getString("slms") == "Y";
 
@@ -75,7 +67,7 @@ public class StudentDAO {
 	 * 
 	 * @throws main 함수 실행 중 이 메소드에서 오류 발생 시 catch문에서 시험 중단이라고 알려줄거에요.
 	 */
-	public void Test(StudentVO student) throws SQLException {
+	public void test(StudentVO student) throws SQLException {
 		System.out.println("시험응시 시작");
 		System.out.println("2024년 1학기 JAVA 초급 시험시작"); // 이후 변경 예정
 
@@ -104,8 +96,38 @@ public class StudentDAO {
 			correctArr[testNo] = ConnManager.getScanner().nextInt();
 		}
 
-		// TODO 문제 번호 변경하고 싶은 경우 (미구현)
-		
+		// 문제 번호 변경하고 싶은 경우
+		while (true) {
+			System.out.println("선택 : 1.시험종료  2.답안수정");
+			int choice = ConnManager.getScanner().nextInt();
+
+			if (choice == 1)
+				break;
+			else if (choice != 2) {
+				System.out.println("허용되지 않은 접근입니다. 시험을 종료합니다.");
+				break;
+			}
+
+			System.out.print("수정할 문제 번호 입력>>");
+			choice = ConnManager.getScanner().nextInt();
+
+			// 수정할 문제 찾고 번호 고치기
+			for (int testNo = 0; testNo < testList.size(); testNo++) {
+				if (choice != testList.get(testNo).getTn())
+					continue;
+
+				// 문제 출력
+				int no = testList.get(testNo).getTn();
+				String question = testList.get(testNo).getTq();
+
+				System.out.println(no + question);
+
+				// 문제 번호에 따라 점수 correctArr에 반영
+				System.out.print("답안 입력(번호로 입력해주세요)>> ");
+				correctArr[testNo] = ConnManager.getScanner().nextInt();
+				break;
+			}
+		}
 
 		// 시험 점수 테이블에 반영하는 메소드 호출 예정
 		for (int testNo = 0; testNo < testList.size(); testNo++) {
@@ -175,11 +197,83 @@ public class StudentDAO {
 		ps.setInt(3, test.getTs());
 		ps.setInt(4, test.getTn());
 		ps.setString(5, test.getTa() == ans ? "O" : "X");
-		
+
 		int rowCount = ps.executeUpdate();
-		
+
 		ps.close();
 		// 여기 아래는 확인 후 지워줘요.
-		if(rowCount > 0) System.out.println("반영완료");
+		if (rowCount > 0)
+			System.out.println("반영완료");
+	}
+
+	/**
+	 * 학생의 총점을 출력합니다.
+	 * 
+	 * @param student: 학생 정보
+	 */
+	public void checkPoint(StudentVO student) {
+		System.out.println("확인하고 싶은 년도와 학기를 입력하세요.");
+		System.out.print("년도입력(예: 2024) >>");
+		int year = ConnManager.getScanner().nextInt();
+
+		System.out.print("학기 선택(숫자로입력): 1.1학기 2.2학기 >>");
+		int semester = ConnManager.getScanner().nextInt();
+		if (semester != 1 || semester != 2) {
+			System.out.println("존재하지 않는 접근입니다.");
+			return;
+		}
+
+		ArrayList<AnswerVO> answerList;
+		try {
+			answerList = answerList(student.getSno(), year, semester);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("점수를 불러오는데 실패했습니다.");
+			return;
+		}
+		System.out.println(year + "년 " + semester + "학기 성적확인");
+
+		System.out.println("---------------------------------");
+		double sum = sumPoint(answerList);
+		System.out.println("총점 : " + sum);
+
+		for (AnswerVO answer : answerList)
+			System.out.println(answer.getTn() + "번. " + (answer.isAns() ? "O" : "X"));
+
+	}
+
+	/** 학번, 년도, 학기에 해당하는 점수 리스트를 가져옵니다. */
+	private ArrayList<AnswerVO> answerList(int sno, int ty, int ts) throws SQLException {
+		ArrayList<AnswerVO> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM answer WHERE ano = ? AND ty = ? AND ts = ?";
+
+		PreparedStatement ps = ConnManager.getConnection().prepareStatement(sql);
+		ps.setInt(1, sno);
+		ps.setInt(2, ty);
+		ps.setInt(3, ts);
+
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next())
+			list.add(new AnswerVO(
+					rs.getInt("sno"),
+					rs.getInt("ty"),
+					rs.getInt("ts"),
+					rs.getInt("ts"),
+					rs.getString("ans").equals("O")));
+
+		return list;
+	}
+
+	/** 총점 계산기 */
+	private double sumPoint(ArrayList<AnswerVO> list) {
+		double sum = 0.0f;
+
+		for (AnswerVO answer : list)
+			if (answer.isAns())
+				sum++;
+
+		return sum * 100 / list.size();
 	}
 }
