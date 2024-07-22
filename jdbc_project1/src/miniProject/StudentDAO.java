@@ -317,7 +317,7 @@ public class StudentDAO {
 	}
 
 	public void joinStudent(String sid, String spw, int sno, String snm) {
-		String sql = "update student set sid = ?, spw = ?, slms = 'Y' where sno = ? and sno = ? and slms = 'N'";
+		String sql = "update student set sid = ?, spw = ?, slms = 'Y' where sno = ? and snm = ? and slms = 'N'";
 		PreparedStatement ps = null;
 		try {
 			ps = ConnManager.getConnection().prepareStatement(sql);
