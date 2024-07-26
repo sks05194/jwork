@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>오늘의 과제</title>
+</head>
+
+<body>
+	<h1>머릿글</h1>
+	<p>첫번째 단락태그입니다.</p>
+	<a href="https://www.naver.com">네이버로 이동 </a>
+	<!-- 현재 나의 파일과 동일한 위치에 있는 img.jpg파일을 이미지로 불러올때 -->
+	<img src="./img.jpg">
+
+	<form>
+		<input type="text" name="id">
+		<input type="text" name="nm">
+		<button type="submit">전송</button>
+	</form>
+</body>
+
+</html>
