@@ -1,0 +1,52 @@
+※ 시간의 순서에 따라 기술되었습니다.
+
+2교시
+10:35
+	Validation(유효성) : 유효한 값인지를 체크하는 것을 유효성이라고 함.
+	- 데이터를 정확한 값으로 입력했는지
+	- 데이터를 빈 값(빈 문자열 등)이 아닌 입력한 값이 있도록 처리를 했는지 등등
+
+10:50
+	한 줄 입력창의 입력요소에 값을 입력하지 않고 전송하는 경우 빈 문자열값이 전송된다.
+
+
+5교시
+15:10
+	multiple="multiple"
+	readonly="true"
+	required="true"
+
+	selected="true"
+	selected="selected"
+
+	disabled="true"
+	disabled="disabled"
+
+	checked="checked"
+	checked="true"
+
+7교시
+16:50
+	색상을 기술하는 방법
+	1. 컬러를 영어단어로 입력하는 방법(키워드값)
+	예: black, red, blue... 등등
+
+	2. 16진수값으로 표현 => 형식:
+	#R16진수값2자리G16진수값2자리B16진수값2자리
+	예)#000000 ~ #ffffff = #fff, #cc5522 = #c52, #0a55b2
+
+	3. rgb(r, g, b) 또는 rgba(r, g, b, a) 표현
+	R(Red) : 0~255, G(Green) : 0~255, B(Blue) : 0~255
+	A(Alpha = Opacity) : 0~1 사이의 실수값이나 0%~100% 백분률값
+	예) rgb(255, 3, 52) rgba(255, 2, 52, 0.8) rgba(255, 2, 52, 50%)
+
+	4. hsl(h, s, l) 또는 hsla(h, s, l, a) 표현
+	H(Hue: 색상), S(Saturation: 채도), L(Lightness: 명도), A(Alpha: 투명도)
+
+17:05
+	아무런 천성을 가지고 있지 않은 태그:
+
+	- 인라인 레벨: span
+	- 블록 레벨: div
+
+	** 인라인 레벨과 블록 레벨을 나누는 가장 큰 특징: 한 줄에 나란히 세울 수 있다면 인라인, 없다면 블록.
