@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>가상클래스(:) 선택자-상태 의사 클래스(UI element states pseudo-class)</title>
+	<style>
+		label { padding: 10px; }
+		/* 체크된 input 요소를 선택 */
+		input:checked { height: 20px; width: 20px; }
+		/* input 요소에서 disabled(비활성화) 속성을 가진 요소 */
+		input:disabled { background: red; }
+		/* input 요소에서 disabled(비활성화) 속성이 없는 요소 */
+		input:enabled { background: #ffff00; }
+
+		table, td {
+			border: black solid 1px;
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		First name: <input type="text" name="first" value="Mickey"><br>
+		Last name: <input type="text" name="last" value="Mouse"><br>
+		Country: <input type="text" name="country" value="Disneyland" disabled><br><br><hr><br>
+
+		<table>
+			<tr>
+				<td>
+					gender(check one)
+				</td>
+				<td>
+					<input type="radio" value="male" id="male" name="gender" required>
+					<label for="male">Male</label>
+				</td>
+				<td>
+					<input type="radio" value="female" id="female" name="gender" required>
+					<label for="female">Female</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					transportation
+				</td>
+				<td>
+					<input type="checkbox" value="vehicle" id="bike" name="Bike"><label for="bike">I have a bike</label>
+				</td>
+				<td>
+					<input type="checkbox" value="vehicle" id="car" name="Car"> <label for="car">I have a car</label>
+				</td>
+			</tr>
+		</table>
+		<br><br>
+		
+		<input type="hidden" name="hid" value="감춘 값">
+		<input type="text" name="gen" value="감추지 않은 값" readonly>
+
+		<input type="submit"><input type="reset">
+	</form>
+</body>
+</html>
