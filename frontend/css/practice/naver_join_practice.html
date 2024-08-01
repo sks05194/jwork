@@ -6,24 +6,34 @@
 	<link rel="stylesheet" href="css/naver_join_style.css">
 </head>
 <body>
-	<div id="form_id">
-		<form>
-			<div id="div1" class="input_block">
-				<input type="text" name="uid" placeholder="아이디">
-				<input type="password" name="upass" placeholder="비밀번호">
-				<input type="email" name="uemail" placeholder="[선택] 이메일부소 (비밀번호 찾기 등 본인 확인용)">
+	<div id="div_f">
+		<form id="join_form">
+			<div class="f_div">
+				<div class="div_i"><input type="text" name="uid" placeholder="아이디"></div>
+				<div class="div_i"><input type="password" name="upass" placeholder="비밀번호"></div>
+				<div class="div_i"><input type="email" name="uemail" placeholder="[선택] 이메일부소 (비밀번호 찾기 등 본인 확인용)"></div>
 			</div>
 			
-			<div id="div2" class="input_block">
-				<input type="text" name="uname" placeholder="아이디">
-				<input type="password" name="ubirth" placeholder="비밀번호">
-				<input type="email" name="uagency" placeholder="[선택] 이메일주소 (비밀번호 찾기 등 본인 확인용)">
-				<input type="text" placeholder="남자 여자 내국인 외국인">
-				<input type="number" placeholder="휴대전화번호">
+			<div class="f_div">
+				<div class="div_i"><input type="text" name="uname" placeholder="이름"></div>
+				<div class="div_i"><input type="number" name="ubirth" placeholder="생년월일 8자리"></div>
+				<!-- TODO: type 변경 -->
+				<div class="div_i"><input type="email" name="uagency" placeholder="통신사 선택"></div>
+				<!-- TODO: type 변경 -->
+				<!-- <div class="div_i"><input type="text" placeholder="남자 여자 내국인 외국인"></div> -->
+				<div class="div_i">
+					<input type="radio" id="g_male" name="gender" class="hidden" value="male">
+					<label for="g_male">남자</label>
+					<input type="radio" id="g_female" name="gender" class="hidden" value="female">
+					<label for="g_female">여자</label>
+				</div>
+				<!-- TODO: type 변경 -->
+				<div class="div_i"><input type="number" placeholder="휴대전화번호"></div>
 			</div>
 			
-			<div id="div3" class="input_block">
-				<input type="text" placeholder="[필수]인증 약관 전체동의 : 예정">
+			<div class="f_div">
+				<!-- TODO: type 변경 -->
+				<div class="div_i"><input type="checkbox" id="promise" class="hidden" name="true"><label for="promise">[필수]인증 약관 전체동의</label></div>
 			</div>
 
 			<input type="submit" value="인증요청" id="submit_button">
