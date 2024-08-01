@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Google Search</title>
+	<style>
+		#logo_div {
+			width: 700px;
+			margin: auto;
+			/* background-color: plum; */
+			margin-top: 100px;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		#logo_h1 {
+			width: max-content;
+			margin: auto;
+			font-size: 96px;
+		}
+
+		#logo_h1 span:nth-of-type(3n+1) { color: blue; }
+		#logo_h1 span:nth-of-type(4n+2) { color: red; }
+		#logo_h1 span:nth-of-type(3) { color: yellow; }
+		#logo_h1 span:nth-of-type(5) { color: green; }
+
+		#search_div {
+			width: 700px;
+			height: 100px;
+			margin: auto;
+			margin-top: 50px;
+			/* background-color: skyblue; */
+			text-align: center;
+		}
+
+		#icon_div {
+			width: 700px;
+			height: 100px;
+			margin: 10px auto;
+			/* background-color: yellowgreen; */
+		}
+
+		#s_input {
+			box-sizing: border-box;
+			width: 600px;
+			height: 50px;
+			border-radius: 24px;
+			background-image: url("../img/searchicon.png");
+			background-position: 3% 50%;
+			background-repeat: no-repeat;
+			padding-left: 8%;
+			padding-right: 10%;
+			font-size: 20px;
+			border-width: 1px;
+		}
+
+		#s_input:focus {
+			box-shadow: 3px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="logo_div">
+		<h1 id="logo_h1"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></h1>
+	</div>
+
+	<div id="search_div">
+		<form action="">
+			<input type="search" id="s_input" list="datalist" name="con" placeholder="Google 검색 또는 URL 입력">
+			<datalist id="datalist">
+				<option value="cat">
+				<option value="dog">
+				<option value="cow">
+				<option value="chicken">
+				<option value="pig">
+				<option value="tiger">
+			</datalist>
+		</form>
+	</div>
+
+	<div id="icon_div">
+
+	</div>
+</body>
+
+</html>

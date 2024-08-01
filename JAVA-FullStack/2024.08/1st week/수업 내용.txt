@@ -1,0 +1,6 @@
+※ 시간의 순서에 따라 기술되었습니다.
+
+1교시
+9:55
+	Emmet
+	input:button => input태그 type button 자동 생성
