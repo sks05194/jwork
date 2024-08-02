@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>css position</title>
+	<link rel="stylesheet" href="css/css03_c_position.css">
+</head>
+<body>
+	<div class="static">
+		<h2>1. static (정적)</h2>
+		기본적인 배치임. 기본값(디폴트)으로 별도로 지정하지 않아도 되는 속성임.<br>
+	</div>
+	<div>
+		<div class="sticky" style="width: 300px; z-index: 999;">
+			<h2>3. sticky (붙어있는)</h2>
+			상대적 위치의 x축, y축 좌표를 기준으로 설정한 위치에 달라 붙어 있는다.
+		</div>
+	</div>
+	<div style="position: relative; top: 50px; left: 150px;">
+		<div class="sticky" style="width: 300px;">
+			<h2>3. sticky (붙어있는)</h2>
+			상대적 위치의 x축, y축 좌표를 기준으로 설정한 위치에 달라 붙어 있는다.
+		</div>
+	</div>
+	<div class="relative">
+		<h2>4. relative (상대적인)</h2>
+		자신이 위치해야하는 좌측상단 좌표를 기준으로 위치를 지정한다.<br>
+		위치 top, right, left, bottom으로 지정 가능하다.<br>
+		이동한 만큼 다른 영역을 침범한다.
+	</div>
+	<div class="fixed">
+		<h2>5. fixed (고정)</h2>
+		위치 top, right, left, bottom으로 지정 가능하며, 단위는 px, %등으로 지정 가능하다.
+		지정한 위치에 위에 떠 있는 것처럼 고정된다.
+	</div>
+	<div class="relative2">
+		<h2>6. relative와 absolute 같이 사용하는 경우</h2>
+		현재 영역은 relative 영역입니다.
+		<div class="absolute2">
+			<h2>7. 현재 영역은 absolute 영역입니다.</h2>
+			absolute2 div 엘리먼트를 감싸고 있는 relative2 div 엘리먼트의 x축, y축을 기준으로 하여 위치한다.
+		</div>
+	</div>
+	<div class="absolute1">
+		<h2>8. absolute (절대적)</h2>
+		위치 top, right, left, bottom으로 지정 가능하며, 단위는 px, %등으로 지정 가능하다.
+		지정한 위치에 위에 떠 있는 것처럼 고정된다.
+		별도의 상대적 영역 지정이 없으면 브라우저(body 영역)의 x축, y축을 기준으로 하여 위치한다.
+	</div>
+	<div class="sticky">
+		<h2>2. sticky (붙어있는)</h2>
+		body의 x축, y축 좌표를 기준으로 설정한 위치에 달라 붙어 있는다.
+	</div>
+
+	<!-- 글씨는 인터넷에서 아무거나 좀 긴 글 복사해서 붙이세요. -->
+	<span>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, adipisci aliquid quis modi distinctio incidunt provident dolor est nemo ex animi dicta architecto ratione saepe. Eius enim harum suscipit explicabo!
+		Delectus tempora ad deleniti nisi dolor sequi odio ullam laboriosam nobis temporibus minima sint, possimus tempore, placeat ab deserunt repellendus, unde molestias. Harum molestiae quis rem non consequuntur voluptatem magnam!
+		Non ratione omnis harum velit. Aut, voluptatem magnam veritatis quo perspiciatis inventore rerum distinctio hic tenetur, ipsa impedit enim corporis accusantium cumque magni culpa debitis! Suscipit molestias excepturi esse vero.
+		Nobis perferendis modi recusandae in tempora ipsam expedita maiores maxime assumenda. Non neque maiores saepe ab ratione recusandae ipsam a voluptas. Harum necessitatibus voluptatum nulla facilis accusantium perspiciatis impedit consequatur?
+		Voluptatum in labore quasi harum natus possimus ullam animi quibusdam, repellat, ab facere provident reprehenderit qui dicta. Reprehenderit minus provident, voluptas eum distinctio voluptatibus deleniti inventore, possimus esse tempora voluptatum.
+		Dolorum nihil magni nemo nobis provident eaque. Perspiciatis expedita voluptatum laborum! Aliquid maiores nisi, quod labore non delectus at eaque totam, fugit qui numquam similique iste nemo molestiae quae distinctio.
+		Laborum doloremque fuga cumque est deserunt, facilis obcaecati dolor voluptatum harum aspernatur enim non! Architecto repellat officia beatae quae similique eius, velit at nesciunt libero laborum magnam nihil nemo totam.
+		Laboriosam deserunt, ullam ut eum nam sit nihil perferendis doloremque, assumenda itaque, natus minus culpa doloribus placeat iure. Fugiat magnam provident quibusdam voluptatibus, quisquam aut laudantium molestias ab porro rem!
+		Quam vel, iste nisi commodi non repellendus! Eum velit voluptas itaque unde ut? Inventore, quidem rem consequatur laudantium officia hic voluptas expedita maxime temporibus ratione possimus, architecto ipsum iste natus.
+		Soluta mollitia rem ratione totam quasi tempora id ex laborum pariatur iusto possimus odio nulla aliquid explicabo saepe nemo fugit alias, exercitationem nihil dolorem, rerum, consectetur nisi atque! Alias, tempore?
+		Quaerat rerum aliquid unde dolor esse fuga inventore architecto, reprehenderit, distinctio deserunt ullam maxime id sit iusto placeat iure laborum eveniet dolores sapiente? Inventore, quia sunt in dignissimos neque reprehenderit?
+		Quia veritatis ea neque illum corporis, assumenda eaque vitae est veniam tenetur sint tempora cupiditate earum iusto ex iste cum perspiciatis debitis consequuntur quod temporibus, perferendis, voluptas omnis doloremque! Numquam?
+		Nobis optio provident doloribus inventore eaque ea modi excepturi, asperiores at architecto a voluptatibus debitis, dolores facere ducimus, exercitationem magni quia ipsa sed culpa! Ipsam, maiores aperiam! Asperiores, optio exercitationem.
+		Aut at eligendi distinctio ab consequuntur? Recusandae consectetur at placeat quam libero dolores, possimus mollitia delectus perferendis laboriosam magni dolorem tempore nostrum. Corrupti dolorem ea rem animi doloremque nemo beatae.
+		Rem officia vitae deserunt eos, eligendi esse tempore odio quod quisquam. Ratione nemo blanditiis corporis quos nesciunt explicabo quisquam cupiditate sit deserunt ipsum eligendi alias, repellendus, dignissimos necessitatibus tempora illum?
+		Expedita saepe ipsa ad dignissimos, dolor maxime eveniet rem aliquid deserunt sit aspernatur corporis enim molestiae. Ea aspernatur quasi laborum, fuga pariatur modi quibusdam rem eaque accusantium rerum odio quis.
+		Voluptate nesciunt impedit cum, reiciendis quaerat minima alias, consectetur tempore possimus, earum eveniet qui blanditiis est porro natus quisquam. Voluptas nostrum temporibus aliquam perferendis consectetur esse possimus perspiciatis impedit eius!
+		Alias eveniet veritatis temporibus atque eligendi consectetur ipsa quisquam blanditiis doloremque aliquam vel beatae omnis esse fugiat, sapiente tenetur fuga voluptatibus quo dolorum quae ipsum unde? Odit ullam necessitatibus quo.
+		Officia facilis unde, nobis, cum at aliquam laboriosam minima pariatur est voluptatum, deleniti cumque perspiciatis neque. Saepe, sequi odit. Eligendi enim ad fugiat nesciunt asperiores id maxime repellendus, similique qui.
+		Accusantium explicabo facilis, voluptas distinctio alias qui eius laudantium placeat vel libero consequuntur quae atque earum voluptate quaerat, neque suscipit sapiente beatae sequi corrupti dicta quasi, velit deserunt mollitia? Sint?
+		Provident ipsam quaerat distinctio! Reiciendis cum illo tenetur, sequi dignissimos quisquam, sint eveniet eaque nulla repellat provident ducimus dolorem quaerat natus veritatis autem et laborum laudantium voluptatibus quam iste! Asperiores.
+		Quidem soluta rem porro ea, excepturi, perferendis molestias nobis beatae voluptas aperiam odit quo expedita voluptatibus animi suscipit. Cupiditate corporis necessitatibus natus sunt quibusdam voluptas? Ad hic sapiente dolore blanditiis.
+		Possimus nisi officia, provident laboriosam, voluptate consequatur hic architecto fugiat labore sit veniam molestiae similique error deleniti porro qui eius, soluta aspernatur beatae cumque esse doloribus odit. Sunt, vero deleniti?
+		Odio assumenda repellendus eligendi possimus reprehenderit aperiam harum cumque, veniam maxime porro inventore ab pariatur laudantium ratione eaque voluptate totam sapiente esse, architecto in itaque! Placeat ducimus reprehenderit ipsum porro!
+		Vero rem eius suscipit temporibus sed exercitationem pariatur deserunt maxime eos perferendis sit, omnis rerum. Architecto necessitatibus quisquam totam, doloremque, fuga voluptates dolore non accusantium rerum eum quae quam magnam.
+	</span>
+</body>
+</html>
