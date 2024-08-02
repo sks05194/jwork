@@ -26,3 +26,15 @@
 	css 무료서체 : https://gongu.copyright.or.kr/gongu/bbs/B0000018/list.do?menuNo=200195
 
 	https://www.elancer.co.kr/blog/view?seq=82
+
+5교시
+15:00
+	서체관련.txt
+
+6교시
+15:40
+	스타일을 기술하는 순서
+	1. 내가 작성하지 않은 외부에서 끌어오는 외부스타일시트 link
+	2. 내가 작성한 외부스타일시트
+	3. 내부스타일 시트 <style>태그로 기술
+	4. 인라인스타일 시트
