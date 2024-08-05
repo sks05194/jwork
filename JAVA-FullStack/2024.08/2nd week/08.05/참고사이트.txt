@@ -1,0 +1,9 @@
+참고사이트: 
+https://naradesign.github.io/media-query.html
+https://coding-factory.tistory.com/938
+
+@media 형식
+@media [only | not] [ device종류 ] and (조건문) {
+ #ids { color: white;}  ==> 실행문 예시
+}
+device종류 예시: all(기본값) |  screen |  tv..등등

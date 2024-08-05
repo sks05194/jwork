@@ -54,10 +54,13 @@ input:focus {
 	display: inline;
 }
 
+#submit_button {
+	display: flex;
+	align-items: flex-end;
+}
+
 [type=submit] {
-	position: fixed;
 	bottom: 10px;
-	margin-top: 300px;
 	background-color: green;
 	color: white;
 	width: 460px;
@@ -66,7 +69,6 @@ input:focus {
 	border-radius: 10px;
 	font-size: 20px;
 	font-weight: bold;
-	align-self: flex-end;
 }
 
 .hidden {
