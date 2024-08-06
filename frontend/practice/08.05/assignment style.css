@@ -18,7 +18,6 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	/* font-weight: bold; */
 }
 
 #header_member {
