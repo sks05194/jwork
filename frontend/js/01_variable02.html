@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>함수 선언 및 사용</title>
+	<script>
+		/* 
+		자바스크립트의 함수 형식
+		선언적 함수 선언 형식
+		function 함수명(매개변수명1, 매개변수명2, ... ) {
+			실행문;
+			...
+			[return 값;]
+		}
+
+		함수 호출 형식
+		함수명(매개인자값1, 매개인자값2, ... );
+		*/
+		function pClick() {
+			// innerText(값자리에 있는 경우) :
+			// 해당 엘리먼트의 자식 요소 중 텍스트를 가져온다.
+			var y = document.getElementsByClassName("pclass")[0].innerText;
+
+			// innerText(공간 자리에 있는 경우):
+			// 해당 엘리먼트의 자식 요소를 싹 다 지우고 해당 값을 텍스트에 넣는다.
+			// document.getElementsByClassName("pclass")[0].innerText = 555;
+
+			// var y = document.getElementById("demo").innerText;
+			// var y = document.getElementsByName("pname")[0].innerText;
+			// alert("y: " + y);
+
+			document.write("다시 쓰기<br>");
+			document.write("답: " + y);
+		}
+	</script>
+</head>
+<body>
+	<h2>변수 선언 및 사용</h2>
+	<p>var 키워드는 지역의 의미가 없다.(단 함수 안에서는 제외)</p>
+	<p id="demo" name="pname" class="pclass" onclick="pClick()" style="cursor: pointer;">클릭하세요.</p>
+
+	<script>
+		var x = 10;
+		document.write("전역 var1: " + x + "<br>");
+		{
+			var x = 2222;
+			document.write("지역 var: " + x + "<br>");
+		}
+		// innerHTML : 해당 요소 안에 html 내용으로 넣는다.
+		// 요소 제거가 안 되고 안의 데이터만 변경됨.
+		document.getElementById("demo").innerHTML = x;
+		document.write("전역 var2: " + x + "<br>");
+	</script>
+</body>
+</html>

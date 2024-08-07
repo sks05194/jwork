@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*naverbar*/
+        @media screen and (min-width : 800px) {
+            nav.navflex {
+                height: 50px;
+                display: flex;
+                align-items: center;
+            }
+    
+            ul {
+                list-style-type: none;
+                padding-left: 0px;
+            }
+    
+            li {
+                display: inline-block;
+            }
+    
+            nav>ul:first-of-type>li:first-of-type {
+                margin-left: 20px;
+            }
+    
+            nav>ul:first-of-type>li {
+                margin-right: 40px;
+            }
+    
+            nav>ul:first-of-type {
+                display: flex;
+                width: 70%;
+            }
+    
+            nav>ul:nth-of-type(2) {
+                display: flex;
+                width: 30%;
+                margin-left: auto;
+                justify-content: flex-end;
+                margin-right: 20px;
+                text-align: right;
+            }
+
+            nav.navflex-sm {display: none;}
+        }
+
+
+        /*naverbar*/
+        @media screen and (max-width : 800px) {
+            nav.navflex-sm {
+                height: 50px;
+                display: flex;
+                align-items: center;
+            }
+    
+            ul {
+                list-style-type: none;
+                padding-left: 0px;
+            }
+    
+            li {
+                display: inline-block;
+            }
+    
+            nav.navflex-sm>ul:first-of-type>li:first-of-type {
+                margin-left: 20px;
+            }
+    
+            nav.navflex-sm>ul:first-of-type>li {
+                margin-right: 40px;
+            }
+    
+            nav.navflex-sm>ul:first-of-type {
+                display: flex;
+                width: 70%;
+            }
+    
+            nav.navflex-sm>ul:nth-of-type(2) {
+                display: flex;
+                width: 30%;
+                margin-left: auto;
+                justify-content: flex-end;
+                margin-right: 20px;
+                text-align: right;
+            }
+
+            nav.navflex {display: none;}
+
+        }
+
+        header {
+            height: 500px;
+            margin-bottom: 20px;
+        }
+
+        header>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        form {
+            width: 800px;
+            max-width: 100%;
+            margin: 20px auto;
+        }
+
+        button, input[type=search] {
+            height: 50px; vertical-align: bottom;soutline: none;
+        }
+
+        button{
+            width: 15%;
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #000;
+            border-right: none; 
+            border-radius: 25px 0  0 25px;
+        }
+
+        input {
+            width: 85%;
+            border: 1px solid #000;
+            border-left: none;
+            border-radius: 0 25px 25px 0;
+            font-size: 16px;
+            padding: 5px 20px;
+        }
+        #productBox {
+            display: flex;
+            width: 900px;
+            max-width: 100%;
+            margin: 40px auto;
+            justify-content: space-between;
+        }
+
+        #productBox > img {
+            width: 30%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navflex">
+        <ul>
+            <li>로고</li>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+        <ul>
+            <li>회원가입 / </li>
+            <li>로그인</li>
+        </ul>
+    </nav>
+    <nav class="navflex-sm">
+        <ul>
+            <li>로고</li>
+        </ul>
+        <ul>
+            <li>회원가입 / </li>
+            <li>로그인</li>
+        </ul>
+    </nav>
+
+    <header><img src="../img/iphone.png"></header>
+    <form>
+        <button type="submit"><img src="../img/searchicon.png"></button><input type="search" name="seltxt" id="seltxt"
+            placeholder="검색어를 입력하세요.">
+    </form>
+
+    <div id="productBox">
+        <img src="../img/cute_dog.jpg">
+        <img src="../img/cute_dog.jpg">
+        <img src="../img/cute_dog.jpg">
+    </div>
+
+</body>
+
+</html>
