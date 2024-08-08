@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>테이블 만들기</title>
+	<script>
+		function createTable() {
+			const tableCount = Number(document.getElementById("tableCount").value);
+			let tableStr = "<table style='border-collapse: collapse'>";
+			
+			for (let i = 1; i <= tableCount; i++) {
+				if(i % 4 == 1) tableStr += "<tr>";
+				tableStr += "<td style='border: 1px solid black; padding: 20px; text-align: center'>" + i + "</td>";
+				if(i % 4 == 0) tableStr += "</tr>";
+			}
+
+			tableStr += "</table>";
+
+			document.write(tableStr);
+		}
+	</script>
+</head>
+<body>
+	<input type="number" id="tableCount">
+	<button onclick="createTable()">테이블 만들기</button>
+</body>
+</html>
