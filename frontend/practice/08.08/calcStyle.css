@@ -1,0 +1,86 @@
+* {
+    font-family: Orbitron;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+div#calc-mainBody {
+    margin: auto;
+    margin-top: 100px;
+    width: 500px;
+    height: 700px;
+    background-color: royalblue;
+    border-radius: 20px;
+    box-shadow: 10px 10px blue;
+}
+
+div#calc-op-screen {
+    display: flex;
+    margin: auto;
+    width: 450px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-right: 20px;
+    justify-content: right;
+    align-items: center;
+}
+
+div#calc-btns-group {
+    margin: auto;
+    width: 400px;
+    height: 450px;
+}
+
+div#calc-btns-group>table {
+    width: 100%;
+    height: 100%;
+    border-spacing: 5px 20px;
+    table-layout: fixed;
+}
+
+div#calc-btns-group>table tr {
+    margin-top: 100px;
+}
+
+div#calc-btns-group>table button {
+    border: none;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 2px 5px blue;
+}
+
+div#calc-btns-group>table button:hover {
+    background-color: skyblue;
+    color: white;
+}
+
+div#calc-btns-group>table button:active {
+    transform: translateY(4px);
+    box-shadow: 1px 3px blue;
+}
+
+div#calc-btns-group>table button.calc-op {
+    background-color: black;
+    color: white;
+}
+
+div#calc-btns-group>table button.calc-op:hover {
+    background-color: skyblue;
+    color: white;
+}
+
+div#calc-btns-group>table button.calc-op:active {
+    transform: translateY(4px);
+    box-shadow: 1px 3px blue;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    height: 500px;
+}
