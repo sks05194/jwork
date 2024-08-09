@@ -1,0 +1,22 @@
+※ 시간의 순서에 따라 기술되었습니다.
+
+7교시
+16:35
+	외부 css 연결방법
+	<link rel="stylesheet" href="css 파일 경로">
+
+	외부 js 연결방법
+	<script src="js 파일경로"></script>
+
+	외부 css, 내부 css, 외부 js, 내부 js 기술순서(권장)
+	1. 웹에서 제공해주는 외부 css <link rel="stylesheet" href="url경로">
+	2. 내가 만든 외부 css <link rel="stylesheet" href="css 페이지 경로">
+	3. 웹에서 제공해주는 외부 js <script src="url경로"></script>
+	4. 내가 만든 외부 js <script src="js 페이지 경로"></script>
+	5. 내부 css <style></style> 태그 안에 기술
+	6. 내부 js <script></script> 태그 안에 기술
+
+8교시
+17:30
+	/* 텍스트 드래그 방지 효과 */
+	user-select: none;

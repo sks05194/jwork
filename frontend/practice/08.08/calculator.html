@@ -6,10 +6,87 @@
 	<meta charset="UTF-8">
 	<title>Calc</title>
 	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="calcStyle.css">
+	<style>
+		* {
+			font-family: Orbitron;
+			font-size: 25px;
+			font-weight: bolder;
+			user-select: none;
+		}
+
+		div#calc-mainBody {
+			margin: auto;
+			width: 500px;
+			height: 700px;
+			background-color: royalblue;
+			border-radius: 20px;
+			box-shadow: 10px 10px blue;
+		}
+
+		div#calc-op-screen {
+			display: flex;
+			margin: auto;
+			width: 450px;
+			height: 150px;
+			background-color: white;
+			border-radius: 10px;
+			box-sizing: border-box;
+			padding-right: 20px;
+			justify-content: right;
+			align-items: center;
+		}
+
+		div#calc-btns-group {
+			margin: auto;
+			width: 400px;
+			height: 450px;
+		}
+
+		div#calc-btns-group>table {
+			width: 100%;
+			height: 100%;
+			border-spacing: 5px 20px;
+			table-layout: fixed;
+		}
+
+		div#calc-btns-group>table tr {
+			margin-top: 100px;
+		}
+
+		div#calc-btns-group>table button {
+			border: none;
+			background-color: white;
+			border-radius: 50px;
+			box-shadow: 2px 5px blue;
+		}
+
+		div#calc-btns-group>table button.calc-op {
+			background-color: black;
+			color: white;
+		}
+
+		div#calc-btns-group>table button:hover,
+		div#calc-btns-group>table button.calc-op:hover {
+			background-color: skyblue;
+			color: white;
+		}
+
+		div#calc-btns-group>table button:active,
+		div#calc-btns-group>table button.calc-op:active {
+			color: yellow;
+			transform: translateY(4px);
+			box-shadow: 1px 3px blue;
+		}
+
+		button {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
 </head>
 
 <body>
+	<header style="height: 100px;"></header>
 	<div id="calc-mainBody">
 		<div style="height: 40px;"></div>
 		<!-- 계산창 -->
@@ -22,38 +99,105 @@
 		<div id="calc-btns-group">
 			<table>
 				<tr>
-					<td colspan="2"><button onclick="ac()">AC</button></td>
-					<td colspan="2"><button onclick="enter()">Enter</button></td>
+					<td colspan="2"><button type="button" onclick="ac()">AC</button></td>
+					<td colspan="2"><button type="button" onclick="enter()">Enter</button></td>
 				</tr>
 				<tr></tr>
 				<tr>
-					<td><button onclick="reflect(7)">7</button></td>
-					<td><button onclick="reflect(8)">8</button></td>
-					<td><button onclick="reflect(9)">9</button></td>
-					<td><button class="calc-op" onclick="reflect('+')">+</button></td>
+					<td><button type="button" onclick="numBtn(7)">7</button></td>
+					<td><button type="button" onclick="numBtn(8)">8</button></td>
+					<td><button type="button" onclick="numBtn(9)">9</button></td>
+					<td><button type="button" class="calc-op" onclick="opBtn('+')">+</button></td>
 				</tr>
 				<tr>
-					<td><button onclick="reflect(4)">4</button></td>
-					<td><button onclick="reflect(5)">5</button></td>
-					<td><button onclick="reflect(6)">6</button></td>
-					<td><button class="calc-op" onclick="reflect('-')">-</button></td>
+					<td><button type="button" onclick="numBtn(4)">4</button></td>
+					<td><button type="button" onclick="numBtn(5)">5</button></td>
+					<td><button type="button" onclick="numBtn(6)">6</button></td>
+					<td><button type="button" class="calc-op" onclick="opBtn('-')">-</button></td>
 				</tr>
 				<tr>
-					<td><button onclick="reflect(1)">1</button></td>
-					<td><button onclick="reflect(2)">2</button></td>
-					<td><button onclick="reflect(3)">3</button></td>
-					<td><button class="calc-op" onclick="reflect('*')">*</button></td>
+					<td><button type="button" onclick="numBtn(1)">1</button></td>
+					<td><button type="button" onclick="numBtn(2)">2</button></td>
+					<td><button type="button" onclick="numBtn(3)">3</button></td>
+					<td><button type="button" class="calc-op" onclick="opBtn('*')">*</button></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button onclick="reflect(0)">0</button></td>
-					<td><button onclick="reflect('.')">.</button></td>
-					<td><button class="calc-op" onclick="reflect('/')">/</button></td>
+					<td colspan="2"><button type="button" onclick="numBtn(0)">0</button></td>
+					<td><button type="button" onclick="decimal('.')">.</button></td>
+					<td><button type="button" class="calc-op" onclick="opBtn('/')">/</button></td>
 				</tr>
 			</table>
 		</div>
 	</div>
-	<script src="calcScript.js"></script>
-	<footer></footer>
+	<script>
+		const screen = document.getElementById("calc-op-screen");
+		let op = undefined;
+		let firstValue = undefined;
+		let inputting = false;
+		let isDecimal = false;
+
+		// 초기화
+		function ac() {
+			screen.innerText = 0;
+			op = undefined;
+			firstValue = undefined;
+			inputting = false;
+			isDecimal = false;
+		}
+
+		// 계산
+		function enter() {
+			if (op == undefined) return;
+
+			switch (op) {
+				case '+': firstValue += Number(screen.innerText); break;
+				case '-': firstValue -= Number(screen.innerText); break;
+				case '*': firstValue *= Number(screen.innerText); break;
+				case '/': firstValue /= Number(screen.innerText); break;
+			}
+
+			inputting = false;
+			op = undefined;
+			isDecimal = false;
+
+			screen.innerText = firstValue;
+		}
+
+		// 연산자 버튼
+		function opBtn(opValue) {
+			if (op != undefined && inputting) {
+				enter();
+			}
+			op = opValue;
+			firstValue = Number(screen.innerText);
+			inputting = false;
+			isDecimal = false;
+		}
+
+		// 소수점
+		function decimal() {
+			if (!isDecimal) {
+				screen.innerText += '.';
+				inputting = true;
+				isDecimal = true;
+			}
+		}
+
+		// 숫자 버튼
+		function numBtn(value) {
+			if (!inputting) {
+				screen.innerText = value;
+			}
+			else {
+				screen.innerText += value;
+			}
+
+			if (value != 0) {
+				inputting = true;
+			}
+		}
+	</script>
+	<footer style="height: 100px;"></footer>
 </body>
 
 </html>
