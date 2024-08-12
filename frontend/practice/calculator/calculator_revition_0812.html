@@ -174,19 +174,35 @@
 		}
 
 		// 연산자버튼 onclick 부여
-		for (let i = 0; i < opBtns.length; i++) {
+		for (let i = 0; i < opwBtns.length; i++) {
 			let opValue = opBtns[i].innerText;
-			
-			opBtns[i].onclick = () => {
+
+			let opFunc = () => {
 				if (op != undefined && inputting) enter();
 				
 				op = opValue;
 				firstValue = Number(screen.innerText);
 				inputting = false;
 				isDecimal = false;
-				
-				// 입력중이 아닌 상황일 경우 -가 앞에 붙게 하고 싶어요.
 			};
+			
+			if (opValue != '-') {
+				opBtns[i].onclick = opFunc;
+			}
+			else {
+				opBtns[i].onclick = () => {
+					if (screen.innerText == "0") {
+						screen.innerText = "-0";
+						return;
+					}
+					else if (screen.innerText == "-0") {
+						screen.innerText = "0";
+						return;
+					}
+					
+					opFunc();
+				};
+			}
 		}
 			
 		// 숫자버튼 onclick 부여
@@ -195,8 +211,9 @@
 				let value = event.target.innerText;
 
 				if (inputting) screen.innerText += value;
-				else screen.innerText = value;
-
+				else if (screen.innerText != "-0") screen.innerText = value;
+				else screen.innerText = '-' + value;
+				
 				if (value != 0) inputting = true;
 			});
 		}

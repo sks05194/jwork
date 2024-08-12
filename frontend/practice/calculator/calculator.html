@@ -163,6 +163,17 @@
 
 		// 연산자 버튼
 		function opBtn(opValue) {
+			if (opValue == '-') {
+				if (screen.innerText == "0") {
+					screen.innerText = "-0";
+					return;
+				}
+				else if (screen.innerText == "-0") {
+					screen.innerText = "0";
+					return;
+				}
+			}
+
 			if (op != undefined && inputting) {
 				enter();
 			}
@@ -188,7 +199,12 @@
 				screen.innerText += value;
 			}
 			else {
-				screen.innerText = value;
+				if (screen.innerText != "-0") {
+					screen.innerText = value;
+				}
+				else {
+					screen.innerText = '-' + value;
+				}
 			}
 
 			if (value != 0) {
