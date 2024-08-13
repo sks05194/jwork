@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<title>제목</title>
-</head>
-<body>
-	
-</body>
-</html>
+	<!DOCTYPE html>
+	<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>문자 객체를 이용한 예제</title>
+		<script>
+			var condition = true;
+			while (condition) {
+				// abc@co.kr
+				var userEmail = prompt("당신의 이메일 주소는?", "");
+				var arrUrl = [".co.kr", ".com", ".net", ".or.kr", ".go.kr"];
+
+				var check1 = false;
+				var check2 = false;
+
+				if (userEmail == null || userEmail == '') {
+					alert("이메일을 입력하세요.");
+					continue;
+				}
+
+				if (userEmail.indexOf("@") > 0) { check1 = true; }
+
+				if (userEmail.indexOf("@", userEmail.indexOf("@") + 1) > 0) {
+					alert("@기호는 1번만 기술해주세요.");
+					continue;
+				}
+
+				for (let i = 0; i < arrUrl.length; i++) {
+					if (userEmail.indexOf("@") < userEmail.indexOf(arrUrl[i])) {
+						check2 = true;
+						break;
+					}
+				}
+
+				if (check1 && check2) {
+					document.write(userEmail);
+					condition = false;
+				} else {
+					alert("이메일 형식이 잘못되었습니다.");
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+	</html>

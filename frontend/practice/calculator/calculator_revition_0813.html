@@ -129,7 +129,6 @@
 	</div>
 	<script>
 		const screen = document.getElementById("calc-op-screen");
-		const numBtns = document.getElementsByClassName("calc-num");
 		const opBtns = document.getElementsByClassName("calc-op");
 
 		let op = undefined;
@@ -172,19 +171,20 @@
 			inputting = true;
 			isDecimal = true;
 		}
+		
+		// 연산자 버튼 onclick에 들어갈 메소드
+		let opFunc = () => {
+			if (op != undefined && inputting) enter();
+			
+			op = opValue;
+			firstValue = Number(screen.innerText);
+			inputting = false;
+			isDecimal = false;
+		};
 
 		// 연산자버튼 onclick 부여
 		for (let i = 0; i < opBtns.length; i++) {
 			let opValue = opBtns[i].innerText;
-
-			let opFunc = () => {
-				if (op != undefined && inputting) enter();
-				
-				op = opValue;
-				firstValue = Number(screen.innerText);
-				inputting = false;
-				isDecimal = false;
-			};
 			
 			if (opValue != '-') {
 				opBtns[i].onclick = opFunc;
@@ -204,11 +204,11 @@
 				};
 			}
 		}
-			
-		// 숫자버튼 onclick 부여
-		for (let i = 0; i < numBtns.length; i++) {
-			numBtns[i].addEventListener('click', () => {
-				let value = event.target.innerText;
+
+		// 숫자 버튼 클릭시
+		document.querySelectorAll(".calc-num").forEach(function (num) {
+			num.addEventListener('click', function() {
+				let value = num.innerText;
 
 				if (inputting) screen.innerText += value;
 				else if (screen.innerText != "-0") screen.innerText = value;
@@ -216,7 +216,7 @@
 				
 				if (value != 0) inputting = true;
 			});
-		}
+		});
 	</script>
 	<footer style="height: 100px;"></footer>
 </body>

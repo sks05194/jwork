@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>버블링과 캡처링</title>
+	<style>
+		.three { border: 1px solid #000; padding: 10px 30px; }
+		.evt { border: 1px solid #000; padding: 10px 30px; }
+	</style>
+</head>
+<body class="par">
+	<div class="one">
+		<div class="two">
+			<div class="three">클릭 div</div>
+		</div>
+	</div>
+
+	<h1 class="evt parevt">
+		<a href="09_bubblecapture.html" class="evt">내 페이지로 이동</a>
+	</h1>
+	<script>
+		// 버블링: 하위요소에서 상위요소로 이벤트 전파되는 방식을 말함.
+		var divs = document.querySelectorAll("div");
+		divs.forEach(function (div) {
+			div.addEventListener("click", logEvent);
+		});
+		
+		// 캡쳐링: (버블링과 반대)상위요소에서 하위요소로 이벤트 탐색
+		/* 
+		var divs = document.querySelectorAll("div");
+		divs.forEach(function (div) {
+			div.addEventListener("click", logEvent, {
+				capture: true // default 값은 false입니다.
+			});
+		});
+		 */
+
+		// var evts = document.getElementsByTagName("h1")[0];
+		var evts = document.getElementsByTagName("a")[0];
+		evts.addEventListener("click", logEvent);
+
+		function logEvent(event) {
+			event.stopPropagation(); // 버블링을 막아주는 메소드
+			event.preventDefault(); // 기본적으로 가지고 있는 이벤트를 막아주는 메소드
+			console.log(event.currentTarget.className);
+			return false; // event.preventDefault();와 동일한 기능
+		}
+	</script>
+</body>
+</html>
