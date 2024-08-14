@@ -161,6 +161,7 @@
 			isDecimal = false;
 
 			screen.innerText = firstValue;
+			isDecimal = (screen.innerText.indexOf('.') > 0);
 		}
 
 		// 소수점
@@ -176,7 +177,7 @@
 		let opFunc = () => {
 			if (op != undefined && inputting) enter();
 			
-			op = opValue;
+			op = event.target.innerText;
 			firstValue = Number(screen.innerText);
 			inputting = false;
 			isDecimal = false;
