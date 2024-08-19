@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <link rel="stylesheet" href="./cal.css">
+    <script src="./cal.js"></script> 
+</head>
+<body>
+    <div class="container">
+        <div class="window">
+            <p id="number">0</p>
+        </div>
+        
+    <table>
+        <tr>
+            <td onclick="AC()">AC</td>
+            <td colspan="2" onclick="result()">Enter</td>
+            <td colspan="2" onclick="del()">DEL</td>
+            
+        </tr>
+        <tr>
+            <td onclick="calnum(7)">7</td>
+            <td onclick="calnum(8)">8</td>
+            <td onclick="calnum(9)">9</td>
+            <td onclick="calculator('+')">+</td>
+        </tr>
+        <tr>
+            <td onclick="calnum(4)">4</td>
+            <td onclick="calnum(5)">5</td>
+            <td onclick="calnum(6)">6</td>
+            <td onclick="calculator('-')">-</td>
+        </tr>
+        <tr>
+            <td onclick="calnum(1)">1</td>
+            <td onclick="calnum(2)">2</td>
+            <td onclick="calnum(3)">3</td>
+            <td onclick="calculator('*')">*</td>
+        </tr>
+        <tr>
+            <td colspan="2" onclick="calnum(0)">0</td>
+            <td onclick="dot()">.</td>
+            <td onclick="calculator('/')">/</td>
+        </tr>
+    </table>
+    </div>
+    
+</body>
+</html>

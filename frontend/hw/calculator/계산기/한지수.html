@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculator {
+            background-color: hotpink;
+            width: 320px;
+            height: 500px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: 10px 10px 0px rgb(255, 28, 141);
+            user-select: none;
+        }
+
+        .result {
+            margin: 10px auto;
+            background-color: white;
+            width: 300px;
+            height: 100px;
+            border-radius: 25px;
+        }
+
+        .result_num {
+            padding: 15px;
+            color: black;
+            text-align: right;
+            font-size: 30px;
+        }
+
+        .button {
+            margin: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .AC, .Enter {
+            width: 110px;
+            height: 40px;
+            position: relative;
+            border-radius: 25px;
+            border: none;
+            box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .AC:hover, .Enter:hover {
+            background-color: pink;
+        }
+
+        .AC:active, .Enter:active {
+            background-color: pink;
+            transform: translate(4px, 4px); 
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        }
+
+        .button2 {
+            margin: 20px  30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .num, .oper {
+            width: 60px;
+            height: 40px;
+            position: relative;
+            border-radius: 25px;
+            border: none;
+            color: gray;
+            box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .num2 {
+            width: 125px;
+            height: 40px;
+            position: relative;
+            border-radius: 25px;
+            border: none;
+            color: gray;
+            box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .oper {
+            background-color: black;
+            color: white;
+        }
+
+        .num:hover, .num2:hover, .oper:hover {
+            background-color: pink;
+        }
+
+        .num:active, .num2:active, .oper:active {
+            background-color: pink;
+            color: hotpink;
+            transform: translate(4px, 4px); 
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        }
+    </style>
+    <script>
+        let currentInput = '';
+        let firstOperand = null;
+        let operator = null;
+        let reset = false;
+
+        function result(value) {
+            const result = document.querySelector('.result_num');
+            result.textContent = value || '0';
+        }
+
+        function AC() {
+            currentInput = '';
+            firstOperand = null;
+            operator = null;
+            result('0');
+        }
+
+        function Enter() {
+            if (operator && currentInput !== '') {
+                firstOperand = operate(operator, firstOperand, parseFloat(currentInput));
+                result(firstOperand);
+                operator = null;
+                reset = true;
+            }
+        }
+
+        function num(number) {
+            if (reset) {
+                currentInput = '';
+                reset = false;
+            }
+            currentInput += number;
+            result(currentInput);
+        }
+
+        function num2(number) {
+            if (reset) {
+                currentInput = '';
+                reset = false;
+            }
+            currentInput += number;
+            result(currentInput);
+        }
+
+        function oper(opert) {
+            if (currentInput === '') return;
+            if (firstOperand === null) {
+                firstOperand = parseFloat(currentInput);
+            } else if (operator) {
+                firstOperand = operate(operator, firstOperand, parseFloat(currentInput));
+                result(firstOperand);
+            }
+            operator = opert;
+            currentInput = '';
+        }
+
+        function operate(operator, a, b) {
+            switch (operator) {
+                case '+':
+                    return a + b;
+                case '-':
+                    return a - b;
+                case '*':
+                    return a * b;
+                case '/':
+                    return a / b;
+                default:
+                    return b;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <div class="result">
+            <div class="result_num">0</div>
+        </div>
+        <div class="button">
+            <input type="reset" class="AC" value="AC" onclick="AC()">
+            <input type="submit" class="Enter" value="Enter" onclick="Enter()">
+        </div>
+        <div class="button2">
+            <button class="num" onclick="num('7')">7</button>
+            <button class="num" onclick="num('8')">8</button>
+            <button class="num" onclick="num('9')">9</button>
+            <button class="oper" onclick="oper('+')">+</button>
+        </div>
+        <div class="button2">
+            <button class="num" onclick="num('4')">4</button>
+            <button class="num" onclick="num('5')">5</button>
+            <button class="num" onclick="num('6')">6</button>
+            <button class="oper" onclick="oper('-')">-</button>
+        </div>
+        <div class="button2">
+            <button class="num" onclick="num('1')">1</button>
+            <button class="num" onclick="num('2')">2</button>
+            <button class="num" onclick="num('3')">3</button>
+            <button class="oper" onclick="oper('*')">*</button>
+        </div>
+        <div class="button2">
+            <button class="num2" onclick="num2('0')">0</button>
+            <button class="num" onclick="num('.')">.</button>
+            <button class="oper" onclick="oper('/')">/</button>
+        </div>
+    </div>
+</body>
+</html>

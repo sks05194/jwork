@@ -1,8 +1,5 @@
 # JWORK
 
-- 현재 진행중인 이벤트: 계산기
-	- [계산기 폴더](./frontend/practice/calculator/)
-
 - 노션 주소
 	- https://wool-point-849.notion.site/JAVA-Full-Stack-Class-acfa1a12c38e4185852685d854bfbec7?pvs=4
 

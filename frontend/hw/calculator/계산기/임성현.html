@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        .calculator {
+            margin: 0px auto;
+            margin-top: 150px;
+            width: 320px;
+            height: 500px;
+            border-radius: 25px;
+            padding: 30px 20px;
+            background-color: #f68082;
+            border-radius: 25px;
+            box-shadow: 8px 8px 0 #D04B4D;
+        }
+        input[type=button] {
+            box-shadow: 5px 5px 0 rgb(68, 65, 65);
+            border: 0px solid white;
+            border-radius: 22px;
+            width: 50px;
+            height: 40px;
+            text-align: center;
+			font-family: 'EliceDigitalBaeum_Bold';
+        }
+        input[type=button]:hover {
+            background-color: #f4b2b2;
+        }
+        input[type=button]:active {
+            box-shadow: 2px 2px 0 rgb(68, 65, 65);
+            position: relative;
+            top: 2px;
+        }
+        input.zero {
+            width: 144px;
+            margin-left: 8px;
+        }
+        input.ac {
+            margin-bottom: 40px;
+            margin-top: 40px;
+            margin-left: 30px;
+            border-radius: 25px;
+            width: 125px;
+        }
+        input.enter {
+            margin-bottom: 40px;
+            margin-top: 40px;
+            margin-left: 10px;
+            border-radius: 25px;
+            width: 125px;
+        }
+        input[type=text]{
+            width: 320px;
+        }
+        #displayId {
+            line-height: 100px;
+            text-align: right;
+            width: 318px;
+            height: 100px;
+            border-radius: 10px;
+            font-size : 30px;
+            background-color: white;
+            border: 0px solid white;
+			overflow-x: hidden;
+        }
+		#displayId:hover {
+			line-height: 100px;
+            text-align: right;
+            width: 318px;
+            height: 100px;
+            border-radius: 10px;
+            font-size : 30px;
+            background-color: white;
+            border: 0px solid white;
+		}
+		#displayId:active {
+			line-height: 100px;
+            text-align: right;
+            width: 318px;
+            height: 100px;
+            border-radius: 10px;
+            font-size : 30px;
+            background-color: white;
+            border: 0px solid white;
+		}
+        .number {
+            margin: 12px;
+        } 
+        .operator {
+            background-color: black;
+            color: white;
+            margin: 12px;
+        }
+		@font-face {
+        font-family: 'EliceDigitalBaeum_Bold';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        }  
+		body {
+			font-family: 'EliceDigitalBaeum_Bold';
+		}
+		#deciId:hover {
+			background-color: #f4b2b2;
+			color : black;
+		}
+		#deciId:active {
+			background-color: white;
+			color : black;
+		}
+		#deciId {
+			background-color: white;
+			color : black;
+		}
+    </style>
+</head>
+
+<body style="user-select: none;">
+    <div class="calculator">
+        <div id="displayId">0</div>
+        <div>
+            <input type="button" class="ac" onclick="acId()" value="AC">
+            <input type="button" class="enter" onclick="enterId()" value="Enter">
+        </div>
+        <div>
+            <input type="button" class="number" onclick="numberId(7)"value="7">
+            <input type="button" class="number" onclick="numberId(8)" value="8">
+            <input type="button" class="number" onclick="numberId(9)" value="9">
+            <input type="button" class="operator" onclick="operId('+')" value="+">
+        </div>
+        <div>
+            <input type="button" class="number" onclick="numberId(4)" value="4">
+            <input type="button" class="number" onclick="numberId(5)" value="5">
+            <input type="button" class="number" onclick="numberId(6)" value="6">
+            <input type="button" class="operator" onclick="operId('-')" value="-">
+        </div>
+        <div>
+            <input type="button" class="number" onclick="numberId(1)" value="1">
+            <input type="button" class="number" onclick="numberId(2)" value="2">
+            <input type="button" class="number" onclick="numberId(3)" value="3">
+            <input type="button" class="operator" onclick="operId('*')" value="*">
+        </div>
+        <div>
+            <input type="button" class="zero" onclick="numberId(0)" value="0">
+            <input type="button" class="number" onclick="decimalId()" id="deciId" value=".">
+            <input type="button" class="operator" onclick="operId('/')" value="/">
+        </div>
+    </div>
+    <script>
+		var dis = document.getElementById("displayId");
+        var operator = '';
+		const decimalValue = '.';
+		var firstValue = '';
+		var lastValue = '';
+		var resultValue = '';	
+
+		function numberId(num) {
+			if(dis.innerText == 0) { dis.innerText = ''; }
+			if(operator == '') { firstValue += num; dis.innerText = firstValue; }
+			if(operator != '') { lastValue += num; dis.innerText = lastValue; }
+		}
+
+		function decimalId() {
+			if(dis.innerText == 0) { dis.innerText = ''; }
+			if(operator == '') { firstValue += decimalValue; dis.innerText = firstValue; }
+			if(operator != '') { lastValue += decimalValue; dis.innerText = lastValue; }
+			if(decimalValue.length == 1) { document.getElementById('deciId').setAttribute('disabled', true); }
+		}
+
+        function acId() {
+			dis.innerText = 0;
+			firstValue = '';
+			lastValue = '';
+			resultValue = '';
+			operator = '';
+			if(decimalValue.length == 1) { document.getElementById('deciId').removeAttribute('disabled'); }
+        }
+		
+		function operId(op) {
+			if(firstValue == '' || lastValue == '') { dis.innerText == op; }
+			if(op != '') { enterId(); }
+			operator = op;
+			if(decimalValue.length == 1) { document.getElementById('deciId').removeAttribute('disabled'); }
+		}
+
+		function enterId() {
+			if(operator == '') { return; }
+			switch(operator) {
+				case '+' : resultValue = Number(firstValue) + Number(lastValue); break;
+				case '-' : resultValue = Number(firstValue) - Number(lastValue); break;
+				case '*' : resultValue = Number(firstValue) * Number(lastValue); break;
+				case '/' : resultValue = Number(firstValue) / Number(lastValue); break;
+			}
+			operator = '';
+			dis.innerText = resultValue;
+			firstValue = resultValue.toString();
+			lastValue = '';
+			resultValue = '';
+			if(decimalValue.length == 1) { document.getElementById('deciId').removeAttribute('disabled'); }
+		}
+		
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!-- 참고: https://joooing.tistory.com/entry/계산기-만들기-ver1-CSSactive를-활용해-버튼-누르는-효과-내기 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Calc</title>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+	<style>
+		* {
+			font-family: Orbitron;
+			font-size: 25px;
+			font-weight: bolder;
+			user-select: none;
+		}
+
+		div#calc-mainBody {
+			margin: auto;
+			width: 450px;
+			height: 700px;
+			background-color: royalblue;
+			border-radius: 20px;
+			box-shadow:
+				10px 10px 10px 10px rgba(0, 0, 0, 0.5),
+				inset 5px 5px 5px rgba(255, 255, 255, 0.5),
+				inset -5px -5px 5px blue,
+				5px 5px 5px 5px blue;
+		}
+
+		div#calc-op-screen {
+			display: flex;
+			margin: auto;
+			width: 400px;
+			height: 150px;
+			background-color: white;
+			border-radius: 10px;
+			box-sizing: border-box;
+			padding-right: 25px;
+			justify-content: right;
+			align-items: center;
+			box-shadow:
+				inset 2px 2px 5px 2px gray,
+				-2px -2px 2px 3px rgba(0, 0, 0, 0.5);
+		}
+
+		div#calc-btns-group {
+			margin: auto;
+			width: 400px;
+			height: 450px;
+		}
+
+		div#calc-btns-group>table {
+			width: 100%;
+			height: 100%;
+			border-spacing: 10px 20px;
+			table-layout: fixed;
+		}
+
+		div#calc-btns-group>table tr {
+			margin-top: 100px;
+		}
+
+		div#calc-btns-group>table button {
+			border: none;
+			background-color: white;
+			border-radius: 50px;
+			box-shadow: 2px 5px 5px blue,
+				inset 2px 2px 2px 2px lightcyan,
+				inset -2px -2px 2px 2px cadetblue;
+		}
+
+		div#calc-btns-group>table button.calc-op {
+			background-color: black;
+			color: white;
+		}
+
+		div#calc-btns-group>table button:hover,
+		div#calc-btns-group>table button.calc-op:hover {
+			background-color: skyblue;
+			color: white;
+		}
+
+		div#calc-btns-group>table button:active,
+		div#calc-btns-group>table button.calc-op:active {
+			color: yellow;
+			transform: translateY(4px);
+			box-shadow:
+				1px 3px blue,
+				inset 2px 2px 5px 2px rgba(0, 0, 0, 0.5),
+				inset -2px -2px 2px 2px cadetblue;
+		}
+
+		button {
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<header style="height: 100px;"></header>
+	<div id="calc-mainBody">
+		<div style="height: 40px;"></div>
+		<!-- 계산창 -->
+		<div id="calc-op-screen">
+			0
+		</div>
+
+		<div style="height: 25px;"></div>
+		<!-- 버튼 모음 -->
+		<div id="calc-btns-group">
+			<table>
+				<tr>
+					<td colspan="2"><button type="button" onclick="allClear()">AC</button></td>
+					<td colspan="2"><button type="button" onclick="enter()">Enter</button></td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td><button type="button" class="calc-num">7</button></td>
+					<td><button type="button" class="calc-num">8</button></td>
+					<td><button type="button" class="calc-num">9</button></td>
+					<td><button type="button" class="calc-op">+</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="calc-num">4</button></td>
+					<td><button type="button" class="calc-num">5</button></td>
+					<td><button type="button" class="calc-num">6</button></td>
+					<td><button type="button" class="calc-op">-</button></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="calc-num">1</button></td>
+					<td><button type="button" class="calc-num">2</button></td>
+					<td><button type="button" class="calc-num">3</button></td>
+					<td><button type="button" class="calc-op">*</button></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="button" class="calc-num">0</button></td>
+					<td><button type="button" class="calc-decimal" onclick="decimal()">.</button></td>
+					<td><button type="button" class="calc-op">/</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script>
+		const screen = document.getElementById("calc-op-screen");	// 계산기 화면
+
+		let operator = undefined;	// 연산자
+		let operand = undefined;	// 처음 입력한 값(피연산자)
+		let inputting = false;		// 현재 입력중인지 나타내주는 변수
+
+		// 초기화 버튼
+		function allClear() {
+			screen.innerText = 0;
+			operator = undefined;
+			operand = undefined;
+			inputting = false;
+		}
+
+		// 계산 버튼
+		function enter() {
+			if (operator == undefined) return;
+
+			switch (operator) {
+				case '+': operand += Number(screen.innerText); break;
+				case '-': operand -= Number(screen.innerText); break;
+				case '*': operand *= Number(screen.innerText); break;
+				case '/': operand /= Number(screen.innerText); break;
+				default: alert("알 수 없는 연산자입니다."); return;
+			}
+			operand = Number(operand.toFixed(10));
+
+			inputting = false;
+			operator = undefined;
+
+			screen.innerText = operand;
+		}
+
+		// 소수점
+		function decimal() {
+			if (screen.innerText.includes('.')) return;
+
+			screen.innerText += '.';
+			inputting = true;
+		}
+
+		const opBtns = document.getElementsByClassName("calc-op");
+
+		// 연산자 버튼 onclick에 들어갈 메소드
+		let opFunc = () => {
+			if (operator != undefined && inputting) enter();
+
+			operator = event.target.innerText;
+			operand = Number(screen.innerText);
+			inputting = false;
+		};
+
+		// 연산자버튼 onclick 부여
+		for (let i = 0; i < opBtns.length; i++) {
+			if (opBtns[i].innerText != '-') opBtns[i].onclick = opFunc;
+			else {
+				opBtns[i].onclick = () => {
+					if (screen.innerText == "0") {
+						screen.innerText = "-0";
+						return;
+					}
+					else if (screen.innerText == "-0") {
+						screen.innerText = "0";
+						return;
+					}
+
+					opFunc();
+				};
+			}
+		}
+
+		// 숫자 버튼 onclick 부여
+		document.querySelectorAll(".calc-num").forEach(function (num) {
+			num.addEventListener('click', function () {
+				let value = num.innerText;
+
+				if (inputting) screen.innerText += value;
+				else if (screen.innerText != "-0") screen.innerText = value;
+				else screen.innerText = '-' + value;
+
+				if (value != 0) inputting = true;
+			});
+		});
+	</script>
+	<footer style="height: 100px;"></footer>
+</body>
+</html>

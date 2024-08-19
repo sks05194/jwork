@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        *{box-sizing: border-box; margin: 0; font-family:"Dongle", sans-serif; font-size: 30px; color: rgb(104, 104, 104);}
+        .main {
+            width: 350px; height: 500px; margin: 0 auto; margin-top: 20px;
+            box-shadow:8px 8px 0px green; border-radius: 20px; background-color: rgb(35, 187, 35); 
+            display: flex; flex-direction: column;
+        }
+        .result {
+            width: 80%; height: 25%; 
+            border-radius: 10px; background-color: white; margin: 0 auto; margin-top: 20px;
+            display: flex; justify-content: end; align-items: center; 
+        }
+
+        .result span { font-size: 60px; color: black; margin-right: 10px;}
+
+        .button_main {
+            width:80%; margin: 0 auto; margin-top: 20px; 
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        button{
+            width: 60px; height: 40px; border-radius: 25px; margin: 0 auto; margin-top: 10px;
+            border: none;
+            box-shadow: 1px 4px 0 rgb(0,0,0,0.5);
+            background-color: #eee;
+        
+        }
+
+        button:hover{
+            background-color: darkolivegreen; color: #ccc;
+        }
+        .row2 > button:last-of-type:hover{
+            background-color: darkolivegreen; color: #ccc;
+        }
+
+        button:active{
+            box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+            /* position: relative;
+            top:2px; */
+            transform:scale(0.95);
+        }
+
+        .row1 > button{
+            width: 120px; margin-bottom: 20px;
+        }
+
+        .row2 > button:last-of-type{
+            background-color: black;
+            color: aliceblue;
+        }
+
+        .row2:last-of-type > button:first-of-type{
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="result">
+            <span id="result_display">0</span>
+        </div>
+        <div class="button_main">
+            <div class="row1">
+                <button type="button" onclick="Ac_btn()">AC</button>
+                <button type="button" onclick="Enter_btn()">Enter</button>
+            </div>
+            <div class="row2">
+                <button type="button" onclick="getBtnVal(this)">7</button>
+                <button type="button" onclick="getBtnVal(this)">8</button>
+                <button type="button" onclick="getBtnVal(this)">9</button>
+                <button type="button" onclick="getBtnVal(this)">+</button>
+            </div>
+            
+            <div class="row2">
+                <button type="button" onclick="getBtnVal(this)">4</button>
+                <button type="button" onclick="getBtnVal(this)">5</button>
+                <button type="button" onclick="getBtnVal(this)">6</button>
+                <button type="button" onclick="getBtnVal(this)">-</button>
+            </div>
+    
+            <div class="row2">
+                <button type="button" onclick="getBtnVal(this)">1</button>
+                <button type="button" onclick="getBtnVal(this)">2</button>
+                <button type="button" onclick="getBtnVal(this)">3</button>
+                <button type="button" onclick="getBtnVal(this)">*</button>
+            </div>
+    
+            <div class="row2">
+                <button type="button" onclick="getBtnVal(this)">0</button>
+                <button type="button" onclick="getBtnVal(this)">.</button>
+                <button type="button" onclick="getBtnVal(this)">/</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var arr = new Array;
+        var oper_input=false;
+        var enter_input=false;
+        var display = document.getElementById("result_display");
+        const operators = ['+', '-', '*', '/'];
+
+
+        function Ac_btn(){ //초기화버튼
+            display.innerHTML='0';
+
+            arr=[];
+            oper_input=false;
+            enter_input=false;
+        }
+        
+        function Enter_btn(){ // a[0]:20 a[1]:+ a[2]:20  //일단 엔터버튼.
+            if(arr.length>1 && enter_input==false){
+                let result = parseFloat(arr[0]);
+                arr.push(display.innerHTML);
+
+                for (let i = 1; i < arr.length-1; i++) {
+                    const operator = arr[i];
+                    const value = parseFloat(arr[++i]);
+                    
+                    switch (operator) {
+                        case '+': result += value; break;
+                        case '*': result *= value; break;
+                        case '/': result /= value; break;
+                        case '-': result -= value; break;
+                    }
+                }
+                console.log(arr);
+                arr=[];
+                oper_input=true;
+                enter_input=true;
+
+                display.innerHTML = result;
+            }
+        }
+
+        function getBtnVal(button) {
+            var buttonValue = button.innerHTML; // 버튼 안의 텍스트 가져오기
+
+            //연산자 다음 디스플레이 숫자 초기화
+            if(arr.length>0 && oper_input ==true && !operators.includes(buttonValue)){
+                display.innerHTML='0';
+                oper_input=false;
+                enter_input =false;
+            }
+
+            //연산자가 2번 연속일때 덮어쓰기.
+            // if(operators.includes(arr[arr.length-1]) && operators.includes(buttonValue)){
+            //     arr[arr.length-1] = buttonValue;
+            //     console.log(arr);
+            //     return;
+            // }
+            
+            switch(buttonValue){
+                case '+':
+                    arr.push(display.innerText,"+"); oper_input=true; enter_input=false; break;
+                case '-':
+                    arr.push(display.innerText,"-"); oper_input=true; enter_input=false; break;
+                case '*':
+                    arr.push(display.innerText,"*"); oper_input=true; enter_input=false; break;
+                case '/':
+                    arr.push(display.innerText,"/"); oper_input=true; enter_input=false; break;
+                case '.': //.2개 안나오게끔
+                    if(display.innerHTML.indexOf('.')>0) break; 
+                    else{display.innerHTML += buttonValue} break;
+                default:
+                if(display.innerHTML == "0") display.innerHTML = buttonValue;
+                else display.innerHTML += buttonValue;
+            }
+            console.log(arr);
+        }
+    </script>
+</body>
+</html>

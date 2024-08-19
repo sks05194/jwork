@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            user-select: none;
+        }
+
+        .con {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cal {
+            width: 250px;
+            height: 450px;
+            border-radius: 20px;
+            padding: 20px 20px;
+            box-shadow: 8px 8px 0 #666;
+            background-color: black;
+
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+        }
+
+        .countboard {
+            height: 50px;
+            border: 1px solid #fff;
+            background-color: #fff;
+            text-align: right;
+            padding: 20px 10px 20px 0;
+            font-size: 25px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            overflow-x: hidden;
+        }
+
+        .button_num td button {
+            border-radius: 25px;
+            padding: 15px 5px;
+            margin: 5px;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0px 5px #777;
+
+        }
+
+        .button_num td button:active {
+            position: relative;
+            transform: translateY(3px);
+        }
+
+        .button_num table {
+            width: 100%;
+            margin: 20px auto;
+            margin-top: 40px;
+        }
+
+        .count {
+            background-color: orange;
+            box-shadow: 0px 5px rgb(100, 79, 39);
+        }
+
+        .ac_enter {
+            background-color: #666;
+        }
+
+        .numbtnstyle {
+            background-color: #999;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="con">
+        <div class="cal">
+            <div class="countboard" id="display">0</div>
+            <div class="button_num">
+                <table>
+                    <tr>
+                        <td colspan="2"><button type="button" class="ac_enter" onclick="ac()">AC</button>
+                        </td>
+                        <td colspan="2"><button type="button" class="ac_enter" onclick="enter()">Enter</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="numbtnstyle" onclick="num(7)">7</button></td>
+                        <td><button type="button" class="numbtnstyle" onclick="num(8)">8</button></td>
+                        <td><button type="button" class="numbtnstyle" onclick="num(9)">9</button></td>
+                        <td><button type="button" class="count" onclick="count('+')">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="numbtnstyle" onclick="num(4)">4</button></td>
+                        <td><button type="button" class="numbtnstyle" onclick="num(5)">5</button></td>
+                        <td><button type="button" class="numbtnstyle" onclick="num(6)">6</button></td>
+                        <td><button type="button" class="count" onclick="count('-')">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="numbtnstyle" onclick="num(1)">1</button></td>
+                        <td><button type="button" class="numbtnstyle" onclick="num(2)">2</button></td>
+                        <td><button type="button" class="numbtnstyle" onclick="num(3)">3</button></td>
+                        <td><button type="button" class="count" onclick="count('*')">*</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="button" style="background-color: #999;"
+                                onclick="num(0)">0</button></td>
+                        <td><button type="button" class="numbtnstyle" onclick="dot('.')">.</button></td>
+                        <td><button type="button" class="count" onclick="count('/')">/</button></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        let number = "";
+        let count1 = "";
+        let result = 0;
+        let resetBoard = false;
+
+        function countBoard() {
+            document.getElementById('display').innerText = number || "0";
+        }
+
+        function num(value) {
+            if (resetBoard) {
+                number = "";
+                resetBoard = false;
+            }
+            number += value;
+            countBoard();
+        }
+
+        function dot() {
+            if (resetBoard) {
+                number = "";
+                resetBoard = false;
+            }
+            if (!number.includes('.')) {
+                number += number === "" ? "0." : '.';
+            }
+            countBoard();
+        }
+
+        function count(cou) {
+            if (number === "") {
+                return;
+            }
+            if (count1) {
+                calculate();
+            }
+            count1 = cou;
+            result = parseFloat(number);
+            number = "";
+        }
+
+        function calculate() {
+            if (number === "" || count1 === "") {
+                return;
+            }
+            const num = parseFloat(number);
+            switch (count1) {
+                case '+': result += num; break;
+                case '-': result -= num; break;
+                case '*': result *= num; break;
+                case '/': result /= num; break;
+            }
+            number = result.toString();
+            count1 = undefined;
+            resetBoard = false;
+            countBoard();
+        }
+
+        function ac() {
+            number = "";
+            count1 = "";
+            result = 0;
+            resetBoard = false;
+            countBoard();
+        }
+
+        function enter() {
+            calculate();
+        }
+    </script>
+</body>
+
+</html>
