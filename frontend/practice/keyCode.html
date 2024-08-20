@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>keyCode</title>
+	<script src="jquery/3.7.0/jquery.js"></script>
+	<style>
+		p { margin: 0; }
+		.pChest { border-right: 1px solid black; border-left: 1px solid black; width: fit-content; padding: 5px; float: left; margin: 0px; }
+	</style>
+	<script>
+		var keyCodeList = {};
+
+		$(document).ready(function () {
+			$("body").keydown(e => {
+				keyCodeList[e.keyCode] = e.key;
+
+				document.querySelectorAll(".pChest").forEach(element => {
+					element.innerText = "";
+				});
+				
+				Object.keys(keyCodeList).forEach(k => {
+					showKeyCodes(k, keyCodeList[k]);
+				});
+			});
+		});
+
+		function showKeyCodes(key, keyCode) {
+			let p = document.createElement("p");
+			p.innerText = `${key}: ${keyCode}`;
+			$(".pChest")[Math.floor(Number(key) / 25)].append(p);
+		}
+	</script>
+</head>
+<body>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+	<div class="pChest"></div>
+</body>
+</html>

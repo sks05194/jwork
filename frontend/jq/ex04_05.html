@@ -2,13 +2,26 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
-	<script src="jquery/3.7.0/jquery.js"></script>
+	<title>이벤트</title>
+	<script src="http://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		ul { float: left; margin: 30px; }
+	</style>
 	<script>
-		
+		$(function () {
+			$('a').click(function () {
+				// event.preventDefault(); // return false와 동일한 효과를 냄.
+				$("img").attr("src", $(this).attr("href"));
+				return false; // 현재 페이지에 이미지 표시하도록 설정
+			});
+		});
 	</script>
 </head>
 <body>
-	
+	<ul>
+		<li><a href="../img/cute_dog.jpg">사진1</a></li>
+		<li><a href="../img/img_girl.jpg">사진2</a></li>
+	</ul>
+	<img>
 </body>
 </html>

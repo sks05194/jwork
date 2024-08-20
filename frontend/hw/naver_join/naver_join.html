@@ -3,7 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Naver Join</title>
-	<link rel="stylesheet" href="css/naver_join_style.css">
+	<link rel="stylesheet" href="naver_join.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+	<script src="naver_join.js"></script>
 </head>
 <body>
 	<div id="div_f">
@@ -18,7 +20,23 @@
 				<div class="div_i"><input type="text" name="uname" placeholder="이름"></div>
 				<div class="div_i"><input type="number" name="ubirth" placeholder="생년월일 8자리"></div>
 				<!-- TODO: type 변경 -->
-				<div class="div_i"><input type="email" name="uagency" placeholder="통신사 선택"></div>
+				<div class="div_i"><input type="button" name="uagency" value="통신사 선택"></div>
+				<div class="hide">
+					<table>
+						<tr>
+							<td>SKT</td>
+							<td>SKT 알뜰폰</td>
+						</tr>
+						<tr>
+							<td>KT</td>
+							<td>KT 알뜰폰</td>
+						</tr>
+						<tr>
+							<td>LG U+</td>
+							<td>LG U+ 알뜰폰</td>
+						</tr>
+					</table>
+				</select></div>
 				<!-- TODO: type 변경 -->
 				<!-- <div class="div_i"><input type="text" placeholder="남자 여자 내국인 외국인"></div> -->
 				<div class="div_i">
