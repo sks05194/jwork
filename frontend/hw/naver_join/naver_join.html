@@ -5,59 +5,71 @@
 	<title>Naver Join</title>
 	<link rel="stylesheet" href="naver_join.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-	<script src="naver_join.js"></script>
 </head>
 <body>
-	<div id="div_f">
+	<div id="main_div">
+		<a href="https://www.naver.com/" id="naver_logo">NAVER</a>
+
 		<form id="join_form">
+
 			<div class="f_div">
 				<div class="div_i"><input type="text" name="uid" placeholder="아이디"></div>
+
 				<div class="div_i"><input type="password" name="upass" placeholder="비밀번호"></div>
+
 				<div class="div_i"><input type="email" name="uemail" placeholder="[선택] 이메일부소 (비밀번호 찾기 등 본인 확인용)"></div>
 			</div>
 			
 			<div class="f_div">
 				<div class="div_i"><input type="text" name="uname" placeholder="이름"></div>
-				<div class="div_i"><input type="number" name="ubirth" placeholder="생년월일 8자리"></div>
-				<!-- TODO: type 변경 -->
-				<div class="div_i"><input type="button" name="uagency" value="통신사 선택"></div>
-				<div class="hide">
+
+				<div class="div_i"><input type="text" name="ubirth" placeholder="생년월일 8자리"></div>
+
+				<div class="div_i" id="uagency">통신사 선택</div>
+				<div id="uagency_div" class="hide">
 					<table>
 						<tr>
-							<td>SKT</td>
-							<td>SKT 알뜰폰</td>
+							<td><input type="radio" name="uagency" id="skt" class="hide"><label for="skt">SKT</label></td>
+							<td><input type="radio" name="uagency" id="skt_sub" class="hide"><label for="skt_sub">SKT 알뜰폰</label></td>
 						</tr>
 						<tr>
-							<td>KT</td>
-							<td>KT 알뜰폰</td>
+							<td><input type="radio" name="uagency" id="kt" class="hide"><label for="kt">KT</label></td>
+							<td><input type="radio" name="uagency" id="kt_sub" class="hide"><label for="kt_sub">KT 알뜰폰</label></td>
 						</tr>
 						<tr>
-							<td>LG U+</td>
-							<td>LG U+ 알뜰폰</td>
+							<td><input type="radio" name="uagency" id="lg" class="hide"><label for="lg">LG U+</label></td>
+							<td><input type="radio" name="uagency" id="lg_sub" class="hide"><label for="lg_sub">LG U+ 알뜰폰</label></td>
 						</tr>
 					</table>
-				</select></div>
-				<!-- TODO: type 변경 -->
-				<!-- <div class="div_i"><input type="text" placeholder="남자 여자 내국인 외국인"></div> -->
-				<div class="div_i">
-					<input type="radio" id="g_male" name="gender" class="hidden" value="male">
-					<label for="g_male">남자</label>
-					<input type="radio" id="g_female" name="gender" class="hidden" value="female">
-					<label for="g_female">여자</label>
 				</div>
-				<!-- TODO: type 변경 -->
-				<div class="div_i"><input type="number" placeholder="휴대전화번호"></div>
+
+				<div id="rd_gr_div" class="div_i">
+					<div class="radio_group">
+						<input type="radio" id="g_male" name="gender" class="hide" value="male">
+						<input type="radio" id="g_female" name="gender" class="hide" value="female">
+						<label for="g_male">남자</label><label for="g_female">여자</label>
+					</div>
+					<div class="radio_group">
+						<input type="radio" class="hide" id="nati_dome" name="nationality" value="dome">
+						<input type="radio" class="hide" id="nati_fore" name="nationality" value="fore">
+						<label for="">내국인</label><label for="">외국인</label>
+					</div>
+				</div>
+
+				<div class="div_i"><input type="text" placeholder="휴대전화번호"></div>
 			</div>
 			
 			<div class="f_div">
-				<!-- TODO: type 변경 -->
+				<!-- TODO: 많이 생각만 해 볼 예정임. -->
 				<div class="div_i"><input type="checkbox" id="promise" class="hidden" name="true"><label for="promise">[필수]인증 약관 전체동의</label></div>
 			</div>
 
 			<div id="submit_button">
 				<input type="submit" value="인증요청">
 			</div>
+
 		</form>
 	</div>
+	<script src="naver_join.js"></script>
 </body>
 </html>
