@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>buttonDog</title>
+	<script src="http://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+<body>
+	<p class="zBtn">
+		<button class="btn zOut">-</button>
+		<button class="btn originBtn">100%</button>
+		<button class="btn zIn">+</button>
+	</p>
+	<p id="widthtext"></p>
+	<img src="../../img/cute_dog.jpg" alt="아무튼 개 사진이다. 매우 커엽게 생겼으나 보여주지 못하는 것을 매우 안타깝게 생각한다.">
+	<script>
+		/* 200px ~ 1120px */
+		$('img').width(660);
+		$("#widthtext").text(`width: ${$('img').width()}`);
+		
+		$('.btn').on("click", function () {
+			if ($(this).hasClass("zOut") && $('img').width() > 200) {
+				$('img').width($('img').width() - 92);
+			} else if ($(this).hasClass("zIn") && $('img').width() < 1120) {
+				$('img').width($('img').width() + 92);
+			} else if ($(this).hasClass("originBtn")) {
+				$('img').width(660);
+			}
+			$("#widthtext").text(`width: ${$('img').width()}`);
+		});
+
+
+	</script>
+</body>
+</html>

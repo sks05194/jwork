@@ -2,13 +2,22 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
-	<script src="jquery/3.7.0/jquery.js"></script>
-	<script>
-		
-	</script>
+	<title> 이벤트 </title>
 </head>
 <body>
-	
+	<input type="text" placeholder="텍스트 입력" name="name">
+	<p id="values"></p>
+	<script>
+		const input = document.querySelector("input");
+		const log = document.getElementById("values");
+
+
+		input.addEventListener("input", updateValue); // 입력(변경)한 순간 바로 적용됨
+		// input.addEventListener("keyup", updateValue); // 마우스로 붙여넣기를 해도 적용되지 않음
+
+		function updateValue(e) {
+			log.textContent = e.target.value;
+		}
+	</script>
 </body>
 </html>

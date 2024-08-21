@@ -2,13 +2,63 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title> 이벤트 </title>
 	<script src="jquery/3.7.0/jquery.js"></script>
+	<style>
+		body { font: 12pt "Malgun Gothic", "맑은고딕", sans-serif; }
+		/* .btn { font-size: 12pt; } */
+	</style>
 	<script>
-		
+		$(function () {
+			var fSize = 12;
+			$(".zBtn .btn").on("click", zInOut);
+			
+			function zInOut() {
+				if ($(this).hasClass("zOut")) {
+					if (fSize <= 8) return false;
+					fSize--;
+				} else if ($(this).hasClass("zIn")) {
+					if (fSize >= 50) return false;
+					fSize++;
+				} else { fSize = 12; }
+				$(".fontSize").text(fSize + "pt");
+
+				/* 속성명:
+				객체로 사용시 -(대시)제거 카멜기법으로 표기.
+				css속성명 그대로 사용하는 경우는 따옴표로 묶어줌. */
+				$("body").css({ 'font-size': fSize + "pt" });
+				$("#rel_site, #rel_site option").css({ 'font-size': fSize + "pt" });
+				$(".btn").css({ 'font-size': fSize + "pt" });
+			}
+		});
 	</script>
 </head>
 <body>
-	
+	<p class="zBtn">
+		<button class="btn zOut">-</button>
+		<button class="btn originBtn">100%</button>
+		<button class="btn zIn">+</button>
+	</p>
+	<p class="fontSize">12pt</p>
+
+	<div id="wrap">
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+		Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+		when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+		It has survived not only five centuries, but also the leap into electronic typesetting,
+		remaining essentially unchanged.
+		It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+		and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	</div>
+
+	<select id="rel_site">
+		<option value="">사이트 선택</option>
+		<option value="www.google.com">구글</option>
+		<option value="www.naver.com">네이버</option>
+		<option value="www.daum.net">다음</option>
+	</select><br>
+
+	<input type="checkbox" name="allchk" id="allchk">
+	<label for="allchk">모두체크</label>
 </body>
 </html>

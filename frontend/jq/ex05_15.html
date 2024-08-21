@@ -9,18 +9,17 @@
 	</style>
 	<script>
 		$(function () {
-			$('img').eq(1).width(190);
-			$('img').eq(1).height(170);
+			$('img').eq(1).width(190).height(170);
 
-			// "mousewheel(비표준)" 또는 "wheel(표준)"로 가능. 현재 "wheel"로 사용하라 권장됨.
-			$(document).on("wheel", function (event) {
-				// event.originalEvent.wheelDelta: 마우스의 위, 아래 스크롤값을 가져온다.
-				// 양수값: 휠 올림, 음수값: 휠 내림
-				var wheel = event.originalEvent.wheelDelta;
-				console.log(wheel);
+			$(document).on("mousedown", function (event) {
+				// event.which: 마우스 클릭 위치의 값을 가져온다.
+				// 1: 마우스 좌클릭, 2: 휠 클릭, 3: 마우스 우클릭
+				var mWhich = event.which;
+				// console.log(mWhich + ": ", event);
+				console.log(mWhich + ": ", event.originalEvent);
 				$("#ptxt").empty();
 
-				if (wheel > 0) {
+				if (mWhich <= 2) {
 					$("#ptxt").append("원본 가로 사이즈: " + $('.origin').width() + "px<br>");
 					$("#ptxt").append("원본 세로 사이즈: " + $('.origin').height() + "px");
 				} else {

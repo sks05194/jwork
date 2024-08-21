@@ -1,0 +1,51 @@
+/* 클릭 효과의 스타일 */
+.click-effect-left {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: rgba(0, 150, 255, 0.5);
+	border-radius: 50%;
+	transform: scale(1);
+	animation: click-animation 0.5s ease-out forwards;
+	pointer-events: none;
+	/* 클릭 효과가 클릭 이벤트에 영향을 주지 않도록 설정 */
+}
+
+/* 클릭 효과의 스타일 */
+.click-effect-middle {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: rgba(0, 255, 150, 0.5);
+	border-radius: 50%;
+	transform: scale(1);
+	animation: click-animation 0.5s ease-out forwards;
+	pointer-events: none;
+	/* 클릭 효과가 클릭 이벤트에 영향을 주지 않도록 설정 */
+}
+
+/* 클릭 효과의 스타일 */
+.click-effect-right {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: rgba(255, 0, 150, 0.5);
+	border-radius: 50%;
+	transform: scale(1);
+	animation: click-animation 0.5s ease-out forwards;
+	pointer-events: none;
+	/* 클릭 효과가 클릭 이벤트에 영향을 주지 않도록 설정 */
+}
+
+/* 클릭 애니메이션 */
+@keyframes click-animation {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	to {
+		transform: scale(3);
+		opacity: 0;
+	}
+}
