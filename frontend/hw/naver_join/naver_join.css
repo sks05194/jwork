@@ -1,5 +1,4 @@
-/* css format: newline between selectors => 자동정렬 해도 속성들이 다른 줄로 분리되지 않음! */
-
+/** main_div */
 #main_div {
 	width: 460px;
 	margin: auto;
@@ -14,11 +13,15 @@
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/** form */
 #join_form {
 	width: 100%;
-	height: 100%;
+	max-height: 100%;
+	/* display: flex;
+	flex-direction: column; */
 }
 
+/** input_area */
 .f_div {
 	width: 100%;
 	height: auto;
@@ -30,12 +33,14 @@
 
 .div_i:first-of-type,
 .div_i:first-of-type input {
-	border-radius: 5px 5px 0 0;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 
 .div_i:last-of-type,
 .div_i:last-of-type input {
-	border-radius: 0 0 5px 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 .div_i {
@@ -58,15 +63,14 @@ input:focus {
 	border: none;
 }
 
-/* 생각하면 머리 아플거 같으니 나중에 생각하도록 하자. */
-/* input:focus {
-	border: 3px solid green;
-} */
+/** f_div_1 */
+/* nothing */
 
-#promise {
-	display: inline;
-}
+/** f_div_2 */
+/* nothing */
 
+/** f_div_3 */
+/* 통신사 */
 #uagency {
 	cursor: pointer;
 	user-select: none;
@@ -99,6 +103,7 @@ input:focus {
 	padding: 10px;
 }
 
+/* 성별, 국적 */
 #rd_gr_div {
 	padding-left: 0;
 	display: flex;
@@ -110,6 +115,10 @@ input:focus {
 .radio_group {
 	width: fit-content;
 	display: inline-block;
+}
+
+.radio_group > input:checked+label {
+	border: 2px solid limegreen;
 }
 
 .radio_group > label {
@@ -129,6 +138,7 @@ input:focus {
 	border-radius: 0 5px 5px 0;
 }
 
+/** submit */
 #submit_button {
 	display: flex;
 	align-items: flex-end;
@@ -146,11 +156,7 @@ input:focus {
 	font-weight: bold;
 }
 
-.hidden {
-	width: 0;
-	height: 0;
-}
-
+/** others */
 .hide {
 	display: none;
 }
