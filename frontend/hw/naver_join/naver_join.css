@@ -1,11 +1,24 @@
+/* 
+아이콘 참고 해요. - 강사님
+https://icon-icons.com/ko/
+https://int-i.github.io/web/2022-06-20/css-img-svg-color/
+*/
+
 /** main_div */
+* {
+	font-size: 16px;
+}
+
 #main_div {
 	width: 460px;
+	height: 100%;
 	margin: auto;
 	/* background-color: skyblue; */
 }
 
-#naver_logo, #naver_logo:hover, #naver_logo:active {
+#naver_logo,
+#naver_logo:hover,
+#naver_logo:active {
 	color: limegreen;
 	font-weight: 1000;
 	text-decoration-line: none;
@@ -13,12 +26,32 @@
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#authIdSignUpBtn_div {
+	text-align: right;
+}
+
+#authIdSignUpBtn_div > label {
+	cursor: pointer;
+}
+
+#authIdSignUpBtn_div input[type=checkbox]+img {
+	filter: opacity(0.5) drop-shadow(0 0 0 #228b22);
+}
+
 /** form */
 #join_form {
 	width: 100%;
 	max-height: 100%;
-	/* display: flex;
-	flex-direction: column; */
+}
+
+.f_div>ul {
+	margin: 5px;
+	padding-left: 15px;
+}
+
+li[id$='warning'] {
+	font-size: 12px;
+	color: red;
 }
 
 /** input_area */
@@ -29,6 +62,10 @@
 	/* border: 1px solid black; */
 	/* border-radius: 7px; */
 	margin: 10px 0;
+}
+
+.f_div>div {
+	cursor: pointer;
 }
 
 .div_i:first-of-type,
@@ -45,14 +82,14 @@
 
 .div_i {
 	height: 50px;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
 	padding-left: 40px;
 }
 
 input {
 	width: 100%;
 	height: 100%;
-	box-sizing: border-box;
+	background-color: transparent;
 	padding: 0;
 	display: block;
 	border: none;
@@ -64,43 +101,71 @@ input:focus {
 }
 
 /** f_div_1 */
-/* nothing */
+/* id */
+input[name=uid] {
+	width: 300px;
+}
+
+#id_mail_div {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+/* pass */
+#pw_visible {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: gray;
+}
 
 /** f_div_2 */
-/* nothing */
-
-/** f_div_3 */
 /* 통신사 */
 #uagency {
-	cursor: pointer;
 	user-select: none;
 	line-height: 50px;
 }
 
 #uagency_div {
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	position: relative;
 	border-radius: 5px;
 	border: none;
 }
 
-#uagency_div>table {
-	/* border-radius: 5px; */
-	border-collapse: collapse;
+#uagency_div > table {
 	border-radius: 5px;
+	border-collapse: collapse;
 	background-color: white;
 	position: absolute;
-	box-shadow: 0 0 0px 1px black;
+	box-shadow: 0 0 3px gray;
 	top: -10px;
 	left: 50px;
 }
 
 #uagency_div td {
 	width: 100px;
-	border: 1px solid gray; /* 골치덩이 */
-	border-collapse: collapse;
 	height: 25px;
 	padding: 10px;
+}
+
+#uagency_div td > label {
+	pointer-events: none;
+}
+
+#uagency_div tr:first-child {
+	border-bottom: 1px solid lightgray;
+}
+
+#uagency_div tr:last-child {
+	border-top: 1px solid lightgray;
+}
+
+#uagency_div td:nth-child(2n+1) {
+	border-right: 1px solid lightgray;
 }
 
 /* 성별, 국적 */
@@ -117,11 +182,11 @@ input:focus {
 	display: inline-block;
 }
 
-.radio_group > input:checked+label {
+.radio_group>input:checked+label {
 	border: 2px solid limegreen;
 }
 
-.radio_group > label {
+.radio_group>label {
 	display: inline-block;
 	width: 95px;
 	padding: 5px;
@@ -130,12 +195,22 @@ input:focus {
 	border-collapse: collapse;
 }
 
-.radio_group > label:first-of-type {
+.radio_group>label:first-of-type {
 	border-radius: 5px 0 0 5px;
 }
 
-.radio_group > label:last-of-type {
+.radio_group>label:last-of-type {
 	border-radius: 0 5px 5px 0;
+}
+
+/** f_div_3 */
+label[for=promise] {
+	line-height: 50px;
+}
+
+p[id$='warning'] {
+	font-size: 12px;
+	color: red;
 }
 
 /** submit */

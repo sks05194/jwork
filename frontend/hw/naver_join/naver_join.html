@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Naver Join</title>
 	<link rel="stylesheet" href="naver_join.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
@@ -12,39 +13,57 @@
 	<div id="main_div">
 		<a href="https://www.naver.com/" id="naver_logo">NAVER</a>
 		<br>
-		<label>실명 인증된 아이디로 가입<input type="checkbox" id="authIdSignUpBtn"></label>
+		<div id="authIdSignUpBtn_div">
+			<label>
+				실명 인증된 아이디로 가입
+				<input type="checkbox" id="authIdSignUpBtn" class="hide" checked>
+				<img src="../../img/check_icon.png" alt="아이콘" style="width: 13px;">
+			</label>
+		</div>
 
 		<form id="join_form">
 
 			<div id="input_area">
 				<div class="f_div">
-					<div class="div_i"><input type="text" name="uid" placeholder="아이디"></div>
-
-					<div class="div_i"><input type="password" name="upass" placeholder="비밀번호"></div>
-
-					<div class="div_i"><input type="email" name="uemail" placeholder="[선택] 이메일부소 (비밀번호 찾기 등 본인 확인용)">
+					<div class="div_i" style="position: relative;">
+						<input type="text" name="uid" class="essential" placeholder="아이디">
+						<div id="id_mail_div">@naver.com</div>
 					</div>
+
+					<div class="div_i" style="position: relative;">
+						<input type="password" name="upass" class="essential" placeholder="비밀번호">
+						<div id="pw_visible"></div>
+					</div>
+
+					<div class="div_i"><input type="email" name="uemail" placeholder="[선택] 이메일주소 (비밀번호 찾기 등 본인 확인용)"></div>
+
+					<!-- 경고창 -->
+					<ul>
+						<li id="uid-warning" class="hide">아이디: 필수 정보입니다.</li>
+						<li id="upass-warning" class="hide">비밀번호: 필수 정보입니다.</li>
+						<li id="uemail-warning" class="hide">이메일: 이메일 주소가 정확한지 확인해 주세요.</li>
+					</ul>
 				</div>
 
 				<div class="f_div">
-					<div class="div_i"><input type="text" name="uname" placeholder="이름"></div>
+					<div class="div_i"><input type="text" name="uname" class="essential" placeholder="이름"></div>
 
-					<div class="div_i"><input type="text" name="ubirth" placeholder="생년월일 8자리"></div>
+					<div class="div_i"><input type="text" name="ubirth" class="essential" placeholder="생년월일 8자리"></div>
 
 					<div class="div_i" id="uagency">통신사 선택</div>
 					<div id="uagency_div" class="hide">
 						<table>
 							<tr>
-								<td><input type="radio" name="uagency" id="skt" class="hide"><label for="skt">SKT</label></td>
-								<td><input type="radio" name="uagency" id="skt_sub" class="hide"><label for="skt_sub">SKT 알뜰폰</label></td>
+								<td><input type="radio" name="uagency" class="hide" value="skt"><label for="skt">SKT</label></td>
+								<td><input type="radio" name="uagency" class="hide" value="skt_sub"><label for="skt_sub">SKT 알뜰폰</label></td>
 							</tr>
 							<tr>
-								<td><input type="radio" name="uagency" id="kt" class="hide"><label for="kt">KT</label></td>
-								<td><input type="radio" name="uagency" id="kt_sub" class="hide"><label for="kt_sub">KT 알뜰폰</label></td>
+								<td><input type="radio" name="uagency" class="hide" value="kt"><label for="kt">KT</label></td>
+								<td><input type="radio" name="uagency" class="hide" value="kt_sub"><label for="kt_sub">KT 알뜰폰</label></td>
 							</tr>
 							<tr>
-								<td><input type="radio" name="uagency" id="lg" class="hide"><label for="lg">LG U+</label></td>
-								<td><input type="radio" name="uagency" id="lg_sub" class="hide"><label for="lg_sub">LG U+ 알뜰폰</label></td>
+								<td><input type="radio" name="uagency" class="hide" value="lg"><label for="lg">LG U+</label></td>
+								<td><input type="radio" name="uagency" class="hide" value="lg_sub"><label for="lg_sub">LG U+ 알뜰폰</label></td>
 							</tr>
 						</table>
 					</div>
@@ -59,14 +78,25 @@
 						</div>
 					</div>
 
-					<div class="div_i"><input type="text" placeholder="휴대전화번호"></div>
+					<div class="div_i"><input type="text" id="uphone" name="uphone" class="essential" placeholder="휴대전화번호"></div>
+					
+					<!-- 경고창 -->
+					<ul>
+						<li id="uname-warning" class="hide">이름: 필수 정보입니다.</li>
+						<li id="ubirth-warning" class="hide">생년월일: 필수 정보입니다.</li>
+						<li id="uphone-warning" class="hide">휴대전화번호: 필수 정보입니다.</li>
+					</ul>
 				</div>
 
 				<div class="f_div">
 					<!-- TODO: 많이 생각만 해 볼 예정임. -->
-					<div class="div_i"><input type="checkbox" id="promise" class="hide" name="true"><label
-							for="promise">[필수]인증 약관 전체동의</label></div>
+					<!-- class="essential" 넣을 장소 찾아보시오. -->
+					<div class="div_i">
+						<input type="checkbox" id="promise" class="hide" name="true">
+						<label for="promise"><span style="color: green;">[필수]</span> 인증 약관 전체동의</label>
+					</div>
 				</div>
+				<p id="promise_warning" class="hide">필수 약관에 모두 동의해 주세요.</p>
 			</div>
 
 			<div id="submit_button">
