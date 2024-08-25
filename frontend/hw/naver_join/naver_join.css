@@ -84,6 +84,7 @@ li[id$='warning'] {
 	height: 50px;
 	border: 1px solid lightgray;
 	padding-left: 40px;
+	line-height: 50px;
 }
 
 input {
@@ -94,10 +95,16 @@ input {
 	display: block;
 	border: none;
 	border-radius: 0;
+	cursor: pointer;
 }
 
 input:focus {
 	border: none;
+}
+
+.redplaceholder::placeholder {
+	color: red;
+	text-decoration: underline;
 }
 
 /** f_div_1 */
@@ -108,7 +115,7 @@ input[name=uid] {
 
 #id_mail_div {
 	position: absolute;
-	top: 15px;
+	top: 0;
 	right: 15px;
 }
 
@@ -119,14 +126,20 @@ input[name=uid] {
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	background-color: gray;
+	background-color: lightgray;
+	border-radius: 20px;
 }
 
 /** f_div_2 */
+/* 생년월일 */
+#ubirth-children {
+	font-size: 12px;
+	color: green;
+}
+
 /* 통신사 */
 #uagency {
 	user-select: none;
-	line-height: 50px;
 }
 
 #uagency_div {
@@ -179,6 +192,7 @@ input[name=uid] {
 
 .radio_group {
 	width: fit-content;
+	line-height: 20px;
 	display: inline-block;
 }
 

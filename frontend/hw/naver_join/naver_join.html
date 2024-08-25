@@ -14,8 +14,8 @@
 		<a href="https://www.naver.com/" id="naver_logo">NAVER</a>
 		<br>
 		<div id="authIdSignUpBtn_div">
-			<label>
-				실명 인증된 아이디로 가입
+			<label for="authIdSignUpBtn" style="font-size: 14px;">
+				실명 인증된 아이디로 가입(미구현)
 				<input type="checkbox" id="authIdSignUpBtn" class="hide" checked>
 				<img src="../../img/check_icon.png" alt="아이콘" style="width: 13px;">
 			</label>
@@ -35,7 +35,7 @@
 						<div id="pw_visible"></div>
 					</div>
 
-					<div class="div_i"><input type="email" name="uemail" placeholder="[선택] 이메일주소 (비밀번호 찾기 등 본인 확인용)"></div>
+					<div class="div_i"><input type="text" name="uemail" class="essential" placeholder="[선택] 이메일주소 (비밀번호 찾기 등 본인 확인용)"></div>
 
 					<!-- 경고창 -->
 					<ul>
@@ -71,7 +71,7 @@
 					<!-- radio group div -->
 					<div id="rd_gr_div" class="div_i">
 						<div class="radio_group">
-							<input type="radio" id="g_male" name="gender" class="hide" value="male"><label for="g_male">남자</label><input type="radio" id="g_female" name="gender" class="hide" value="female"><label for="g_female">여자</label>
+							<input type="radio" id="g_male" name="ugender" class="hide" value="male"><label for="g_male">남자</label><input type="radio" id="g_female" name="ugender" class="hide" value="female"><label for="g_female">여자</label>
 						</div>
 						<div class="radio_group">
 							<input type="radio" class="hide" id="nati_dome" name="nationality" value="dome" checked><label for="nati_dome">내국인</label><input type="radio" class="hide" id="nati_fore" name="nationality" value="fore"><label for="nati_fore">외국인</label>
@@ -84,16 +84,19 @@
 					<ul>
 						<li id="uname-warning" class="hide">이름: 필수 정보입니다.</li>
 						<li id="ubirth-warning" class="hide">생년월일: 필수 정보입니다.</li>
+						<!-- 어린이일 경우 일부 UI 숨겨지는 기능 미구현 -->
+						<p id="ubirth-children" class="hide">생년월일: 만 14세 미만의 어린이는 보호자의 동의가 필요합니다.</p>
+						<li id="uagency-warning" class="hide">통신사: 이용하는 통신사를 선택해 주세요.</li>
+						<li id="ugender-warning" class="hide">성별: 성별을 선택해 주세요.</li>
 						<li id="uphone-warning" class="hide">휴대전화번호: 필수 정보입니다.</li>
 					</ul>
 				</div>
 
 				<div class="f_div">
-					<!-- TODO: 많이 생각만 해 볼 예정임. -->
-					<!-- class="essential" 넣을 장소 찾아보시오. -->
+					<!-- 구현 실패 -->
 					<div class="div_i">
 						<input type="checkbox" id="promise" class="hide" name="true">
-						<label for="promise"><span style="color: green;">[필수]</span> 인증 약관 전체동의</label>
+						<label for="promise"><span style="color: green;">[필수]</span> 인증 약관 전체동의 (미구현)</label>
 					</div>
 				</div>
 				<p id="promise_warning" class="hide">필수 약관에 모두 동의해 주세요.</p>
