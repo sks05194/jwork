@@ -10,8 +10,15 @@ $(".div_i").click(e => {
 $("#pw_visible").click(e => {
 	let pwInput = $("input[name=upass]");
 
-	if (pwInput.attr('type') == "password") pwInput.attr('type', 'text');
-	else pwInput.attr('type', 'password');
+	if (pwInput.attr('type') == "password") {
+		pwInput.attr('type', 'text');
+		$("#pw_visible").css('background-position-y', -296);
+	}
+	else {
+		pwInput.attr('type', 'password');
+		$("#pw_visible").css('background-position-y', -264);
+	} 
+
 });
 
 // 통신사 선택 클릭 시 테이블 활성화/비활성화
@@ -171,6 +178,7 @@ $(".essential").each((i, e) => {
 			validFunc = function () {
 				if ((reg.test($(e).val())) || ($(e).val() == "")) {
 					judgment(e, true);
+					$(e).removeClass("redplaceholder");
 					return true;
 				} else {
 					judgment(e, false);
@@ -197,11 +205,11 @@ $(".essential").each((i, e) => {
 			validFunc = function () {
 				let value = $(e).val().split('.').join('');
 
-				if (Number(value) == NaN || !reg.test($(e).val())) {
+				if (Number(value) == NaN || !reg.test(value)) {
 					judgment(e, false);
 					$("#" + name + "-children").hide();
 
-					$("#" + name + "-warning").text(($(e).val() == "")
+					$("#" + name + "-warning").text((value == "")
 						? "생년월일: 필수 정보입니다."
 						: "생년월일: 생년월일은 8자리 숫자로 입력해 주세요.");
 					return false;
@@ -216,7 +224,8 @@ $(".essential").each((i, e) => {
 
 				let todayStr = "" + today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0');
 
-				if (Number(value) < Number(todayStr) - 1000000 || Number(value) > Number(todayStr)) {
+				// 범위를 넘어갈 경우
+				if (Number(value) < Number(todayStr) - 1100000 || Number(value) > Number(todayStr) || inputDate == 'Invalid Date') {
 					$(e).parent().css('border', '2px solid red');
 					$(e).addClass("redplaceholder");
 					$("#" + name + "-warning").show();

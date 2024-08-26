@@ -13,7 +13,6 @@ https://int-i.github.io/web/2022-06-20/css-img-svg-color/
 	width: 460px;
 	height: 100%;
 	margin: auto;
-	/* background-color: skyblue; */
 }
 
 #naver_logo,
@@ -58,9 +57,6 @@ li[id$='warning'] {
 .f_div {
 	width: 100%;
 	height: auto;
-	/* background-color: greenyellow; */
-	/* border: 1px solid black; */
-	/* border-radius: 7px; */
 	margin: 10px 0;
 }
 
@@ -121,13 +117,16 @@ input[name=uid] {
 
 /* pass */
 #pw_visible {
+	background-image: url(https://ssl.pstatic.net/static/nid/join/m_sp_06_realname_48b1e603.png);
+	background-position-x: -256px;
+	background-position-y: -264px;
+	background-size: 375px 326px;
+	color: black;
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	top: 5px;
+	top: 10px;
 	right: 5px;
-	background-color: lightgray;
-	border-radius: 20px;
 }
 
 /** f_div_2 */
