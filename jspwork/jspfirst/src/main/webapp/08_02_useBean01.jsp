@@ -16,7 +16,8 @@
 
 	<jsp:useBean id="date" class="java.util.Date" />
 	<p><%out.print("오늘의 날짜 및 시각");%></p>
-	<p><%=date.toLocaleString()%></p><br><br>
+<!-- 	경고로 인한 주석처리 -->
+<%-- 	<p><%=date.toLocaleString()%></p><br><br> --%>
 	<hr>
 
 	<jsp:useBean id="memberBean" class="com.dto.MemberBean" />
