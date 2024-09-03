@@ -1,0 +1,32 @@
+※ 시간의 순서에 따라 기술되었습니다.
+
+
+1교시
+09:40
+	필터:
+	필터객체는 웹 서버가 구동되어 web.xml 파일을 실행할 때 그 때 생성되어 준비됨.
+	1. javax.servlet.Filter 인터페이스를 상속받은 필터클래스 생성
+	2. 필터 객체 생성 및 맵핑처리
+
+	필터 객체 생성
+		<filter>
+			<filter-name>필터객체명</filter-name>
+			<filter-class>패키지경로포함.필터클래스명</filter-class>
+		</filter>
+	
+	필터 객체 맵핑 설정
+		<filter-mapping>
+			<filter-name>필터객체명</filter-name>
+			<url-pattern>/url패턴기술</url-pattern>
+		</filter-mapping>
+
+6교시
+16:15
+	데이터베이스-자바 연결 방법
+		1. 오라클 드라이버 준비: ojdbc6.jar 파일 추가
+		2. 드라이버 설치: Class.forName("oracle.jdbc.driver.OracleDriver");
+		3. 연결객체 생성: 
+			String url = "jdbc:oracle:thin:@localhost:1521:XE";
+			String username = "TEST";
+			String password = "1111";
+			Connection conn = DriverManager.getConnection(url, username, password);

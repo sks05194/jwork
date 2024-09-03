@@ -17,6 +17,7 @@ public class AuthenFilter implements Filter {
 	// 생성자 호출 다음으로 처음 딱 한 번만 실행되는 초기 메소드
 	// 필터 객체가 생성될 때 호출되는 메소드이다.
 	// 필터 객체는 웹 애플리케이션 서비스가 올라가면서(웹 서버가 시작될 때) 한 번만 되어 생성되어 한 번만 호출되며, init()메소드에는 주로 초기화 기능을 구현한다.
+	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
 		System.out.println("Filter01 초기화...");
 		// this.filterConfig = filterConfig;
@@ -24,6 +25,7 @@ public class AuthenFilter implements Filter {
 
 	// url 패턴에 일치하면 무조건 실행되는 메소드
 	// doFilter() 메소드는 필터링 설정한 서블릿을 실행할 때마다 호출되는 메소드로서 실제 필터링 기능을 구현하는 메소드임.
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("Filter01.jsp 수행...");
 		request.setCharacterEncoding("utf-8");
@@ -48,6 +50,7 @@ public class AuthenFilter implements Filter {
 	// 필터 객체가 삭제될 때 호출되는 메소드임.
 	// 주로 자원 해제 기능을 구현한다.
 	// 필터 객체가 해제되었을 때 실행되는 메소드
+	@Override
 	public void destroy() {
 		System.out.println("Filter01 해제...");
 		// this.filterConfig = null;
