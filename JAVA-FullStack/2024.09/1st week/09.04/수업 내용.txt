@@ -1,0 +1,89 @@
+※ 시간의 순서에 따라 기술되었습니다.
+
+3교시
+11:55
+	dbcp (DataBase Connection Pool)
+	: 필요한 connection 객체를 미리 만들어 보관해두었다가 connection 객체를 요청하는 사용자가 있으면 해당 객체를 바로 전달해주는 역할을 하는 연결객체 컨테이너임.
+	연결객체를 생성하도록 실행하는 기능과 생성된 객체를 보관하는 기능을 가지고 있으나 연결객체를 생성하는 것은 jdbc를 이용한다.
+
+	웹프로젝트에서 dbcp 설정하는 방법과 순서
+	1. src/main/webapp/META-INF 폴더 안에 context.xml 파일을 생성한다.
+		기술형식:
+			<Context>
+				<Resource name="jdbc/설정한 이름"
+					auth="Container"
+					type="javax.sql.DataSource"
+					username="사용자계정명"
+					password="설정한계정의비번"
+					driverClassName="oracle.jdbc.driver.OracleDriver"
+					factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+					url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+					maxTotal="200"
+					maxIdle="100"/>
+			</Context>
+	2. dbcp를 이용하기 위해 java 코드로 기술해야하는 순서와 방법
+		java.sql 패키지에서 필요한 클래스나 인터페이스들을 import
+		javax.sql 패키지에서 필요한 클래스나 인터페이스들을 import
+		javax.naming 패키지에서 필요한 클래스나 인터페이스들을 import
+	3. Context 인터페이스 자료형을 통해 context.xml에 설정된 데이터를 가지고 온다.
+		Context 컨텍스트객체명 = new InitialContext();
+		DataSource ds객체명 = (DataSource) 컨텍스트객체명.lookup("java:comp/env/컨텍스트 파일의 Resource 태그의 name 속성값");
+
+		예시:
+			context.xml 파일의 내용
+				<Resource name="jdbc/ServletProject" ~~~/>
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:com/env/jdbc/ServletProject");
+			Connection conn = ds.getConnection();
+
+6교시
+15:45
+	MVC 패턴 (M: Model, V: View, C: Controller)
+	M: DTO(=VO), DAO, SERVICE 데이터베이스에 관련된 일을 처리 (백엔드)
+	- DTO(=VO): 데이터베이스에 전달할 데이터를 저장하거나 전달하는 객체
+	- DAO: 데이터베이스에 접근할 수 있는 SQL 명령문 객체를 담고 있는 객체
+	- SERVICE: DAO에 바로 접근 전에 경유하는 객체로 아무런 기능 없이 DAO에 일을 시키는 기능만 가지고 있는 객체
+
+	V: 사용자가 보게 되는 페이지에 관련된 일을 처리
+	.html, .jsp (프론트엔드)
+
+	C: 요청과 응답 사이에서 필요한 기능이나 데이터들을 제어하는 역할 또는 처리를 하는 객체
+	(=서블릿)
+
+	MVC1 패턴:
+	서블릿이 없었을 때 사용했던 옛날 버전의 패턴
+	MVC 구분이 명확하지 않고 jsp 소스코드에 한꺼번에 처리가 되어있는 패턴
+
+	MVC2 = MVC 패턴:
+	서블릿이 존재하며 M, V, C 구분이 명확하게 나뉘어 처리되어 있는 패턴
+
+	서블릿 설정방법:
+	어노테이션 방법, web.xml에 servlet 태그를 사용하여 설정하는 방법
+
+	<!-- servlet 객체 생성 -->
+	<servlet>
+		<servlet-name>객체명</servlet-name>
+		<servlet-class>패키지경로.서블릿클래스명<servlet-class>
+	</servlet>
+
+	<!-- servlet 실행할 조건 설정 -->
+	<filter-mappping>
+		<servlet-name>객체명</servlet-name>
+		<url-pattern>/url경로</url-pattern>
+	</servlet-mappping>
+
+16:15
+	서블릿 생성 시 주의사항
+	1. 반드시 HttpServlet 클래스를 상속받아서 구현해야 한다.
+	2. 반드시 doGet, doPost 메소드를 오버라이드 해주어야 한다.
+
+7교시
+16:50
+	서블릿과 필터의 차이점:
+	필터: request, response 객체의 변경이나 추가 기능들을 처리하고 통과하는 기능만 제공.
+	애플리케이션이 실행이 되는 순간에 바로 객체 생성되어 준비
+	요청에서 가장 먼저 처리되고 가장 마지막에 처리되는 객체
+
+	서블릿: 요청과 응답을 제어하는 객체.
+	필터를 제외한 요청을 가장 먼저 받아들이고, 응답에 대한 전반적인 일들을 처리하는 객체(필요한 서비스 객체, 핸드러맵퍼 객체, 응답 url 완성 등의 기능을 처리).
+	맨 처음 한 번이라도 url 패턴에 맞는 요청이 들어와야 그 때 생성되어 사용됨.

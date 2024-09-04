@@ -73,6 +73,5 @@
 		if (conn != null) conn.close();
 	}
 	%>
-	
 </body>
 </html>
