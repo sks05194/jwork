@@ -1,0 +1,39 @@
+※ 시간의 순서에 따라 기술되었습니다.
+
+1교시
+09:30
+	Dynamic Web Project 파일 기술순서
+	1. WEB-INF/lib : 필요한 외부 라이브러리 파일들(.jar)
+	2. META-INF: DBCP에 필요한 context.xml 파일
+	3. src/main/java: 패키지들, .properties 파일들, .java 파일들(클래스-필터, 서블릿, 추상클래스, 인터페이스)
+	4. webapp: 폴더들, .html, .css, .js, .jsp 파일들, 이미지 파일들, 영상 파일들, 텍스트 파일들
+	5. WEB-INF: (보안폴더-외부접근안됨) xml파일들, lib폴더, webapp 폴더에 들어갈 수 있는 모든 파일들
+	6. web.xml: 필요한 부분이 모두 생성이 된 다음 마지막에 코드를 기술해야하는 파일
+
+10:00
+	서블릿
+	<servlet>
+		<servlet-name>test</servlet-name>
+		<servlet-class>com.servlet.TestSetvlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>test</servlet-name>
+		<url-pattern>/testUrl</url-pattern>
+	</servlet-mapping>
+
+6교시
+15:30
+	에러: Naming~~~~, jdbc/~~, url~~~, driver~~
+	=> context.xml 파일 또는 Connection 객체를 생성하는 로직 살펴보기
+	에러: invalid number ~ port number …
+	=> context.xml 파일의 url 속성값에 기술되어 있는 port 번호 보기
+	tomcat 구동 안 되는 경우
+	=> web.xml 파일, Servlet에 연결되어 있는 클래스 파일들.
+	분명히 데이터가 들어있는데, 값을 못 가져오는 느낌이 드는 에러들
+	=> 데이터베이스 개발 툴에서 작업한 DML 명령문 뒤에 commit을 했는지 반드시 체크
+
+7교시
+17:00?
+	1. admin 관리자 가입, user1 일반사용자 가입
+	2. 일반사용자 로그인 시 에러 처리
+	3. 로그인 페이지에서 로그아웃 메뉴 구현

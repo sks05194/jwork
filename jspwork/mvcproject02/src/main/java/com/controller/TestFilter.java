@@ -8,8 +8,10 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 
-//@WebFilter("/conservlet")
+
+@WebFilter("/conservlet")
 public class TestFilter implements Filter {
 	public TestFilter() {
 		System.out.println("필터 객체 생성");
