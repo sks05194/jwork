@@ -21,9 +21,10 @@ public class MemberListAction implements Action {
 		} else if (!id.equals("admin")) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
+
 			out.println("<script>");
 			out.println("alert('관리자가 아닙니다.');");
-			out.println("location.href='./memberLogin.me'");
+			out.println("location.href='./member_regular.jsp';");
 			out.println("</script>");
 		} else {
 			forward = new ActionForward();

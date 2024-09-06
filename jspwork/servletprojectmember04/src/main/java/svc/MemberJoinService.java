@@ -8,7 +8,6 @@ import dao.MemberDAO;
 public class MemberJoinService {
 
 	public boolean joinMember(MemberBean member) {
-		// TODO Auto-generated method stub
 		boolean joinSuccess = false;
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		Connection con = getConnection();

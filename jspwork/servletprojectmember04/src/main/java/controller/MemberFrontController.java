@@ -75,6 +75,13 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if (command.equals("/memberLogout.me")) {
+			request.getSession().invalidate();
+			
+			forward = new ActionForward();
+			forward.setRedirect(true);
+			forward.setPath("./loginForm.jsp");
+		}
 		
 		if (forward != null) {
 			if (forward.isRedirect()) {

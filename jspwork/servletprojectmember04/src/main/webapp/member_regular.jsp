@@ -24,20 +24,11 @@
 	<section id = "memberListArea">
 		<table>
 			<tr>
-				<td colspan=2><h1>회원 목록</h1></td>
+				<td><h1>일반 회원</h1></td>
 			</tr>
-			<c:forEach var = "member" items = "${memberList}">
 			<tr>
-				<td>
-					<a href="memberViewAction.me?id=${member.MEMBER_ID}">
-						${member.MEMBER_ID}
-					</a>
-				</td>
-				<td>
-					<a href="memberDeleteAction.me?id=${member.MEMBER_ID}">삭제</a>
-				</td>
+				<td><p>${id}님 환영합니다.</p></td>
 			</tr>
-			</c:forEach>
 		</table>
 	</section>
 	<div style="width: 400px; margin : auto; margin-top: 10px; text-align: right;">

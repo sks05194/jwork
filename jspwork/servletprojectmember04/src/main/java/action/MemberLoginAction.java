@@ -26,7 +26,8 @@ public class MemberLoginAction implements Action {
 			forward.setRedirect(true);
 			forward.setPath("./memberListAction.me");
 		} else {
-			response.setContentType("text/html;charset=euc-kr");
+			// response.setContentType("text/html;charset=euc-kr");
+			 response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인 실패');");

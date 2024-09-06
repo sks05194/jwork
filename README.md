@@ -1,7 +1,7 @@
 # JWORK
 
 - 링크
-	- [노션](https://wool-point-849.notion.site/JAVA-Full-Stack-Class-acfa1a12c38e4185852685d854bfbec7?pvs=4)
+	- **[노션](https://wool-point-849.notion.site/JAVA-Full-Stack-Class-acfa1a12c38e4185852685d854bfbec7?pvs=4)**
 - JAVA-FullStack
 	- 지금까지 배운 수업내용에 대한 자료들이 저장되어있는 폴더ㄴ입니다.
 - frontend
