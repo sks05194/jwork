@@ -3,7 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="lg" class="com.kr.co.Lg"></bean>
-	<bean id="Samsung" class="com.kr.co.Samsung"></bean>
+	<!-- 
+	java 방식
+	import com.kr.co.Lg;
+	Lg lg = new Lg();
+	
+	jsp 방식
+	<jsp:useBean id="lg" class="com.kr.co.Lg" />
+	 -->
+	<bean id="ltv" class="com.kr.co.Lg" lazy-init="true" scope="prototype"/>
+	<bean name="http://stv" class="com.kr.co.Samsung" init-method="initSamsung" destroy-method="destroySamsung"/>
 
 </beans>
