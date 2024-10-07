@@ -1,0 +1,22 @@
+AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext2.xml");
+
+
+컨테이너객체: factory
+객체들:
+
+1.sony => 자료형:SonySpeaker, Speaker, 싱글톤, 즉시로딩
+2.apple => 자료형:AppleSpeaker, Speaker, 싱글톤 , 즉시로딩
+3.samsung => 자료형: Samsung, TV , 싱글톤, 즉시로딩
+		
+
+AbstractApplicationContext factory = new GenericXmlApplicationContext("annotContext.xml");
+
+
+컨테이너객체: factory
+객체들:
+
+1. apple=> AppleSpeaker, Speaker, 싱글톤, 즉시로딩
+2. samsung=> Samsung, TV, 싱글톤, 즉시로딩  **** 대기(주입처리)
+3. sony => SonySpeaker, Speaker, 싱글톤, 즉시로딩
+
+private Speaker speaker; <=자동주입 @Autowired @Qualifier("sony")
