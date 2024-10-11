@@ -10,12 +10,6 @@ import com.springbook.biz.board.BoardVO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
-//	@Autowired
-//	private BoardDAO boardDAO;
-
-//	@Autowired
-//	private BoardDAOSpring boardDAO;
-
 	@Autowired
 	private BoardDAODBCP boardDAO;
 
@@ -45,7 +39,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getBoardList(BoardVO vo) {
-		return boardDAO.getBoardList(vo);
+	public List<BoardVO> getBoardList(BoardVO vo, String keyword, String condition) {
+		return boardDAO.getBoardList(vo, keyword, condition);
 	}
 }
