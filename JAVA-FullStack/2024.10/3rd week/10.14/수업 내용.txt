@@ -1,0 +1,72 @@
+1교시
+09:30
+	데이터베이스 테이블생성
+
+	1. 라이브러리 추가
+	2. VO 클래스
+	3. 상황에 따른 SQL 쿼리문 만들기
+	3-1. 서블릿 설정 파일 만들기 (스프링 빈 설정 파일 생성)
+	- 비즈니스 레이어: 데이터베이스 연결 객체, 데이터베이스 관련 템플릿 객체, DAO, SVC 객체, AOP 관련
+	4. DAO 만들기
+	5. SVC 만들기
+	6. jsp 파일 만들기
+	6. Controller 만들기
+	7. 서블릿 설정 파일 만들기 (스프링 빈 설정 파일 생성)
+	- 프레젠테이션 레이어: 핸들러 맵퍼, 뷰 리졸버, 컨트롤러 객체 생성, 파일 업로드 객체, ajax 관련 객체
+	8. web.xml 파일에 필요한 필터 객체, 서블릿 객체 등등 설정하기
+
+2교시
+11:10
+	스프링 컨테이너(Xml Web Application Context)
+	--- applicationContext.xml
+	객체들:
+	1. dataSource: BasicDataSource, DataSource
+	2. jdbcTemplate: JdbcTemplate (1번 dataSource 객체 주입받음)
+	3. boardDAODBCP: BoardDAODBCP (2번 jdbcTemplate 객체 Autowired 주입)
+	4. boardService: BoardServiceImpl, BoardService (3번 boardDAODBCP 객체 Autowired 주입)
+	5. userDAODBCP: UserDAODBCP (2번 jdbcTemplate 객체 Autowired 주입)
+	6. userService: UserServiceImpl, UserService (5번 userDAODBCP 객체 Autowired 주입)
+
+	--------------------
+	DeleteBoardController 4번 boardService Autowired 주입
+	GetBoardController 4번 boardService Autowired 주입
+	GetBoardListController 4번 boardService Autowired 주입
+	InsertBoardController 4번 boardService Autowired 주입
+	UpdateBoardController 4번 boardService Autowired 주입
+
+	LoginController 6번 userService Autowired 주입
+	LogoutController 6번 userService Autowired 주입
+	==================================================
+	==================================================
+	presentation-layer.xml
+	--------------------------------------------------
+	controller 객체 생성
+	login => LoginController
+	logout => LogoutController
+
+	getBoardList => GetBoardListController
+	getBoard => GetBoardController
+
+	insertBoard => InsertBoardController
+	updateBoard => UpdateBoardController
+	deleteBoard => DeleteBoardController
+	--------------------------------------------------
+	handler Mapper 객체 생성
+	"/login.do" => login
+	"/getBoardList.do" => getBoardList
+	"/getBoard.do" => getBoard
+	"/insertBoard.do" => insertBoard
+	"/updateBoard.do" => updateBoard
+	"/deleteBoard.do" => deleteBoard
+	"/logout.do" => logout
+	--------------------------------------------------
+	view Resolver 객체 생성(forward만 뷰 리졸버 처리됨)
+	viewResolver => InternalResourceViewResolver
+	prefix = "/WEB-INF/"
+	suffix = ".jsp"
+
+3교시
+12:10
+	ModelAndView.setViewName()의 매개변수 안에
+	1. redirect: 이 없는 경우 => forwarding 방식으로 페이지 이동 (뷰 리졸버 객체 실행됨)
+	2. redirect: 이 있는 경우 => redirect 방식으로 페이지 이동 (뷰 리졸버 객체 실행 안 됨. WEB-INF 경로 안의 페이지들은 접근 안 됨.)

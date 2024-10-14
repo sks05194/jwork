@@ -25,12 +25,10 @@ public class GetBoardListController implements Controller {
 		// 1. 사용자 입력 정보 추출(검색 기능은 나중에 구현)
 		// 2. DB 연동 처리
 		BoardVO vo = new BoardVO();
-		String keyword, condition;
-		if (request.getParameter("searchKeyword") == null) keyword = "";
-		else keyword = request.getParameter("searchKeyword");
+		String keyword, condition;		
 
-		if (request.getParameter("searchCondition") == null) condition = "TITLE";
-		else condition = request.getParameter("searchCondition");
+		keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword");
+		condition = request.getParameter("searchCondition") == null ? "TITLE" : request.getParameter("searchCondition");
 
 		if (condition.equals("TITLE")) {
 			vo.setTitle(keyword);
