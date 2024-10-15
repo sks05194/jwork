@@ -45,7 +45,7 @@ public class UserDAODBCP {
 		return jdbcTemplate.update(USER_DELETE, vo.getId(), vo.getPassword());
 	}
 
-	public List<UserVO> getuserList(String keyword) {
+	public List<UserVO> getUserList(String keyword) {
 		System.out.println("jdbcTemplate getUserList 메소드 실행");
 
 		String USER_LIST = "SELECT * FROM users WHERE 1=1";

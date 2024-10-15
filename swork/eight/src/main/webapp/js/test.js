@@ -31,3 +31,30 @@ $(document).ready(function () {
 		location.href = "getBoardList.do";
 	});
 });
+
+function selUser(val) {
+	location.href = "selUser.do?id=" + val;
+}
+
+function delUser(val, url, msg) {
+	if (val == 'admin') {
+		alert(msg);
+	} else {
+		if (confirm("정말로 삭제하시겠습니까?")) {
+			let password = prompt("비밀번호를 입력해주세요.");
+			if (password != null) {
+				location.href = url + "?id=" + val + "&password=" + password;
+			} else return;
+		}
+		else return;
+	}
+}
+
+function chk() {
+	if ($("#id").val() == 'admin' && $("#role").val() != 'Admin') {
+		alert('관리자는 역할을 변경하실 수 없습니다.');
+		return false;
+	} else {
+		return true;
+	}
+}

@@ -21,6 +21,7 @@ public class LoginController {
 
 	@RequestMapping("/join.do")
 	public String userInsert(UserVO vo) {
+		vo.setRole("User");
 		userService.userInsert(vo);
 		return "redirect:login.jsp?result=1";
 	}
@@ -47,10 +48,11 @@ public class LoginController {
 
 	@RequestMapping("/userList.do")
 	public String getUserList(@RequestParam(value = "searchKeyword", defaultValue = "", required = false) String keyword, Model model) {
-		model.addAttribute("userList", userService.getuserList(keyword));
+		model.addAttribute("userList", userService.getUserList(keyword));
 		return "/WEB-INF/user/userList.jsp";
 	}
 
+//	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	@GetMapping(value = "/login.do")
 	public String loginView(@ModelAttribute UserVO vo) {
 		vo.setId("admin");
@@ -58,6 +60,7 @@ public class LoginController {
 		return "login.jsp";
 	}
 
+//	@PostMapping(value = "/login.do")
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login(UserVO vo, HttpSession session) {
 		vo = userService.login(vo);

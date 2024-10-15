@@ -13,11 +13,22 @@
 		<c:when test="${userId ne NULL}">
 			<ul class="navbar-nav nav-right">
 				<li class="nav-item"><a class="nav-link">${userName}님</a></li>
+				<li class="nav-item">
+					<c:choose>
+						<c:when test='${userId eq "admin"}'>
+							<a href="userList.do" class="nav-link">회원관리</a>
+						</c:when>
+						<c:otherwise>
+							<a href="selUser.do?id=${userId}" class="nav-link">마이페이지</a>
+						</c:otherwise>
+					</c:choose>
+				</li>
 				<li class="nav-item"><a href="logout.do" class="nav-link">로그아웃</a></li>
 			</ul>
 		</c:when>
 		<c:otherwise>
 			<ul class="navbar-nav nav-right">
+				<li class="nav-item"><a href="join.jsp" class="nav-link">회원가입</a></li>
 				<li class="nav-item"><a href="login.do" class="nav-link">로그인</a></li>
 			</ul>
 		</c:otherwise>

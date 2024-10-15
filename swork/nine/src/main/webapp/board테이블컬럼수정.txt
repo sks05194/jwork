@@ -1,0 +1,4 @@
+board테이블 컬럼 추가하기
+
+ALTER TABLE BOARD
+ADD ( FILENAME VARCHAR(500) ) ;
