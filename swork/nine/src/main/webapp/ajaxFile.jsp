@@ -12,9 +12,82 @@
 		th {background-color:#aaa; color:#fff;}
 	</style>
 
-<script>
-//####################스크립트 작성하기####################//
-</script>
+	<script>
+		function getBoard1(val) {
+			var objParams = { seq: val };
+			var values = []; // ArrayList 값을 받을 변수를 선언
+			$.ajax({
+				url: "reqAjax1.do",
+				type: "POST",
+				data: objParams,
+				cache: false,
+				success: function (data) {
+					$("#demo1").hide();
+					console.log(data);
+					console.log("성공");
+					let str = "";
+					$.each(data, function (i, o) {
+						str += "[" + i + "] { " + o.seq + "," + o.title + ", " + o.writer + " }<br>";
+					});
+					$("#demo1_con").html(str);
+				},
+				error: function (request, status) {
+					alert("오류가 발생했습니다.");
+				}
+			});
+		}
+
+		function getBoard2(val) {
+			var objParams = { seq: val };
+			var values = [];
+			$.ajax({
+				url: "reqAjax2.do",
+				type: "POST",
+				data: objParams,
+				cache: false,
+				success: function(data) {
+					if (data.code == "OK") { // controller에서 넘겨준 성공여부 코드
+						values = data.boardList; // java에서 정의한 ArrayList명을 적어준다.
+						$.each(values, function (index, value) {
+							console.log(index + " : " + value.title);
+							$("#status").append(
+								"<tr><td>" + value.seq + "</td><td>" + value.title + "</td><td>" + value.writer + "</td></tr>"
+							);
+						});
+						$("#demo2").hide();
+						console.log("성공");
+					} else {
+						console.log("실패");
+					}
+				},
+				error: function (request, status) {
+					alert("오류가 발생했습니다.");
+				}
+			});
+		}
+
+		function ajaxTest() {
+			$.ajax({
+				url: "ajaxTest.do", // form태그의 action 속성
+				type: "POST", // form태그의 method 속성
+// 				contentType: 'application/json; charset=utf-8',
+				// form태그의 입력요소로 보내는 파라미터(name)와 value
+				data: {"id": "admin", "password": "1111", "name": "관리자", "role": "Admin"},
+// 				data: JSON.stringify(
+// 					{"id": "admin", "password": "1111", "name": "관리자", "role": "Admin"},
+// 				),
+				cache: false,
+				success: function (result) {
+					// ajax로 요청한 데이터를 모두 처리하고 난 뒤 정상적으로 모두 완료되면 실행되는 로직
+					// alert(result.code);
+					alert(result);
+				},
+				error: function (request, status) {
+					alert("오류가 발생했습니다.");
+				}
+			});
+		}
+	</script>
 </head>
 <body>	
 	<h2>ajax Array 받기</h2>

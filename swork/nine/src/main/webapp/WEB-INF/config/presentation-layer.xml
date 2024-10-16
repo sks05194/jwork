@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<context:component-scan base-package="com.springbook.view"/>
+	<mvc:annotation-driven />
 
 	<!-- 파일 업로드에 필요한 객체 생성 -->
 	<!-- 객체명은 반드시 multipartResolver로 해야 함. 변경 불가 -->

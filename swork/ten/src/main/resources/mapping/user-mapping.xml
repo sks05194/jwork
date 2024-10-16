@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userDAO">
+	<resultMap type="com.springbook.biz.user.UserVO" id="userMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="role" column="role" />
+	</resultMap>
+
+	<select id="getUser" resultMap="userMap">
+		SELECT id, name, role FROM users WHERE id = #{id} AND password = #{password}
+	</select>
+
+	<insert id="joinUser">
+		INSERT INTO users
+		VALUES(#{id},#{password},#{name},#{role})
+	</insert>
+
+	<update id="updateUser">
+		UPDATE users
+		SET password=#{password}, name=#{name}, role=#{role}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delUser">
+		DELETE FROM users WHERE
+		id = #{id}
+	</delete>
+
+	<select id="selUser" resultType="com.springbook.biz.user.UserVO">
+		SELECT * FROM users WHERE id=#{id}
+	</select>
+	
+	<select id="userList" parameterType="string" resultType="user">
+		SELECT * FROM users WHERE 1=1
+		<if test="keyword != null">
+			AND id LIKE CONCAT('%', #{keyword}, '%')
+			OR name LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</select>
+
+</mapper>
