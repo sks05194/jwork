@@ -31,8 +31,9 @@
 		<if test="searchCondition == 'TITLE'">
 			AND title LIKE CONCAT('%', #{searchKeyword}, '%')
 		</if>
-		<if test="searchCondition == 'TITLE'">
+		<if test="searchCondition == 'CONTENT'">
 			AND content LIKE CONCAT('%', #{searchKeyword}, '%')
 		</if>
+		ORDER BY seq DESC
 	</select>
 </mapper>

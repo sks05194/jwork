@@ -8,8 +8,7 @@ import javax.servlet.annotation.WebListener;
 public class ServerManager implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		String url = "http://localhost:8090/BeansPaM";
-		url = "http://localhost:8090/biz";
+		String url = "http://localhost:8090/";
 		String browserPath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"; // Edge에서 열기
 //		String browserPath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"; // 크롬에서 열기
 

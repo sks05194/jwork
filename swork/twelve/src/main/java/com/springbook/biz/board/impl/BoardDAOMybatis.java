@@ -9,47 +9,51 @@ import org.springframework.stereotype.Repository;
 import com.springbook.biz.board.BoardVO;
 
 @Repository
-public class BoardDAOMybatis {
-	////마이바티스 객체 선언 및 자동주입처리 예정
-	// mybatis 탬플릿 객체 생성 및 의존성 주입처리
+public class BoardDAOMybatis{
+	
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	/*
-	 * insert문 => insert 메소드 사용 insert("맵퍼객체명.쿼리객체명", 바인드변수를 담고있는 변수나 객체);
-	 * delete문 => delete 메소드 사용 delete("맵퍼객체명.쿼리객체명", 바인드변수를 담고있는 변수나 객체);
-	 * update문 => update 메소드 사용 update("맵퍼객체명.쿼리객체명", 바인드변수를 담고있는 변수나 객체);
-	 * select 1줄 => selectOne("맵퍼객체명.쿼리객체명", 바인드변수를 담고있는 변수나 객체);
-	 * select 여러 줄 => selectList("맵퍼객체명.쿼리객체명", 바인드변수를 담고있는 변수나 객체);
-	 */
-
-	// CRUD 기능의 메소드 구현
-	// 글등록
+	
+	//CRUD 기능의 메소드 구현
+	//글등록
 	public void insertBoard(BoardVO vo) {
 		System.out.println("===>mybatis insertBoard() 기능처리");
 		mybatis.insert("BoardDAO.insertBoard", vo);
 	}
-
-	// 글수정
+	
+	//글수정
 	public void updateBoard(BoardVO vo) {
 		System.out.println("===>mybatis로 updateBoard() 기능처리");
 		mybatis.update("BoardDAO.updateBoard", vo);
 	}
-
-	// 글삭제
+	
+	//글삭제
 	public void deleteBoard(BoardVO vo) {
 		System.out.println("===>mybatis로 deleteBoard() 기능처리");
 		mybatis.delete("BoardDAO.deleteBoard", vo);
 	}
-
-	// 글상세 조회
+	
+	//글상세 조회
 	public BoardVO getBoard(BoardVO vo) {
 		System.out.println("===>mybatis로 getBoard() 기능처리");
-		return mybatis.selectOne("BoardDAO.getBoard", vo);
+		return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo);
 	}
-
-	// 글목록 조회
+	
+	//글목록 조회
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("===>mybatis로 getBoardList() 기능처리");
 		return mybatis.selectList("BoardDAO.getBoardList", vo);
 	}
+	
+	//전체 페이지 수 조회
+	public int countBoard(BoardVO vo) {
+		return mybatis.selectOne("BoardDAO.countBoard", vo);
+	}
+	
+	//조회수 카운트
+	public void updateCnt(BoardVO vo) {
+		System.out.println("===>mybatis로 updateCnt() 기능처리");
+		mybatis.update("BoardDAO.updateCnt", vo);
+	}
+	
 }

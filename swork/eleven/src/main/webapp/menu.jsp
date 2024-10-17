@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% 
+String userId =  session.getAttribute("userId")!=null?session.getAttribute("userId").toString():"";
+%>
 <nav id="stNav" class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <a class="navbar-brand" href="index.jsp">Home</a>
   <ul class="navbar-nav">
@@ -31,7 +35,7 @@
  	<c:otherwise>
  		<ul class="navbar-nav nav-right">    
 		   <li class="nav-item">
-		     <a class="nav-link" href="joinForm.jsp">회원가입</a>
+		     <a class="nav-link" href="joinForm.jsp">회원 가입</a>
 		   </li>
 		   <li class="nav-item">
 		     <a class="nav-link" href="login.do">로그인</a>
@@ -75,6 +79,9 @@
 	    </li>
  	</c:when>
  	<c:otherwise>
+	   <li class="nav-item">
+		     <a class="nav-link" href="joinForm.jsp">회원 가입</a>
+		   </li>
 	   <li class="nav-item">
 	     <a class="nav-link" href="login.do">로그인</a>
 	   </li>
