@@ -90,24 +90,29 @@
 	  	<button id="conDel" type="button" class="btn btn-primary" <%=sts %>>글삭제</button>
 	  	<button id="conList" type="button" class="btn btn-primary">글목록</button>
 	</div>
-  </form>  
+  </form>
+  <!-- 241017_추가 페이징처리와 목록, 검색 유지 기능 처리(시작)  -->
+  <form name="hideFrm" style="display:none;">
+	  <input type="hidden" name="nowPage" value="${nowPage}" >
+	  <input type="hidden" name="searchKeyword" value="${searchKeyword}" >
+	  <input type="hidden" name="searchCondition" value="${searchCondition}" >
+  </form>
+  <!-- 241017_추가 페이징처리와 목록, 검색 유지 기능 처리(종료)  -->
 </div>
-<c:if test="${board.filename ne null and !empty board.filename}">
-	<!-- 클릭시 보이는 이미지 start -->
-	<div id="imgBox" class="container-fluid">
-		<div id="imgContentBox">
-			<div id="imgBoxTitleBar">
-				<span id="closeX" onclick="closeX()">X</span>
-				 <script>
-	        	function closeX(){
-	        		$("#imgBox").hide();
-	        	}
-	        </script>
-			</div>
-			<img id="imgBoxImg" src="${pageContext.request.contextPath }/resources/img/${board.filename}">
+<!-- 클릭시 보이는 이미지 start -->
+<div id="imgBox" class="container-fluid">
+	<div id="imgContentBox">
+		<div id="imgBoxTitleBar">
+			<span id="closeX" onclick="closeX()">X</span>
+			 <script>
+        	function closeX(){
+        		$("#imgBox").hide();
+        	}
+        </script>
 		</div>
+		<img id="imgBoxImg" src="${pageContext.request.contextPath }/resources/img/${board.filename}">
 	</div>
-	<!-- 클릭시 보이는 이미지 end -->
-</c:if>
+</div>
+<!-- 클릭시 보이는 이미지 end -->
 </body>
 </html>

@@ -1,0 +1,16 @@
+3교시
+12:05
+	Restful 방식: 주소 재정의, url 주소를 통해 자원(resource)를 주고 받는 방식.
+
+5교시
+14:40
+	<resources mapping="/resources/**" location="/resources/"/>
+	mvc:resources 태그의 기능
+	1. 서블릿에서 제외
+	2. webapp/resources/의 url 별칭 처리
+	mapping: 별칭
+	location: 파일 경로
+
+15:20
+	경로변수로 설정한 값이나 객체
+	경로변수: 매개변수에 @PathVariable로 어노테이션 처리된 매개변수

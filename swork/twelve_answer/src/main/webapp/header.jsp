@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테스트 페이지</title>
+<title>정부24</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
  	<!-- Latest compiled and minified CSS -->
@@ -22,10 +22,10 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/test.css">
 	<script src="${pageContext.request.contextPath }/resources/js/test.js"></script>
 	<style>
-		td.tdCenter {text-align:center!important;} 
-		.input-group {margin-bottom:0px!important;}
-		.innm {background-color:#fff!important;}
-		.btn:not(.btn:first-child){border-left:1px solid #fff!important;border-right:1px solid #fff!important;}
-		.btn:not(.btn:last-child){border-left:1px solid #fff!important;border-right:1px solid #fff!important;}
+	td.tdCenter {text-align:center!important;} 
+	.input-group {margin-bottom:0px!important;}
+	.innm {background-color:#fff!important;}
+	.btn:not(.btn:first-child){border-left:1px solid #fff!important;border-right:1px solid #fff!important;}
+	.btn:not(.btn:last-child){border-left:1px solid #fff!important;border-right:1px solid #fff!important;}
 	</style>
 </head>
