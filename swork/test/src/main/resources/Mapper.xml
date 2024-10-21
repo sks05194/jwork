@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LoginDAO">
+	<insert id="usJoin">
+		INSERT INTO users
+		VALUES(#{id},#{password},#{name},#{role})
+	</insert>
+	
+	<select id="selUsers" resultType="users">
+	<![CDATA[
+		SELECT * FROM users WHERE age < 50
+	]]>
+	</select>
+</mapper>
