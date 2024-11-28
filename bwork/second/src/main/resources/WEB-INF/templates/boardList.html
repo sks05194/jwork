@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Item List</title>
+    <style>
+    *{box-sizing: border-box;}
+    table {width:90%;margin:20px auto; border-collapse: collapse;}
+    td{border-bottom : 1px solid #ccc;}
+    th {background-color : #aaa;}
+    </style>
+</head>
+<body>
+    <h1>Item List</h1>
+    
+    <table>
+    	<tr>
+    		<th>글번호</th>
+    		<th>제목</th>
+    		<th>작성자</th>
+    		<th>내용</th>
+    		<th>작성일</th>
+    	</tr>
+    	 <tr th:each="board : ${boardList}">
+              <td th:text="${board.boardNo}"></td>
+              <td th:text="${board.title}"></td>
+              <td th:text="${board.writer}"></td>
+              <td th:text="${board.regDateStr}"></td>
+              <td th:text="${board.content}"></td>
+          </tr>
+    </table>
+</body>
+</html>

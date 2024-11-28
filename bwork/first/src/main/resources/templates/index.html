@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<img alt="홈페이지" src="img/room.jpg"><br>
+<span th:text="|현재 시각:  ${toDate}|" >시간 오류</span><br>
+홈페이지입니다.<br>
+<a th:href="@{/home}">홈으로 이동</a>
+<a href="ajaxHome">Board페이지로 이동</a>
+</body>
+</html>

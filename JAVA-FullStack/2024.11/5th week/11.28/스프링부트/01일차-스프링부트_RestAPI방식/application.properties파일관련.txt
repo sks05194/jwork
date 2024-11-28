@@ -1,0 +1,26 @@
+resources / application.properties 파일안에 기술하는 속성 설명
+
+
+
+
+spring.application.name=first        : 현재 프로젝트명
+server.port=8090                         : 웹서버의 포트번호 설정(아파치 톰캣의 server.xml에 설정한 내용)
+
+
+server.servlet.encoding.charset	: 요청과 응답의 기본 문자 인코딩을 설정 (예: UTF-8)
+server.servlet.encoding.force	        : 요청 및 응답 인코딩을 강제로 지정된 값으로 설정 (클라이언트 요청 헤더 무시)
+server.servlet.encoding.enabled	: Spring Boot의 인코딩 관련 설정을 활성화 (기본값: true)
+
+
+spring.datasource.url=jdbc:mariadb://localhost:3306/test
+spring.datasource.driverClassName=org.mariadb.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=1111
+
+
+thymeleaf 설정 :  HTML 템플릿을 처리하는 Spring Boot 애플리케이션에서 기본 동작을 제어,개발 및 운영 환경에 맞게 최적화하는 데 사용
+spring.thymeleaf.prefix=classpath:templates/      : 템플릿 파일이 위치한 디렉터리 경로를 지정
+spring.thymeleaf.suffix=.html                           : 템플릿 파일의 확장자를 지정 (.html,  .xhtml 등)
+spring.thymeleaf.check-template-location=true   : 애플리케이션 시작 시 지정된 경로에 템플릿 파일이 존재하는지 확인 (true로 설정 시 체크 수행). 
+spring.thymeleaf.mode=HTML			  : 템플릿 렌더링 모드를 지정 (예: HTML, XML, TEXT).
+spring.thymeleaf.cache=false			          : 템플릿 캐싱 여부 설정 (개발 환경: false, 운영 환경: true).

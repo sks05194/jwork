@@ -1,0 +1,7 @@
+CREATE TABLE board(
+board_no INT PRIMARY KEY,
+content VARCHAR(2000),
+reg_date TIMESTAMP,
+title VARCHAR(200),
+writer VARCHAR(200)
+)DEFAULT CHARSET=UTF8;
