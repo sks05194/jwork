@@ -13,7 +13,7 @@ import kr.co.biz.board.Board;
 import kr.co.biz.board.BoardService;
 
 @Controller
-public class FristController {
+public class FirstController {
 	
 	@Autowired
 	private BoardService service;
